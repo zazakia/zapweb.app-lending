@@ -28,7 +28,6 @@ import {
 import { collectorService, Collector } from '@/lib/services/collectorService'
 import { formatDate, formatCurrency } from '@/lib/utils'
 import DemoModeNotice from '@/components/DemoModeNotice'
-import QuickNavigation from '@/components/QuickNavigation'
 
 const ID_TYPES = [
   'Driver\'s License',
@@ -484,7 +483,6 @@ function CollectorsManagementContent() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <DemoModeNotice />
-        <QuickNavigation />
 
         {/* Performance Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

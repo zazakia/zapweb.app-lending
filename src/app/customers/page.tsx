@@ -32,7 +32,6 @@ import {
 import { customerService, Customer } from '@/lib/services/customerService'
 import { useDebounce } from '@/hooks/usePerformanceOptimizedData'
 import DemoModeNotice from '@/components/DemoModeNotice'
-import QuickNavigation from '@/components/QuickNavigation'
 
 const ID_TYPES = [
   'Driver\'s License',
@@ -649,7 +648,6 @@ function CustomerManagementContent() {
       {/* Main Content */}
       <div>
         <DemoModeNotice />
-        <QuickNavigation />
         {/* Controls */}
         <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-8">
           <div className="flex justify-between items-center">
@@ -692,25 +690,25 @@ function CustomerManagementContent() {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b bg-gray-50">
-                      <th className="text-left p-3">Customer Code</th>
-                      <th className="text-left p-3">Name</th>
-                      <th className="text-left p-3">Phone</th>
-                      <th className="text-left p-3">Address</th>
-                      <th className="text-left p-3">Credit Score</th>
-                      <th className="text-left p-3">Status</th>
-                      <th className="text-left p-3">Actions</th>
+                    <tr className="border-b bg-gray-100">
+                      <th className="text-left p-3 font-semibold text-gray-900">Customer Code</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Name</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Phone</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Address</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Credit Score</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Status</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {customers.map((customer) => (
                       <tr key={customer.id} className="border-b hover:bg-gray-50">
-                        <td className="p-3 font-medium">{customer.customer_code}</td>
-                        <td className="p-3">
+                        <td className="p-3 font-medium text-gray-900">{customer.customer_code}</td>
+                        <td className="p-3 text-gray-900">
                           {customer.first_name} {customer.middle_name} {customer.last_name}
                         </td>
-                        <td className="p-3">{customer.phone}</td>
-                        <td className="p-3">{customer.address}</td>
+                        <td className="p-3 text-gray-900">{customer.phone}</td>
+                        <td className="p-3 text-gray-900">{customer.address}</td>
                         <td className="p-3">
                           <span className={`px-2 py-1 rounded-full text-xs ${
                             (customer.credit_score || 0) >= 90 ? 'bg-green-100 text-green-800' :

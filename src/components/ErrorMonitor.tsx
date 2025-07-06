@@ -23,7 +23,7 @@ interface ErrorMonitorProps {
 
 export default function ErrorMonitor({ className }: ErrorMonitorProps) {
   const [logs, setLogs] = useState<ErrorLogEntry[]>([])
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
   const [filter, setFilter] = useState<'all' | 'error' | 'warn' | 'info'>('all')
   const [autoRefresh, setAutoRefresh] = useState(true)
 

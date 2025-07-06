@@ -30,7 +30,7 @@ export default function RootLayout({
           <AuthProvider>
             <div className="min-h-screen bg-background font-sans antialiased">
               {children}
-              <ErrorMonitor />
+              {process.env.NODE_ENV === 'development' && <ErrorMonitor />}
             </div>
           </AuthProvider>
         </SettingsProvider>

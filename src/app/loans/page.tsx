@@ -28,7 +28,6 @@ import { formatCurrency, formatDate } from '@/lib/utils'
 import { loanService, Loan, LoanType } from '@/lib/services/loanService'
 import { customerService, Customer } from '@/lib/services/customerService'
 import DemoModeNotice from '@/components/DemoModeNotice'
-import QuickNavigation from '@/components/QuickNavigation'
 
 function LoanManagementContent() {
   const { user, logout } = useAuth()
@@ -576,7 +575,6 @@ function LoanManagementContent() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <DemoModeNotice />
-        <QuickNavigation />
         {/* Controls */}
         <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-8">
           <div className="flex justify-between items-center">
@@ -619,34 +617,34 @@ function LoanManagementContent() {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b bg-gray-50">
-                      <th className="text-left p-3">Loan Code</th>
-                      <th className="text-left p-3">Customer</th>
-                      <th className="text-left p-3">Principal</th>
-                      <th className="text-left p-3">Balance</th>
-                      <th className="text-left p-3">Release Date</th>
-                      <th className="text-left p-3">Maturity Date</th>
-                      <th className="text-left p-3">Approval</th>
-                      <th className="text-left p-3">Disbursement</th>
-                      <th className="text-left p-3">Status</th>
-                      <th className="text-left p-3">Actions</th>
+                    <tr className="border-b bg-gray-100">
+                      <th className="text-left p-3 font-semibold text-gray-900">Loan Code</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Customer</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Principal</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Balance</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Release Date</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Maturity Date</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Approval</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Disbursement</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Status</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {loans.map((loan) => (
                       <tr key={loan.id} className="border-b hover:bg-gray-50">
-                        <td className="p-3 font-medium">{loan.loan_code}</td>
-                        <td className="p-3">
+                        <td className="p-3 font-medium text-gray-900">{loan.loan_code}</td>
+                        <td className="p-3 text-gray-900">
                           {(loan as any).customers?.customer_code || 'N/A'}
                           <br />
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-600">
                             {(loan as any).customers?.first_name} {(loan as any).customers?.last_name}
                           </span>
                         </td>
-                        <td className="p-3">{formatCurrency(loan.principal_amount)}</td>
-                        <td className="p-3">{formatCurrency(loan.current_balance)}</td>
-                        <td className="p-3">{formatDate(loan.release_date)}</td>
-                        <td className="p-3">{formatDate(loan.maturity_date)}</td>
+                        <td className="p-3 text-gray-900">{formatCurrency(loan.principal_amount)}</td>
+                        <td className="p-3 text-gray-900">{formatCurrency(loan.current_balance)}</td>
+                        <td className="p-3 text-gray-900">{formatDate(loan.release_date)}</td>
+                        <td className="p-3 text-gray-900">{formatDate(loan.maturity_date)}</td>
                         <td className="p-3">
                           <span className={`px-2 py-1 rounded-full text-xs ${
                             loan.approval_status === 'Approved' ? 'bg-green-100 text-green-800' :

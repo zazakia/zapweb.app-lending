@@ -28,7 +28,6 @@ import { paymentService, Payment } from '@/lib/services/paymentService'
 import { loanService, Loan } from '@/lib/services/loanService'
 import { customerService, Customer } from '@/lib/services/customerService'
 import DemoModeNotice from '@/components/DemoModeNotice'
-import QuickNavigation from '@/components/QuickNavigation'
 
 function PaymentManagementContent() {
   const { user, logout } = useAuth()
@@ -415,7 +414,6 @@ function PaymentManagementContent() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <DemoModeNotice />
-        <QuickNavigation />
         {/* Controls */}
         <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-8">
           <div className="flex justify-between items-center">
@@ -466,30 +464,30 @@ function PaymentManagementContent() {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b bg-gray-50">
-                      <th className="text-left p-3">Payment ID</th>
-                      <th className="text-left p-3">Loan Code</th>
-                      <th className="text-left p-3">Customer</th>
-                      <th className="text-left p-3">Amount</th>
-                      <th className="text-left p-3">Payment Date</th>
-                      <th className="text-left p-3">Method</th>
-                      <th className="text-left p-3">Status</th>
-                      <th className="text-left p-3">Actions</th>
+                    <tr className="border-b bg-gray-100">
+                      <th className="text-left p-3 font-semibold text-gray-900">Payment ID</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Loan Code</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Customer</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Amount</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Payment Date</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Method</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Status</th>
+                      <th className="text-left p-3 font-semibold text-gray-900">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {payments.map((payment) => (
                       <tr key={payment.id} className="border-b hover:bg-gray-50">
-                        <td className="p-3 font-medium">{payment.payment_id}</td>
-                        <td className="p-3">{(payment as any).loans?.loan_code || 'N/A'}</td>
-                        <td className="p-3">
+                        <td className="p-3 font-medium text-gray-900">{payment.payment_id}</td>
+                        <td className="p-3 text-gray-900">{(payment as any).loans?.loan_code || 'N/A'}</td>
+                        <td className="p-3 text-gray-900">
                           {(payment as any).customers?.customer_code || 'N/A'}
                           <br />
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-600">
                             {(payment as any).customers?.first_name} {(payment as any).customers?.last_name}
                           </span>
                         </td>
-                        <td className="p-3">
+                        <td className="p-3 text-gray-900">
                           {formatCurrency(payment.payment_amount)}
                           {payment.is_late_payment && (
                             <div className="flex items-center gap-1 text-red-600 text-xs">
@@ -498,8 +496,8 @@ function PaymentManagementContent() {
                             </div>
                           )}
                         </td>
-                        <td className="p-3">{formatDate(payment.payment_date)}</td>
-                        <td className="p-3">{payment.payment_method}</td>
+                        <td className="p-3 text-gray-900">{formatDate(payment.payment_date)}</td>
+                        <td className="p-3 text-gray-900">{payment.payment_method}</td>
                         <td className="p-3">
                           <span className={`px-2 py-1 rounded-full text-xs ${
                             payment.payment_status === 'Active' ? 'bg-green-100 text-green-800' :

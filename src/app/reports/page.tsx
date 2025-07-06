@@ -25,7 +25,6 @@ import {
   Clock
 } from 'lucide-react'
 import DemoModeNotice from '@/components/DemoModeNotice'
-import QuickNavigation from '@/components/QuickNavigation'
 
 interface ReportCard {
   id: string
@@ -195,7 +194,6 @@ function ReportsContent() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <DemoModeNotice />
-        <QuickNavigation />
         
         {/* Category Filter */}
         <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-8">
