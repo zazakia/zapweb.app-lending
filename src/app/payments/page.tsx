@@ -513,6 +513,8 @@ function PaymentManagementContent() {
                             <Button 
                               size="sm" 
                               variant="outline"
+                              onClick={() => router.push(`/payments/${payment.id}/receipt`)}
+                              title="View Receipt"
                             >
                               <Eye className="h-4 w-4" />
                             </Button>

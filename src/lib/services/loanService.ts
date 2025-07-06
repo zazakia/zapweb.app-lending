@@ -28,6 +28,13 @@ export interface Loan {
   collector_id?: string
   branch_id?: string
   loan_status: string
+  approval_status?: string
+  disbursement_status?: string
+  disbursed_amount?: number
+  disbursement_date?: string
+  disbursed_by?: string
+  disbursement_method?: string
+  disbursement_reference?: string
   life_insurance: number
   service_fee: number
   loan_category: string
@@ -396,6 +403,139 @@ export const loanService = {
     } catch (error) {
       console.warn('Schema error, falling back to mock data:', error)
       return mockLoanService.getLoansSummary()
+    }
+  },
+
+  // Create loan type
+  async createLoanType(loanType: Omit<LoanType, 'id'>): Promise<LoanType> {
+    if (!supabase) {
+      // Mock implementation for demo mode
+      const newType: LoanType = {
+        ...loanType,
+        id: Date.now().toString()
+      }
+      return newType
+    }
+
+    const { data, error } = await supabase
+      .schema('lending1')
+      .from('loan_types')
+      .insert([loanType])
+      .select()
+      .single()
+
+    if (error) {
+      throw new Error(`Failed to create loan type: ${error.message}`)
+    }
+
+    return data
+  },
+
+  // Update loan type
+  async updateLoanType(id: string, updates: Partial<LoanType>): Promise<LoanType> {
+    if (!supabase) {
+      // Mock implementation for demo mode
+      return { ...updates, id } as LoanType
+    }
+
+    const { data, error } = await supabase
+      .schema('lending1')
+      .from('loan_types')
+      .update(updates)
+      .eq('id', id)
+      .select()
+      .single()
+
+    if (error) {
+      throw new Error(`Failed to update loan type: ${error.message}`)
+    }
+
+    return data
+  },
+
+  // Delete loan type (soft delete by setting status to Inactive)
+  async deleteLoanType(id: string): Promise<void> {
+    if (!supabase) {
+      // Mock implementation for demo mode
+      return
+    }
+
+    const { error } = await supabase
+      .schema('lending1')
+      .from('loan_types')
+      .update({ status: 'Inactive' })
+      .eq('id', id)
+
+    if (error) {
+      throw new Error(`Failed to delete loan type: ${error.message}`)
+    }
+  },
+
+  // Disburse loan
+  async disburseLoan(loanId: string, disbursementData: {
+    disbursed_amount: number
+    disbursement_date: string
+    disbursed_by: string
+    disbursement_method: string
+    disbursement_reference?: string
+  }): Promise<Loan> {
+    if (!supabase) {
+      // Mock implementation for demo mode
+      return {} as Loan
+    }
+
+    const { data, error } = await supabase
+      .schema('lending1')
+      .from('loans')
+      .update({
+        disbursement_status: 'Disbursed',
+        disbursed_amount: disbursementData.disbursed_amount,
+        disbursement_date: disbursementData.disbursement_date,
+        disbursed_by: disbursementData.disbursed_by,
+        disbursement_method: disbursementData.disbursement_method,
+        disbursement_reference: disbursementData.disbursement_reference,
+        loan_status: 'Good', // Set to Good after disbursement
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', loanId)
+      .select()
+      .single()
+
+    if (error) {
+      throw new Error(`Failed to disburse loan: ${error.message}`)
+    }
+
+    return data
+  },
+
+  // Get loans pending disbursement
+  async getLoansPendingDisbursement(): Promise<Loan[]> {
+    if (!supabase) {
+      // Mock implementation for demo mode
+      return []
+    }
+
+    try {
+      const { data, error } = await supabase
+        .schema('lending1')
+        .from('loans')
+        .select(`
+          *,
+          customers(first_name, last_name, customer_code),
+          loan_types(type_name)
+        `)
+        .eq('approval_status', 'Approved')
+        .neq('disbursement_status', 'Disbursed')
+        .order('created_at', { ascending: true })
+
+      if (error) {
+        throw new Error(`Failed to fetch loans pending disbursement: ${error.message}`)
+      }
+
+      return data || []
+    } catch (error) {
+      console.warn('Error fetching loans pending disbursement:', error)
+      return []
     }
   }
 }

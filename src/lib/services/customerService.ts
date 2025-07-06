@@ -41,21 +41,79 @@ export interface Customer {
 }
 
 export const customerService = {
-  // Get all customers
-  async getCustomers(): Promise<Customer[]> {
+  // Get all customers with optimized query
+  async getCustomers(limit?: number, offset?: number): Promise<Customer[]> {
+    if (!supabase) {
+      return mockCustomerService.getCustomers()
+    }
+
+    try {
+      let query = supabase
+        .from('customers')
+        .select('*')
+        .order('created_at', { ascending: false })
+      
+      if (limit) {
+        query = query.limit(limit)
+      }
+      
+      if (offset) {
+        query = query.range(offset, offset + (limit || 50) - 1)
+      }
+      
+      const { data, error } = await query
+      
+      if (error) {
+        console.error('Error fetching customers:', error)
+        return mockCustomerService.getCustomers()
+      }
+      
+      return data || []
+    } catch (error) {
+      console.error('Error in getCustomers:', error)
+      return mockCustomerService.getCustomers()
+    }
+  },
+
+  // Get customers count for pagination
+  async getCustomersCount(): Promise<number> {
+    if (!supabase) {
+      return 100
+    }
+
+    try {
+      const { count, error } = await supabase
+        .from('customers')
+        .select('*', { count: 'exact', head: true })
+      
+      if (error) {
+        console.error('Error counting customers:', error)
+        return 100
+      }
+      
+      return count || 0
+    } catch (error) {
+      console.error('Error in getCustomersCount:', error)
+      return 100
+    }
+  },
+
+  // Search customers with optimized query
+  async searchCustomers(searchTerm: string, limit: number = 50): Promise<Customer[]> {
     if (!supabase) {
       return mockCustomerService.getCustomers()
     }
 
     try {
       const { data, error } = await supabase
-        .schema('lending1')
         .from('customers')
-        .select('*')
+        .select('id, customer_code, first_name, middle_name, last_name, phone, email, status, created_at')
+        .or(`first_name.ilike.%${searchTerm}%,last_name.ilike.%${searchTerm}%,customer_code.ilike.%${searchTerm}%,phone.ilike.%${searchTerm}%,email.ilike.%${searchTerm}%`)
         .order('created_at', { ascending: false })
+        .limit(limit)
 
       if (error) {
-        console.warn('Failed to fetch customers from database, using mock data:', error.message)
+        console.warn('Failed to search customers from database, using mock data:', error.message)
         return mockCustomerService.getCustomers()
       }
 
@@ -66,7 +124,47 @@ export const customerService = {
     }
   },
 
-  // Get customer by ID
+  // Get customers with minimal data for dropdowns
+  async getCustomersMinimal(): Promise<Pick<Customer, 'id' | 'customer_code' | 'first_name' | 'last_name'>[]> {
+    if (!supabase) {
+      return mockCustomerService.getCustomers().map(c => ({
+        id: c.id,
+        customer_code: c.customer_code,
+        first_name: c.first_name,
+        last_name: c.last_name
+      }))
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from('customers')
+        .select('id, customer_code, first_name, last_name')
+        .eq('status', 'active')
+        .order('first_name', { ascending: true })
+
+      if (error) {
+        console.warn('Failed to fetch minimal customers from database, using mock data:', error.message)
+        return mockCustomerService.getCustomers().map(c => ({
+          id: c.id,
+          customer_code: c.customer_code,
+          first_name: c.first_name,
+          last_name: c.last_name
+        }))
+      }
+
+      return data || []
+    } catch (error) {
+      console.warn('Schema error, falling back to mock data:', error)
+      return mockCustomerService.getCustomers().map(c => ({
+        id: c.id,
+        customer_code: c.customer_code,
+        first_name: c.first_name,
+        last_name: c.last_name
+      }))
+    }
+  },
+
+  // Get customer by ID with optimized query
   async getCustomerById(id: string): Promise<Customer | null> {
     if (!supabase) {
       return mockCustomerService.getCustomerById(id)
@@ -74,7 +172,6 @@ export const customerService = {
 
     try {
       const { data, error } = await supabase
-        .schema('lending1')
         .from('customers')
         .select('*')
         .eq('id', id)

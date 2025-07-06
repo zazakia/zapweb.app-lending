@@ -1,0 +1,126 @@
+/* Performance optimizations for snappy navigation */
+
+/* Smooth page transitions */
+.page-transitioning {
+  transition: opacity 0.15s ease-in-out;
+}
+
+.page-transitioning * {
+  pointer-events: none;
+}
+
+/* Optimize button hover effects */
+button {
+  will-change: transform;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover {
+  transform: scale(1.02);
+}
+
+button:active {
+  transform: scale(0.98);
+  transition-duration: 0.1s;
+}
+
+/* Optimize navigation animations */
+.nav-button {
+  will-change: transform, background-color;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-button:hover {
+  transform: translateY(-2px);
+}
+
+.nav-button:active {
+  transform: translateY(0);
+}
+
+/* Sidebar optimization */
+.sidebar-nav {
+  will-change: transform;
+}
+
+.sidebar-nav button {
+  transition: all 0.1s ease-out;
+}
+
+/* Loading states */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* GPU acceleration for smooth animations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize scroll performance */
+.scroll-container {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Prefetch hints */
+.prefetch-next {
+  content-visibility: auto;
+  contain-intrinsic-size: 300px;
+}
+
+/* Fast click response */
+.fast-click {
+  touch-action: manipulation;
+  user-select: none;
+}
+
+/* Optimize layout shifts */
+.layout-stable {
+  contain: layout style paint;
+}
+
+/* Network optimization classes */
+.preload-critical {
+  font-display: swap;
+}
+
+/* Reduce repaints */
+.no-repaint {
+  will-change: opacity, transform;
+  contain: strict;
+}
+
+/* Form performance */
+.form-field {
+  will-change: border-color, box-shadow;
+  transition: border-color 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Card hover optimization */
+.card-hover {
+  will-change: transform, box-shadow;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}

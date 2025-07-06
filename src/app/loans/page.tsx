@@ -56,6 +56,8 @@ function LoanManagementContent() {
     collector_id: '',
     branch_id: '',
     loan_status: 'Good',
+    approval_status: 'Pending',
+    disbursement_status: 'Pending',
     life_insurance: 0,
     service_fee: 0,
     loan_category: 'Regular'
@@ -144,6 +146,8 @@ function LoanManagementContent() {
         collector_id: '',
         branch_id: '',
         loan_status: 'Good',
+        approval_status: 'Pending',
+        disbursement_status: 'Pending',
         life_insurance: 0,
         service_fee: 0,
         loan_category: 'Regular'
@@ -214,6 +218,8 @@ function LoanManagementContent() {
         collector_id: '',
         branch_id: '',
         loan_status: 'Good',
+        approval_status: 'Pending',
+        disbursement_status: 'Pending',
         life_insurance: 0,
         service_fee: 0,
         loan_category: 'Regular'
@@ -476,6 +482,20 @@ function LoanManagementContent() {
                     />
                   </div>
                   <div>
+                    <Label htmlFor="approval_status">Approval Status</Label>
+                    <Select value={formData.approval_status || 'Pending'} onValueChange={(value) => setFormData({...formData, approval_status: value})}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select approval status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Pending">Pending Approval</SelectItem>
+                        <SelectItem value="Approved">Approved</SelectItem>
+                        <SelectItem value="Rejected">Rejected</SelectItem>
+                        <SelectItem value="Under Review">Under Review</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
                     <Label htmlFor="loan_status">Loan Status</Label>
                     <Select value={formData.loan_status || ''} onValueChange={(value) => setFormData({...formData, loan_status: value})}>
                       <SelectTrigger>
@@ -605,6 +625,8 @@ function LoanManagementContent() {
                       <th className="text-left p-3">Balance</th>
                       <th className="text-left p-3">Release Date</th>
                       <th className="text-left p-3">Maturity Date</th>
+                      <th className="text-left p-3">Approval</th>
+                      <th className="text-left p-3">Disbursement</th>
                       <th className="text-left p-3">Status</th>
                       <th className="text-left p-3">Actions</th>
                     </tr>
@@ -624,6 +646,24 @@ function LoanManagementContent() {
                         <td className="p-3">{formatCurrency(loan.current_balance)}</td>
                         <td className="p-3">{formatDate(loan.release_date)}</td>
                         <td className="p-3">{formatDate(loan.maturity_date)}</td>
+                        <td className="p-3">
+                          <span className={`px-2 py-1 rounded-full text-xs ${
+                            loan.approval_status === 'Approved' ? 'bg-green-100 text-green-800' :
+                            loan.approval_status === 'Rejected' ? 'bg-red-100 text-red-800' :
+                            loan.approval_status === 'Under Review' ? 'bg-yellow-100 text-yellow-800' :
+                            'bg-gray-100 text-gray-800'
+                          }`}>
+                            {loan.approval_status || 'Pending'}
+                          </span>
+                        </td>
+                        <td className="p-3">
+                          <span className={`px-2 py-1 rounded-full text-xs ${
+                            loan.disbursement_status === 'Disbursed' ? 'bg-green-100 text-green-800' :
+                            'bg-orange-100 text-orange-800'
+                          }`}>
+                            {loan.disbursement_status || 'Pending'}
+                          </span>
+                        </td>
                         <td className="p-3">
                           <span className={`px-2 py-1 rounded-full text-xs ${
                             loan.loan_status === 'Good' ? 'bg-green-100 text-green-800' :
@@ -657,7 +697,7 @@ function LoanManagementContent() {
                     ))}
                     {loans.length === 0 && (
                       <tr>
-                        <td colSpan={8} className="text-center py-8 text-gray-500">
+                        <td colSpan={10} className="text-center py-8 text-gray-500">
                           No loans found
                         </td>
                       </tr>

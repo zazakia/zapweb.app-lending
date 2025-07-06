@@ -1,12 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useCallback, memo } from 'react'
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import ProtectedRoute from '@/components/ProtectedRoute'
 import { useAuth } from '@/contexts/AuthContext'
 import { 
@@ -21,9 +22,14 @@ import {
   Building2,
   Edit,
   Trash2,
-  LogOut
+  LogOut,
+  MoreHorizontal,
+  UserCheck,
+  UserX,
+  Ban
 } from 'lucide-react'
 import { customerService, Customer } from '@/lib/services/customerService'
+import { useDebounce } from '@/hooks/usePerformanceOptimizedData'
 import DemoModeNotice from '@/components/DemoModeNotice'
 import QuickNavigation from '@/components/QuickNavigation'
 
@@ -53,6 +59,12 @@ const CIVIL_STATUS_OPTIONS = [
 const GENDER_OPTIONS = [
   'Male',
   'Female'
+]
+
+const CUSTOMER_STATUS_OPTIONS = [
+  'Active',
+  'Inactive',
+  'Blacklisted'
 ]
 
 function CustomerManagementContent() {
@@ -172,6 +184,21 @@ function CustomerManagementContent() {
         loadCustomers()
       } catch (error) {
         console.error('Error deleting customer:', error)
+      }
+    }
+  }
+
+  const handleStatusChange = async (id: string, newStatus: string) => {
+    const confirmMessage = newStatus === 'Blacklisted' 
+      ? 'Are you sure you want to blacklist this customer? This will prevent them from getting new loans.'
+      : `Are you sure you want to change the customer status to ${newStatus}?`
+    
+    if (confirm(confirmMessage)) {
+      try {
+        await customerService.updateCustomer(id, { status: newStatus })
+        loadCustomers()
+      } catch (error) {
+        console.error('Error updating customer status:', error)
       }
     }
   }
@@ -601,6 +628,19 @@ function CustomerManagementContent() {
                       placeholder="Business capital, education, etc."
                     />
                   </div>
+                  <div>
+                    <Label htmlFor="status">Customer Status</Label>
+                    <Select value={formData.status || 'Active'} onValueChange={(value) => setFormData({...formData, status: value})}>
+                      <SelectTrigger className="bg-white text-gray-900">
+                        <SelectValue placeholder="Select status" className="text-gray-900" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {CUSTOMER_STATUS_OPTIONS.map((option) => (
+                          <SelectItem key={option} value={option}>{option}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </CardContent>
               </Card>
 
@@ -740,6 +780,7 @@ function CustomerManagementContent() {
                         <td className="p-3">
                           <span className={`px-2 py-1 rounded-full text-xs ${
                             customer.status === 'Active' ? 'bg-green-100 text-green-800' :
+                            customer.status === 'Blacklisted' ? 'bg-red-100 text-red-800' :
                             'bg-gray-100 text-gray-800'
                           }`}>
                             {customer.status}
@@ -754,14 +795,43 @@ function CustomerManagementContent() {
                             >
                               <Edit className="h-4 w-4" />
                             </Button>
-                            <Button 
-                              size="sm" 
-                              variant="outline"
-                              onClick={() => customer.id && handleDeleteCustomer(customer.id)}
-                              className="text-red-600 hover:text-red-700"
-                            >
-                              <Trash2 className="h-4 w-4" />
-                            </Button>
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <Button size="sm" variant="outline">
+                                  <MoreHorizontal className="h-4 w-4" />
+                                </Button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent>
+                                <DropdownMenuItem 
+                                  onClick={() => customer.id && handleStatusChange(customer.id, 'Active')}
+                                  disabled={customer.status === 'Active'}
+                                >
+                                  <UserCheck className="h-4 w-4 mr-2 text-green-600" />
+                                  Set Active
+                                </DropdownMenuItem>
+                                <DropdownMenuItem 
+                                  onClick={() => customer.id && handleStatusChange(customer.id, 'Inactive')}
+                                  disabled={customer.status === 'Inactive'}
+                                >
+                                  <UserX className="h-4 w-4 mr-2 text-gray-600" />
+                                  Set Inactive
+                                </DropdownMenuItem>
+                                <DropdownMenuItem 
+                                  onClick={() => customer.id && handleStatusChange(customer.id, 'Blacklisted')}
+                                  disabled={customer.status === 'Blacklisted'}
+                                >
+                                  <Ban className="h-4 w-4 mr-2 text-red-600" />
+                                  Blacklist
+                                </DropdownMenuItem>
+                                <DropdownMenuItem 
+                                  onClick={() => customer.id && handleDeleteCustomer(customer.id)}
+                                  className="text-red-600 hover:text-red-700"
+                                >
+                                  <Trash2 className="h-4 w-4 mr-2" />
+                                  Delete
+                                </DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
                           </div>
                         </td>
                       </tr>

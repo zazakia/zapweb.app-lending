@@ -80,22 +80,19 @@ function LoanTypesManagementContent() {
     setLoading(true)
     
     try {
-      // For now, just update the local state since we're using mock data
+      const loanTypeData = {
+        ...formData
+      } as Omit<LoanType, 'id'>
+
       if (editingLoanType?.id) {
-        // Update existing
-        const updatedTypes = loanTypes.map(type => 
-          type.id === editingLoanType.id ? { ...formData, id: editingLoanType.id } as LoanType : type
-        )
-        setLoanTypes(updatedTypes)
+        // Update existing loan type
+        await loanService.updateLoanType(editingLoanType.id, loanTypeData)
       } else {
-        // Add new
-        const newType: LoanType = {
-          ...formData,
-          id: Date.now().toString()
-        } as LoanType
-        setLoanTypes([...loanTypes, newType])
+        // Create new loan type
+        await loanService.createLoanType(loanTypeData)
       }
       
+      // Reset form and reload data
       setFormData({
         type_name: '',
         description: '',
@@ -106,6 +103,7 @@ function LoanTypesManagementContent() {
       })
       setEditingLoanType(null)
       setShowForm(false)
+      loadLoanTypes()
     } catch (error) {
       console.error('Error saving loan type:', error)
     } finally {
@@ -116,8 +114,8 @@ function LoanTypesManagementContent() {
   const handleDeleteLoanType = async (id: string) => {
     if (confirm('Are you sure you want to delete this loan type?')) {
       try {
-        const updatedTypes = loanTypes.filter(type => type.id !== id)
-        setLoanTypes(updatedTypes)
+        await loanService.deleteLoanType(id)
+        loadLoanTypes()
       } catch (error) {
         console.error('Error deleting loan type:', error)
       }

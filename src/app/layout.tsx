@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "./performance.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
 
 import { AuthProvider } from '@/contexts/AuthContext'
 import { ThemeProvider } from '@/contexts/ThemeContext'
+import { SettingsProvider } from '@/contexts/SettingsContext'
+import ErrorMonitor from '@/components/ErrorMonitor'
 
 export default function RootLayout({
   children,
@@ -23,11 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased min-h-screen bg-background`}>
-        <AuthProvider>
-          <div className="min-h-screen bg-background font-sans antialiased">
-            {children}
-          </div>
-        </AuthProvider>
+        <SettingsProvider>
+          <AuthProvider>
+            <div className="min-h-screen bg-background font-sans antialiased">
+              {children}
+              <ErrorMonitor />
+            </div>
+          </AuthProvider>
+        </SettingsProvider>
       </body>
     </html>
   );

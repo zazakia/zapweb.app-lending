@@ -460,5 +460,34 @@ export const paymentService = {
       latePayments: payments?.filter(p => p.is_late_payment).length || 0,
       latePaymentFees: payments?.reduce((sum, p) => sum + (p.late_payment_fee || 0), 0) || 0
     }
+  },
+
+  // Process bulk payments
+  async processBulkPayments(paymentsData: Array<{
+    loanId: string
+    customerId: string
+    paymentAmount: number
+    paymentDate: string
+    paymentMethod?: string
+    referenceNumber?: string
+    collectorId?: string
+    collectedBy?: string
+  }>): Promise<{ successful: Payment[], failed: Array<{ error: string, data: any }> }> {
+    const successful: Payment[] = []
+    const failed: Array<{ error: string, data: any }> = []
+
+    for (const paymentData of paymentsData) {
+      try {
+        const result = await this.processPayment(paymentData)
+        successful.push(result.payment)
+      } catch (error) {
+        failed.push({
+          error: error instanceof Error ? error.message : 'Unknown error',
+          data: paymentData
+        })
+      }
+    }
+
+    return { successful, failed }
   }
 }

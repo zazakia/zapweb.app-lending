@@ -1,11 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useCallback, memo } from 'react'
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import ProtectedRoute from '@/components/ProtectedRoute'
+import LayoutSwitcher from '@/components/LayoutSwitcher'
 import { useAuth } from '@/contexts/AuthContext'
+import { useSettings } from '@/contexts/SettingsContext'
 import { 
   Users, 
   CreditCard, 
@@ -28,6 +30,9 @@ import { customerService } from '@/lib/services/customerService'
 import { loanService } from '@/lib/services/loanService'
 import { paymentService } from '@/lib/services/paymentService'
 import { supabase } from '@/lib/supabase'
+import OptimizedNavigationButton from '@/components/OptimizedNavigationButton'
+import { useOptimizedNavigation } from '@/lib/navigationOptimizer'
+import { usePerformanceOptimizations, useWebVitalsOptimizations } from '@/hooks/usePerformanceOptimizations'
 
 interface DashboardStats {
   totalClients: number
@@ -41,7 +46,12 @@ interface DashboardStats {
 
 function DashboardContent() {
   const { user, logout } = useAuth()
+  const { settings } = useSettings()
   const router = useRouter()
+  
+  // Performance optimizations
+  usePerformanceOptimizations()
+  useWebVitalsOptimizations()
   const [stats, setStats] = useState<DashboardStats>({
     totalClients: 0,
     totalLoans: 0,
@@ -53,6 +63,8 @@ function DashboardContent() {
   })
 
   const [currentTime, setCurrentTime] = useState(new Date())
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     // Update time every second
@@ -66,8 +78,11 @@ function DashboardContent() {
     return () => clearInterval(timer)
   }, [])
 
-  const loadDashboardData = async () => {
+  const loadDashboardData = useCallback(async () => {
     try {
+      setLoading(true)
+      setError(null)
+      
       // Load real data from services
       const [customers, loansSummary, paymentsSummary] = await Promise.all([
         customerService.getCustomers(),
@@ -91,6 +106,7 @@ function DashboardContent() {
       })
     } catch (error) {
       console.error('Error loading dashboard data:', error)
+      setError('Failed to load dashboard data')
       // Fallback to demo data if services fail
       setStats({
         totalClients: 1247,
@@ -101,96 +117,80 @@ function DashboardContent() {
         activeLoans: 743,
         pastDueLoans: 149
       })
+    } finally {
+      setLoading(false)
     }
-  }
+  }, [])
 
-  const refreshDashboard = () => {
+  const refreshDashboard = useCallback(() => {
     loadDashboardData()
+  }, [loadDashboardData])
+
+  // Memoize time display to prevent unnecessary re-renders
+  const timeDisplay = useMemo(() => ({
+    date: formatDate(currentTime),
+    time: currentTime.toLocaleTimeString()
+  }), [currentTime])
+
+  // Memoize stats calculations
+  const calculatedStats = useMemo(() => ({
+    totalClients: stats.totalClients,
+    totalLoans: stats.totalLoans,
+    totalPrincipal: formatCurrency(stats.totalPrincipal),
+    totalPayments: formatCurrency(stats.totalPayments),
+    rateOfReturn: stats.rateOfReturn.toFixed(2),
+    activeLoans: stats.activeLoans,
+    pastDueLoans: stats.pastDueLoans
+  }), [stats])
+
+  const { navigate } = useOptimizedNavigation()
+  
+  const handleNavigation = useCallback((path: string) => {
+    navigate(path)
+  }, [navigate])
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="text-center">
+          <RefreshCw className="h-8 w-8 animate-spin mx-auto mb-4 text-indigo-600" />
+          <p className="text-gray-600">Loading dashboard...</p>
+        </div>
+      </div>
+    )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-indigo-900 via-purple-800 to-blue-900 shadow-xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center gap-4">
-              <div className="bg-white/10 backdrop-blur-sm rounded-full p-3">
-                <Building2 className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold text-white tracking-tight">
-                  MELANN LENDING INVESTOR CORP.
-                </h1>
-                <p className="text-lg text-cyan-200 font-semibold tracking-wide">
-                  DAILY COLLECTION AND LOAN REPORT
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-6">
-              <div className="text-right bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                <p className="text-sm text-cyan-100 font-medium">Today is: {formatDate(currentTime)}</p>
-                <p className="text-sm text-cyan-100 font-medium">
-                  Time: {currentTime.toLocaleTimeString()}
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="text-right">
-                  <p className="text-sm text-cyan-200">Welcome</p>
-                  <p className="font-semibold text-white">{user?.fullName}</p>
-                  <p className="text-xs text-cyan-300">{user?.userLevel}</p>
-                </div>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  onClick={logout}
-                  className="bg-white/10 border-white/20 text-white hover:bg-red-500/20 hover:border-red-400 transition-all duration-200"
-                >
-                  <LogOut className="h-4 w-4 mr-1" />
-                  Logout
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Navigation Toolbar */}
+    <div className={settings.navigationPosition === 'left' ? '' : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
+        {/* Navigation Toolbar - Only show in top navigation mode */}
+        {settings.navigationPosition === 'top' && (
         <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-8">
           <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
             <BarChart3 className="h-5 w-5 text-indigo-600" />
             Quick Navigation
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <Button 
-              className="h-20 flex flex-col gap-2 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border-blue-200 transition-all duration-200 group" 
-              variant="outline"
-              onClick={() => router.push('/customers')}
-            >
-              <Users className="h-6 w-6 text-blue-600 group-hover:scale-110 transition-transform" />
-              <span className="text-xs font-medium text-blue-700">Customers</span>
-              <span className="text-[10px] text-blue-500">(Ctrl+C)</span>
-            </Button>
-            <Button 
-              className="h-20 flex flex-col gap-2 bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 border-green-200 transition-all duration-200 group" 
-              variant="outline"
-              onClick={() => router.push('/loans')}
-            >
-              <CreditCard className="h-6 w-6 text-green-600 group-hover:scale-110 transition-transform" />
-              <span className="text-xs font-medium text-green-700">Loans</span>
-              <span className="text-[10px] text-green-500">(Ctrl+L)</span>
-            </Button>
-            <Button 
-              className="h-20 flex flex-col gap-2 bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 border-purple-200 transition-all duration-200 group" 
-              variant="outline"
-              onClick={() => router.push('/payments')}
-            >
-              <DollarSign className="h-6 w-6 text-purple-600 group-hover:scale-110 transition-transform" />
-              <span className="text-xs font-medium text-purple-700">Payments</span>
-              <span className="text-[10px] text-purple-500">(Ctrl+P)</span>
-            </Button>
+            <OptimizedNavigationButton 
+              path="/customers"
+              icon={Users}
+              label="Customers"
+              shortcut="(Ctrl+C)"
+              colorScheme="blue"
+            />
+            <OptimizedNavigationButton 
+              path="/loans"
+              icon={CreditCard}
+              label="Loans"
+              shortcut="(Ctrl+L)"
+              colorScheme="green"
+            />
+            <OptimizedNavigationButton 
+              path="/payments"
+              icon={DollarSign}
+              label="Payments"
+              shortcut="(Ctrl+P)"
+              colorScheme="purple"
+            />
             <Button 
               className="h-20 flex flex-col gap-2 bg-gradient-to-br from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200 border-orange-200 transition-all duration-200 group" 
               variant="outline"
@@ -212,9 +212,10 @@ function DashboardContent() {
             </Button>
           </div>
         </div>
+        )}
 
-        {/* Admin Navigation */}
-        {user?.userLevel === 'Admin' && (
+        {/* Admin Navigation - Only show in top navigation mode */}
+        {settings.navigationPosition === 'top' && user?.userLevel === 'Admin' && (
           <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-8">
             <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
               <Settings className="h-5 w-5 text-indigo-600" />
@@ -397,15 +398,93 @@ function DashboardContent() {
             </div>
           </div>
         </div>
-      </main>
     </div>
   )
 }
 
+// Memoized header component to prevent unnecessary re-renders
+const DashboardHeader = memo(({ timeDisplay, user, onLogout }: {
+  timeDisplay: { date: string; time: string },
+  user: any,
+  onLogout: () => void
+}) => (
+  <header className="bg-gradient-to-r from-indigo-900 via-purple-800 to-blue-900 shadow-xl">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex justify-between items-center py-6">
+        <div className="flex items-center gap-4">
+          <div className="bg-white/10 backdrop-blur-sm rounded-full p-3">
+            <Building2 className="h-8 w-8 text-white" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold text-white tracking-tight">
+              MELANN LENDING INVESTOR CORP.
+            </h1>
+            <p className="text-lg text-cyan-200 font-semibold tracking-wide">
+              DAILY COLLECTION AND LOAN REPORT
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-6">
+          <div className="text-right bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p className="text-sm text-cyan-100 font-medium">Today is: {timeDisplay.date}</p>
+            <p className="text-sm text-cyan-100 font-medium">
+              Time: {timeDisplay.time}
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="text-right">
+              <p className="text-sm text-cyan-200">Welcome</p>
+              <p className="font-semibold text-white">{user?.fullName}</p>
+              <p className="text-xs text-cyan-300">{user?.userLevel}</p>
+            </div>
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={onLogout}
+              className="bg-white/10 border-white/20 text-white hover:bg-red-500/20 hover:border-red-400 transition-all duration-200"
+            >
+              <LogOut className="h-4 w-4 mr-1" />
+              Logout
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+))
+
+// Memoized navigation button component
+const NavigationButton = memo(({ path, icon: Icon, label, shortcut, colorScheme, onNavigate }: {
+  path: string,
+  icon: any,
+  label: string,
+  shortcut: string,
+  colorScheme: string,
+  onNavigate: (path: string) => void
+}) => {
+  const handleClick = useCallback(() => {
+    onNavigate(path)
+  }, [path, onNavigate])
+
+  return (
+    <Button 
+      className={`h-20 flex flex-col gap-2 bg-gradient-to-br from-${colorScheme}-50 to-${colorScheme}-100 hover:from-${colorScheme}-100 hover:to-${colorScheme}-200 border-${colorScheme}-200 transition-all duration-200 group`}
+      variant="outline"
+      onClick={handleClick}
+    >
+      <Icon className={`h-6 w-6 text-${colorScheme}-600 group-hover:scale-110 transition-transform`} />
+      <span className={`text-xs font-medium text-${colorScheme}-700`}>{label}</span>
+      <span className={`text-[10px] text-${colorScheme}-500`}>{shortcut}</span>
+    </Button>
+  )
+})
+
 export default function Dashboard() {
   return (
     <ProtectedRoute>
-      <DashboardContent />
+      <LayoutSwitcher>
+        <DashboardContent />
+      </LayoutSwitcher>
     </ProtectedRoute>
   )
 }
