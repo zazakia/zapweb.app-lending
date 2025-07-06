@@ -13,7 +13,7 @@ export default function DemoModeNotice() {
             Demo Mode Active
           </p>
           <p className="text-xs text-orange-700 mt-1">
-            You're using mock data. To connect to a real database, configure your Supabase environment variables.
+            You&apos;re using mock data. To connect to a real database, configure your Supabase environment variables.
           </p>
         </div>
       </div>

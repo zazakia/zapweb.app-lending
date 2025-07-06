@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "npm run build && git add . && git commit -m \"Auto-deploy: $(date)\" && git push && netlify deploy --prod --dir=.next",
+    "deploy:vercel": "npm run build && git add . && git commit -m \"Auto-deploy: $(date)\" && git push && vercel --prod",
+    "deploy:netlify": "npm run build && git add . && git commit -m \"Auto-deploy: $(date)\" && git push && netlify deploy --prod --dir=.next"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.14",
@@ -20,6 +23,7 @@
     "clsx": "^2.1.1",
     "dotenv": "^17.0.1",
     "lucide-react": "^0.525.0",
+    "netlify-cli": "^22.2.1",
     "next": "15.3.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
