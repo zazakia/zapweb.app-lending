@@ -9,7 +9,6 @@ import {
   Building2, 
   LogOut, 
   Settings as SettingsIcon,
-  Menu,
   X,
   ChevronLeft,
   ChevronRight,
@@ -18,9 +17,6 @@ import {
   DollarSign,
   FileText,
   BarChart3,
-  Target,
-  Award,
-  UserCheck,
   Home
 } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
