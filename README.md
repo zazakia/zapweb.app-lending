@@ -1,4 +1,4 @@
-# Melann Lending Management System
+# Zapweb.app Lending Management System
 
 A modern lending and microfinance management system built with Next.js 14 and Supabase, migrated from a legacy VB6 system.
 
@@ -40,7 +40,7 @@ A modern lending and microfinance management system built with Next.js 14 and Su
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd melann-lending
+   cd zapweb -lending
    ```
 
 2. **Install dependencies**
