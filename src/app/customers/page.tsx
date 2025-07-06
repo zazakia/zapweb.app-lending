@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import ProtectedRoute from '@/components/ProtectedRoute'
+import LayoutSwitcher from '@/components/LayoutSwitcher'
 import { useAuth } from '@/contexts/AuthContext'
 import { 
   Users, 
