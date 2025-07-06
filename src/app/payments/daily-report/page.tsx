@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import ProtectedRoute from '@/components/ProtectedRoute'
+import LayoutSwitcher from '@/components/LayoutSwitcher'
 import { useAuth } from '@/contexts/AuthContext'
 import { 
   ArrowLeft, 
@@ -332,7 +333,9 @@ function DailyReportContent() {
 export default function DailyReportPage() {
   return (
     <ProtectedRoute requiredLevel="Cashier">
-      <DailyReportContent />
+      <LayoutSwitcher>
+        <DailyReportContent />
+      </LayoutSwitcher>
     </ProtectedRoute>
   )
 }

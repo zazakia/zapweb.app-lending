@@ -335,7 +335,9 @@ function ReportsContent() {
 export default function ReportsPage() {
   return (
     <ProtectedRoute requiredLevel="Cashier">
-      <ReportsContent />
+      <LayoutSwitcher>
+        <ReportsContent />
+      </LayoutSwitcher>
     </ProtectedRoute>
   )
 }

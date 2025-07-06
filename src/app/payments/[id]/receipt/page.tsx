@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import ProtectedRoute from '@/components/ProtectedRoute'
+import LayoutSwitcher from '@/components/LayoutSwitcher'
 import { useAuth } from '@/contexts/AuthContext'
 import { 
   ArrowLeft, 
@@ -281,7 +282,9 @@ function PaymentReceiptContent() {
 export default function PaymentReceiptPage() {
   return (
     <ProtectedRoute requiredLevel="Cashier">
-      <PaymentReceiptContent />
+      <LayoutSwitcher>
+        <PaymentReceiptContent />
+      </LayoutSwitcher>
     </ProtectedRoute>
   )
 }

@@ -716,7 +716,9 @@ function LoanManagementContent() {
 export default function LoanManagementPage() {
   return (
     <ProtectedRoute requiredLevel="Cashier">
-      <LoanManagementContent />
+      <LayoutSwitcher>
+        <LoanManagementContent />
+      </LayoutSwitcher>
     </ProtectedRoute>
   )
 }

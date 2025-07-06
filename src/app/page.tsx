@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import ProtectedRoute from '@/components/ProtectedRoute'
-import LayoutSwitcher from '@/components/LayoutSwitcher'
 import { useAuth } from '@/contexts/AuthContext'
 import { useSettings } from '@/contexts/SettingsContext'
 import { 

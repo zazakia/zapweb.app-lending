@@ -553,7 +553,9 @@ function PaymentManagementContent() {
 export default function PaymentManagementPage() {
   return (
     <ProtectedRoute requiredLevel="Cashier">
-      <PaymentManagementContent />
+      <LayoutSwitcher>
+        <PaymentManagementContent />
+      </LayoutSwitcher>
     </ProtectedRoute>
   )
 }

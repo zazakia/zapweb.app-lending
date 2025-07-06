@@ -431,7 +431,9 @@ function LoanTypesManagementContent() {
 export default function LoanTypesManagementPage() {
   return (
     <ProtectedRoute requiredLevel="Admin">
-      <LoanTypesManagementContent />
+      <LayoutSwitcher>
+        <LoanTypesManagementContent />
+      </LayoutSwitcher>
     </ProtectedRoute>
   )
 }

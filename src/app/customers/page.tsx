@@ -264,53 +264,29 @@ function CustomerManagementContent() {
 
   if (showForm) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-        {/* Header */}
-        <header className="bg-gradient-to-r from-indigo-900 via-purple-800 to-blue-900 shadow-xl">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-6">
-              <div className="flex items-center gap-4">
-                <Button
-                  variant="outline"
-                  onClick={() => setShowForm(false)}
-                  className="flex items-center gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-200"
-                >
-                  <ArrowLeft className="h-4 w-4" />
-                  Back to Customers
-                </Button>
-                <div>
-                  <h1 className="text-3xl font-bold text-white tracking-tight">
-                    {editingCustomer ? 'Edit Customer' : 'Customer Registration'}
-                  </h1>
-                  <p className="text-lg text-cyan-200 font-semibold">
-                    {editingCustomer ? 'Update customer information' : 'Add new customer with complete KYC information'}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-6">
-                <div className="flex items-center gap-3">
-                  <div className="text-right">
-                    <p className="text-sm text-cyan-200">Welcome</p>
-                    <p className="font-semibold text-white">{user?.fullName}</p>
-                    <p className="text-xs text-cyan-300">{user?.userLevel}</p>
-                  </div>
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    onClick={logout}
-                    className="bg-white/10 border-white/20 text-white hover:bg-red-500/20 hover:border-red-400 transition-all duration-200"
-                  >
-                    <LogOut className="h-4 w-4 mr-1" />
-                    Logout
-                  </Button>
-                </div>
-              </div>
-            </div>
+      <div>
+        {/* Page Header */}
+        <div className="mb-6">
+          <div className="flex items-center gap-4 mb-4">
+            <Button
+              variant="outline"
+              onClick={() => setShowForm(false)}
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to Customers
+            </Button>
           </div>
-        </header>
+          <h1 className="text-2xl font-bold text-gray-900">
+            {editingCustomer ? 'Edit Customer' : 'Customer Registration'}
+          </h1>
+          <p className="text-gray-600">
+            {editingCustomer ? 'Update customer information' : 'Add new customer with complete KYC information'}
+          </p>
+        </div>
 
         {/* Form */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div>
           <form onSubmit={handleSaveCustomer}>
             <div className="grid gap-8">
               {/* Personal Information */}
@@ -656,55 +632,21 @@ function CustomerManagementContent() {
               </div>
             </div>
           </form>
-        </main>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-indigo-900 via-purple-800 to-blue-900 shadow-xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center gap-4">
-              <Button
-                variant="outline"
-                onClick={() => router.push('/')}
-                className="flex items-center gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-200"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                Dashboard
-              </Button>
-              <div>
-                <h1 className="text-3xl font-bold text-white tracking-tight">Customer Management</h1>
-                <p className="text-lg text-cyan-200 font-semibold">Manage customer information and KYC data</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-3">
-                <div className="text-right">
-                  <p className="text-sm text-cyan-200">Welcome</p>
-                  <p className="font-semibold text-white">{user?.fullName}</p>
-                  <p className="text-xs text-cyan-300">{user?.userLevel}</p>
-                </div>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  onClick={logout}
-                  className="bg-white/10 border-white/20 text-white hover:bg-red-500/20 hover:border-red-400 transition-all duration-200"
-                >
-                  <LogOut className="h-4 w-4 mr-1" />
-                  Logout
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+    <div>
+      {/* Page Header */}
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-gray-900">Customer Management</h1>
+        <p className="text-gray-600">Manage customer information and KYC data</p>
+      </div>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div>
         <DemoModeNotice />
         <QuickNavigation />
         {/* Controls */}
@@ -849,7 +791,7 @@ function CustomerManagementContent() {
             )}
           </CardContent>
         </Card>
-      </main>
+      </div>
     </div>
   )
 }
@@ -857,7 +799,9 @@ function CustomerManagementContent() {
 export default function CustomerManagementPage() {
   return (
     <ProtectedRoute requiredLevel="Cashier">
-      <CustomerManagementContent />
+      <LayoutSwitcher>
+        <CustomerManagementContent />
+      </LayoutSwitcher>
     </ProtectedRoute>
   )
 }
