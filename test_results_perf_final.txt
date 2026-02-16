@@ -1,0 +1,190 @@
+
+> melann-lending@0.1.0 test:performance
+> jest tests/performance --testTimeout=60000
+
+  console.log
+    Home Page Web Vitals: { FCP: 374.0999999977648, LCP: 374.0999999977648, FID: 0, CLS: 0 }
+
+      at Object.log (tests/performance/webVitals.test.js:127:15)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:96:28)
+
+  console.log
+    Customers Page Web Vitals: { FCP: 192.89999999850988, LCP: 192.89999999850988, FID: 0, CLS: 0 }
+
+      at Object.log (tests/performance/webVitals.test.js:152:15)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:109:28)
+
+  console.log
+    Time to Interactive: 1129.4000000022352ms
+
+      at Object.log (tests/performance/webVitals.test.js:182:17)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:122:28)
+
+  console.log
+    Click response time: 0.4000000022351742ms
+
+      at Object.log (tests/performance/navigation.test.js:159:17)
+
+  console.log
+    Total Blocking Time: 0ms
+
+      at Object.log (tests/performance/webVitals.test.js:230:15)
+
+  console.log
+    Preloaded routes: []
+
+      at Object.log (tests/performance/navigation.test.js:177:15)
+
+  console.warn
+    Preload test skipped: expect(received).toBeGreaterThan(expected)
+    
+    Expected: > 0
+    Received:   0
+
+    [0m [90m 185 |[39m       expect(preloadedCriticalRoutes[33m.[39mlength)[33m.[39mtoBeGreaterThan([35m0[39m)
+     [90m 186 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 187 |[39m       console[33m.[39mwarn([32m`Preload test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 188 |[39m     }
+     [90m 189 |[39m   }[33m,[39m [35m30000[39m)
+     [90m 190 |[39m[0m
+
+      at Object.warn (tests/performance/navigation.test.js:187:15)
+
+  console.log
+    Average Interaction Time: 15.620000000298024ms
+
+      at Object.log (tests/performance/webVitals.test.js:273:15)
+
+  console.log
+    Resource Metrics: {
+      totalResources: 34,
+      totalSize: 834228,
+      slowResources: [],
+      cacheHitRate: 5.88235294117647
+    }
+
+      at Object.log (tests/performance/webVitals.test.js:323:15)
+
+  console.log
+    Rapid navigation times: [ 1168, 1088, 1221, 1128 ]
+
+      at Object.log (tests/performance/navigation.test.js:211:15)
+
+  console.log
+    Page Load Times: [ 1124, 1096, 899 ]
+
+      at Object.log (tests/performance/webVitals.test.js:359:15)
+
+PASS tests/performance/webVitals.test.js (25.252 s)
+  Web Vitals Performance Tests
+    √ should meet Core Web Vitals thresholds for home page (5743 ms)
+    √ should meet Core Web Vitals thresholds for customers page (2575 ms)
+    √ should measure Time to Interactive (TTI) (2582 ms)
+    √ should measure Total Blocking Time (TBT) (4385 ms)
+    √ should measure Interaction to Next Paint (INP) (4096 ms)
+    √ should measure resource loading performance (1303 ms)
+    √ should maintain consistent performance across multiple page loads (3218 ms)
+
+  console.log
+    Load simulation interaction times: [
+      115.31339999999909,
+      122.17739999999685,
+      167.08139999999912,
+      112.62389999999868,
+      125.66030000000319,
+      121.00109999999768,
+      122.93310000000201,
+      137.0489000000016,
+      113.85979999999836,
+      121.10870000000068
+    ]
+
+      at Object.log (tests/performance/navigation.test.js:253:15)
+
+  console.log
+    Initial memory: { used: 16029593, total: 20400033, limit: 4294705152 }
+
+      at Object.log (tests/performance/navigation.test.js:281:17)
+
+  console.log
+    Final memory: { used: 72777292, total: 82511692, limit: 4294705152 }
+
+      at Object.log (tests/performance/navigation.test.js:304:19)
+
+  console.log
+    Memory growth: 354.02%
+
+      at Object.log (tests/performance/navigation.test.js:310:19)
+
+  console.warn
+    Memory test skipped: expect(received).toBeLessThan(expected)
+    
+    Expected: < 50
+    Received:   354.01833970457017
+
+    [0m [90m 315 |[39m       }
+     [90m 316 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 317 |[39m       console[33m.[39mwarn([32m`Memory test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 318 |[39m     }
+     [90m 319 |[39m   }[33m,[39m [35m45000[39m)
+     [90m 320 |[39m })[0m
+
+      at Object.warn (tests/performance/navigation.test.js:317:15)
+
+PASS tests/performance/navigation.test.js (35.792 s)
+  Navigation Performance Tests
+    √ should navigate to customers page quickly (5996 ms)
+    √ should navigate to loans page quickly (3196 ms)
+    √ should navigate to payments page quickly (3518 ms)
+    √ should have fast click response times (1610 ms)
+    √ should preload routes effectively (1416 ms)
+    √ should handle rapid navigation without performance degradation (6075 ms)
+    √ should maintain performance under load simulation (2584 ms)
+    √ should efficiently handle memory usage during navigation (10163 ms)
+
+Test Suites: 2 passed, 2 total
+Tests:       15 passed, 15 total
+Snapshots:   0 total
+Time:        36.305 s
+Ran all test suites matching tests/performance.

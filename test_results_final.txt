@@ -1,0 +1,652 @@
+
+> melann-lending@0.1.0 test:all
+> npm run test && npm run test:performance
+
+
+> melann-lending@0.1.0 test
+> jest
+
+  console.warn
+    Failed to create prefetch link: Error: DOM error
+        at Document.<anonymous> (D:\GitHub\zapweb.app-lending\src\lib\__tests__\navigationOptimizer.test.ts:214:17)
+        at D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:305:39
+        at Document.<anonymous> (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:312:13)
+        at Document.mockConstructor (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:102:19)
+        at createElement (D:\GitHub\zapweb.app-lending\src\lib\navigationOptimizer.ts:22:33)
+
+    [0m [90m 25 |[39m           document[33m.[39mhead[33m.[39mappendChild(link)
+     [90m 26 |[39m         } [36mcatch[39m (err) {
+    [31m[1m>[22m[39m[90m 27 |[39m           console[33m.[39mwarn([32m'Failed to create prefetch link:'[39m[33m,[39m err)
+     [90m    |[39m                   [31m[1m^[22m[39m
+     [90m 28 |[39m         }
+     [90m 29 |[39m       })
+     [90m 30 |[39m     }[0m
+
+      at warn (src/lib/navigationOptimizer.ts:27:19)
+
+  console.error
+    Test console error
+
+    [0m [90m 47 |[39m     console[33m.[39merror [33m=[39m ([33m...[39margs) [33m=>[39m {
+     [90m 48 |[39m       [36mthis[39m[33m.[39mlogError([32m'error'[39m[33m,[39m args[33m.[39mjoin([32m' '[39m)[33m,[39m [32m'console'[39m[33m,[39m { originalArgs[33m:[39m args })
+    [31m[1m>[22m[39m[90m 49 |[39m       originalError[33m.[39mapply(console[33m,[39m args)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 50 |[39m     }
+     [90m 51 |[39m
+     [90m 52 |[39m     console[33m.[39mwarn [33m=[39m ([33m...[39margs) [33m=>[39m {[0m
+
+      at console.apply (src/lib/errorLogger.ts:49:21)
+      at Object.error (src/lib/__tests__/errorLogger.test.ts:83:15)
+
+  console.warn
+    Test console warning
+
+    [0m [90m 52 |[39m     console[33m.[39mwarn [33m=[39m ([33m...[39margs) [33m=>[39m {
+     [90m 53 |[39m       [36mthis[39m[33m.[39mlogError([32m'warn'[39m[33m,[39m args[33m.[39mjoin([32m' '[39m)[33m,[39m [32m'console'[39m[33m,[39m { originalArgs[33m:[39m args })
+    [31m[1m>[22m[39m[90m 54 |[39m       originalWarn[33m.[39mapply(console[33m,[39m args)
+     [90m    |[39m                    [31m[1m^[22m[39m
+     [90m 55 |[39m     }
+     [90m 56 |[39m
+     [90m 57 |[39m     [90m// Optionally capture all console.log for debugging[39m[0m
+
+      at console.apply [as warn] (src/lib/errorLogger.ts:54:20)
+      at Object.warn (src/lib/__tests__/errorLogger.test.ts:93:15)
+
+  console.warn
+    Failed to create prefetch link: Error: Append error
+        at Object.<anonymous> (D:\GitHub\zapweb.app-lending\src\lib\__tests__\navigationOptimizer.test.ts:227:17)
+        at D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:305:39
+        at Object.<anonymous> (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:312:13)
+        at Object.mockConstructor [as appendChild] (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:102:19)
+        at appendChild (D:\GitHub\zapweb.app-lending\src\lib\navigationOptimizer.ts:25:25)
+
+    [0m [90m 25 |[39m           document[33m.[39mhead[33m.[39mappendChild(link)
+     [90m 26 |[39m         } [36mcatch[39m (err) {
+    [31m[1m>[22m[39m[90m 27 |[39m           console[33m.[39mwarn([32m'Failed to create prefetch link:'[39m[33m,[39m err)
+     [90m    |[39m                   [31m[1m^[22m[39m
+     [90m 28 |[39m         }
+     [90m 29 |[39m       })
+     [90m 30 |[39m     }[0m
+
+      at warn (src/lib/navigationOptimizer.ts:27:19)
+
+PASS src/lib/__tests__/navigationOptimizer.test.ts
+  NavigationOptimizer
+    Route Preloading
+      √ preloads a route only once (7 ms)
+      √ preloads multiple different routes (2 ms)
+      √ creates prefetch link elements (6 ms)
+    Data Prefetching
+      √ prefetches data and caches it (2 ms)
+      √ returns cached data on subsequent calls (1 ms)
+      √ handles fetcher errors gracefully (3 ms)
+      √ gets prefetched data correctly
+      √ returns undefined for non-cached data (1 ms)
+      √ clears specific prefetched data (1 ms)
+      √ clears all prefetched data
+    Static State Management
+      √ maintains preloaded routes across instances
+      √ maintains prefetched data across instances (1 ms)
+    Browser Environment
+      √ handles missing window object gracefully (1 ms)
+      √ works in browser environment
+    Error Handling
+      √ handles document.createElement errors gracefully (55 ms)
+      √ handles appendChild errors gracefully (20 ms)
+
+PASS src/lib/__tests__/utils.test.ts
+  Utils
+    formatCurrency
+      √ formats positive numbers correctly (214 ms)
+      √ formats zero correctly (1 ms)
+      √ formats negative numbers correctly (2 ms)
+      √ handles decimal precision (2 ms)
+      √ handles very large numbers (1 ms)
+      √ handles very small numbers (1 ms)
+      √ handles string input by converting to number
+      √ handles invalid input gracefully (2 ms)
+    formatDate
+      √ formats date correctly with default locale (57 ms)
+      √ handles Date object input (1 ms)
+      √ handles string date input (1 ms)
+      √ handles different date formats (1 ms)
+      √ handles invalid date input gracefully (2 ms)
+      √ handles edge cases (1 ms)
+    cn (className utility)
+      √ merges class names correctly (8 ms)
+      √ handles conditional classes
+      √ filters out falsy values (1 ms)
+      √ handles arrays of classes
+      √ handles objects with boolean values (1 ms)
+      √ merges Tailwind classes correctly (1 ms)
+      √ handles empty input (1 ms)
+      √ handles complex combinations (1 ms)
+    Error Handling
+      √ handles formatCurrency with non-numeric strings (1 ms)
+      √ handles formatDate with various input types (1 ms)
+      √ handles cn with various input types (1 ms)
+    Performance
+      √ formatCurrency performs well with many calls (97 ms)
+      √ formatDate performs well with many calls (145 ms)
+      √ cn performs well with many calls (10 ms)
+
+PASS src/components/__tests__/LayoutSwitcher.test.tsx
+  LayoutSwitcher
+    √ renders TopNavigationLayout when navigationPosition is top (57 ms)
+    √ renders SidebarNavigationLayout when navigationPosition is left (20 ms)
+    √ defaults to TopNavigationLayout for unknown navigationPosition (7 ms)
+    √ re-renders when settings change (11 ms)
+    √ passes children to both layout types (14 ms)
+    √ memoizes layout rendering correctly (14 ms)
+
+  console.warn
+    Failed to load error logs from localStorage: SyntaxError: Unexpected token 'i', "invalid json" is not valid JSON
+        at JSON.parse (<anonymous>)
+        at ErrorLogger.parse [as loadFromLocalStorage] (D:\GitHub\zapweb.app-lending\src\lib\errorLogger.ts:230:28)
+        at loadFromLocalStorage (D:\GitHub\zapweb.app-lending\src\lib\__tests__\errorLogger.test.ts:305:32)
+        at Object.<anonymous> (D:\GitHub\zapweb.app-lending\node_modules\expect\build\index.js:1824:9)
+        at Object.throwingMatcher [as toThrow] (D:\GitHub\zapweb.app-lending\node_modules\expect\build\index.js:2232:93)
+        at Object.toThrow (D:\GitHub\zapweb.app-lending\src\lib\__tests__\errorLogger.test.ts:305:60)
+        at Promise.finally.completed (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1559:28)
+        at new Promise (<anonymous>)
+        at callAsyncCircusFn (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1499:10)
+        at _callCircusTest (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1009:40)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at _runTest (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:949:3)
+        at _runTestsForDescribeBlock (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:839:13)
+        at _runTestsForDescribeBlock (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:829:11)
+        at _runTestsForDescribeBlock (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:829:11)
+        at run (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:757:3)
+        at runAndTransformResultsToJestFormat (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1920:21)
+        at jestAdapter (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\runner.js:101:19)
+        at runTestInternal (D:\GitHub\zapweb.app-lending\node_modules\jest-runner\build\testWorker.js:272:16)
+        at runTest (D:\GitHub\zapweb.app-lending\node_modules\jest-runner\build\testWorker.js:340:7)
+        at Object.worker (D:\GitHub\zapweb.app-lending\node_modules\jest-runner\build\testWorker.js:494:12)
+
+    [0m [90m 52 |[39m     console[33m.[39mwarn [33m=[39m ([33m...[39margs) [33m=>[39m {
+     [90m 53 |[39m       [36mthis[39m[33m.[39mlogError([32m'warn'[39m[33m,[39m args[33m.[39mjoin([32m' '[39m)[33m,[39m [32m'console'[39m[33m,[39m { originalArgs[33m:[39m args })
+    [31m[1m>[22m[39m[90m 54 |[39m       originalWarn[33m.[39mapply(console[33m,[39m args)
+     [90m    |[39m                    [31m[1m^[22m[39m
+     [90m 55 |[39m     }
+     [90m 56 |[39m
+     [90m 57 |[39m     [90m// Optionally capture all console.log for debugging[39m[0m
+
+      at console.apply [as warn] (src/lib/errorLogger.ts:54:20)
+      at ErrorLogger.warn [as loadFromLocalStorage] (src/lib/errorLogger.ts:233:17)
+      at loadFromLocalStorage (src/lib/__tests__/errorLogger.test.ts:305:32)
+      at Object.<anonymous> (node_modules/expect/build/index.js:1824:9)
+      at Object.throwingMatcher [as toThrow] (node_modules/expect/build/index.js:2232:93)
+      at Object.toThrow (src/lib/__tests__/errorLogger.test.ts:305:60)
+
+PASS src/lib/__tests__/errorLogger.test.ts
+  ErrorLogger
+    Manual Logging
+      √ logs error messages correctly (22 ms)
+      √ logs different levels correctly (2 ms)
+      √ generates unique IDs for each log entry (1 ms)
+    Console Interception
+      √ intercepts console.error calls (83 ms)
+      √ intercepts console.warn calls (13 ms)
+    Log Management
+      √ maintains maximum log limit (749 ms)
+      √ clears all logs (1 ms)
+      √ filters logs by level (1 ms)
+      √ gets recent logs correctly (1 ms)
+    Export Functionality
+      √ exports logs as JSON (3 ms)
+      √ exports logs as CSV (1 ms)
+    Observer Pattern
+      √ notifies subscribers when new errors are logged (5 ms)
+      √ unsubscribes correctly (1 ms)
+      √ supports multiple subscribers (1 ms)
+    Statistics
+      √ calculates statistics correctly (1 ms)
+    LocalStorage Integration
+      √ saves logs to localStorage
+      √ loads logs from localStorage (1 ms)
+      √ handles corrupted localStorage data gracefully (18 ms)
+
+PASS src/components/__tests__/ErrorMonitor.test.tsx
+  ErrorMonitor
+    √ renders error monitor with initial state (154 ms)
+    √ displays error statistics correctly (26 ms)
+    √ can be hidden and shown (183 ms)
+    √ filters logs by level (78 ms)
+    √ clears logs when clear button is clicked (39 ms)
+    √ exports logs as JSON (24 ms)
+    √ exports logs as CSV (39 ms)
+    √ displays error logs correctly (27 ms)
+    √ shows error badge when hidden and errors exist (4 ms)
+    √ toggles auto-refresh correctly (27 ms)
+    √ displays "No logs to display" when empty (24 ms)
+    √ subscribes to new errors on mount (16 ms)
+    √ handles error context expansion (21 ms)
+
+  console.error
+    An update to OptimizedNavigationButton inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+    [0m [90m  96 |[39m       [36mreturn[39m
+     [90m  97 |[39m     }
+    [31m[1m>[22m[39m[90m  98 |[39m     originalError[33m.[39mcall(console[33m,[39m [33m...[39margs)
+     [90m     |[39m                   [31m[1m^[22m[39m
+     [90m  99 |[39m   }
+     [90m 100 |[39m })
+     [90m 101 |[39m[0m
+
+      at console.call [as error] (jest.setup.js:98:19)
+      at node_modules/react-dom/cjs/react-dom-client.development.js:16023:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:16022:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14396:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:6969:13)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom-client.development.js:6927:7)
+      at setIsLoading (src/components/OptimizedNavigationButton.tsx:42:22)
+      at callTimer (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:806:24)
+      at doTickInner (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:1413:29)
+      at doTick (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:1494:20)
+      at Object.tick (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:1502:20)
+      at FakeTimers.advanceTimersByTime (node_modules/@jest/fake-timers/build/index.js:576:19)
+      at Object.advanceTimersByTime (src/components/__tests__/OptimizedNavigationButton.test.tsx:180:10)
+
+PASS src/components/__tests__/OptimizedNavigationButton.test.tsx
+  OptimizedNavigationButton
+    √ renders with correct label and shortcut (59 ms)
+    √ renders with correct accessibility attributes (70 ms)
+    √ calls navigate function when clicked (51 ms)
+    √ calls preloadOnHover when mouse enters (18 ms)
+    √ shows loading state when clicked (75 ms)
+    √ does not navigate when disabled (60 ms)
+    √ applies correct CSS classes for color scheme (7 ms)
+    √ handles touch events for mobile (7 ms)
+    √ prevents multiple rapid clicks (182 ms)
+    √ renders different variants correctly (11 ms)
+    √ renders different sizes correctly (11 ms)
+    √ renders icon component correctly (6 ms)
+    √ handles keyboard events correctly (33 ms)
+    √ resets loading state after timeout (61 ms)
+
+  console.log
+    Home Page Web Vitals: { FCP: 446.29999999701977, LCP: 446.29999999701977, FID: 0, CLS: 0 }
+
+      at Object.log (tests/performance/webVitals.test.js:127:15)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:96:28)
+
+  console.log
+    Customers Page Web Vitals: { FCP: 286.5, LCP: 286.5, FID: 0, CLS: 0 }
+
+      at Object.log (tests/performance/webVitals.test.js:152:15)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:109:28)
+
+  console.log
+    Time to Interactive: 176.80000000074506ms
+
+      at Object.log (tests/performance/webVitals.test.js:182:17)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:122:28)
+
+  console.log
+    Click response time: 0.5999999977648258ms
+
+      at Object.log (tests/performance/navigation.test.js:159:17)
+
+  console.log
+    Total Blocking Time: 0ms
+
+      at Object.log (tests/performance/webVitals.test.js:230:15)
+
+  console.log
+    Preloaded routes: []
+
+      at Object.log (tests/performance/navigation.test.js:177:15)
+
+  console.warn
+    Preload test skipped: expect(received).toBeGreaterThan(expected)
+    
+    Expected: > 0
+    Received:   0
+
+    [0m [90m 185 |[39m       expect(preloadedCriticalRoutes[33m.[39mlength)[33m.[39mtoBeGreaterThan([35m0[39m)
+     [90m 186 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 187 |[39m       console[33m.[39mwarn([32m`Preload test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 188 |[39m     }
+     [90m 189 |[39m   }[33m,[39m [35m30000[39m)
+     [90m 190 |[39m[0m
+
+      at Object.warn (tests/performance/navigation.test.js:187:15)
+
+  console.log
+    Average Interaction Time: 12.5ms
+
+      at Object.log (tests/performance/webVitals.test.js:273:15)
+
+  console.log
+    Resource Metrics: {
+      totalResources: 31,
+      totalSize: 584937,
+      slowResources: [],
+      cacheHitRate: 6.451612903225806
+    }
+
+      at Object.log (tests/performance/webVitals.test.js:323:15)
+
+  console.log
+    Rapid navigation times: [ 1066, 1229, 1240, 1107 ]
+
+      at Object.log (tests/performance/navigation.test.js:211:15)
+
+  console.log
+    Load simulation interaction times: [
+      133.26100000000224,
+      176.56979999999749,
+      121.75329999999667,
+      121.73919999999998,
+      106.95739999999932,
+      106.07410000000164,
+      121.74729999999909,
+      107.87679999999818,
+      107.45780000000013,
+      117.568299999999
+    ]
+
+      at Object.log (tests/performance/navigation.test.js:253:15)
+
+  console.log
+    Page Load Times: [ 1117, 964, 1275 ]
+
+      at Object.log (tests/performance/webVitals.test.js:359:15)
+
+PASS tests/performance/webVitals.test.js (23.319 s)
+  Web Vitals Performance Tests
+    √ should meet Core Web Vitals thresholds for home page (3799 ms)
+    √ should meet Core Web Vitals thresholds for customers page (2685 ms)
+    √ should measure Time to Interactive (TTI) (1301 ms)
+    √ should measure Total Blocking Time (TBT) (4351 ms)
+    √ should measure Interaction to Next Paint (INP) (3948 ms)
+    √ should measure resource loading performance (1198 ms)
+    √ should maintain consistent performance across multiple page loads (3477 ms)
+
+  console.log
+    Initial memory: { used: 14307882, total: 22484450, limit: 4294705152 }
+
+      at Object.log (tests/performance/navigation.test.js:281:17)
+
+  console.log
+    Final memory: { used: 39838343, total: 59582395, limit: 4294705152 }
+
+      at Object.log (tests/performance/navigation.test.js:304:19)
+
+  console.log
+    Memory growth: 178.44%
+
+      at Object.log (tests/performance/navigation.test.js:310:19)
+
+  console.warn
+    Memory test skipped: expect(received).toBeLessThan(expected)
+    
+    Expected: < 50
+    Received:   178.4363401934682
+
+    [0m [90m 315 |[39m       }
+     [90m 316 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 317 |[39m       console[33m.[39mwarn([32m`Memory test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 318 |[39m     }
+     [90m 319 |[39m   }[33m,[39m [35m45000[39m)
+     [90m 320 |[39m })[0m
+
+      at Object.warn (tests/performance/navigation.test.js:317:15)
+
+PASS tests/performance/navigation.test.js (31.547 s)
+  Navigation Performance Tests
+    √ should navigate to customers page quickly (4101 ms)
+    √ should navigate to loans page quickly (2964 ms)
+    √ should navigate to payments page quickly (2781 ms)
+    √ should have fast click response times (1337 ms)
+    √ should preload routes effectively (1142 ms)
+    √ should handle rapid navigation without performance degradation (5847 ms)
+    √ should maintain performance under load simulation (2533 ms)
+    √ should efficiently handle memory usage during navigation (8413 ms)
+
+Test Suites: 8 passed, 8 total
+Tests:       110 passed, 110 total
+Snapshots:   0 total
+Time:        32.247 s
+Ran all test suites.
+
+> melann-lending@0.1.0 test:performance
+> jest tests/performance --testTimeout=60000
+
+  console.log
+    Home Page Web Vitals: { FCP: 331.5, LCP: 331.5, FID: 0, CLS: 0 }
+
+      at Object.log (tests/performance/webVitals.test.js:127:15)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:96:28)
+
+  console.log
+    Customers Page Web Vitals: { FCP: 274.19999999925494, LCP: 274.19999999925494, FID: 0, CLS: 0 }
+
+      at Object.log (tests/performance/webVitals.test.js:152:15)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:109:28)
+
+  console.log
+    Time to Interactive: 185.5ms
+
+      at Object.log (tests/performance/webVitals.test.js:182:17)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:122:28)
+
+  console.log
+    Click response time: 0.19999999925494194ms
+
+      at Object.log (tests/performance/navigation.test.js:159:17)
+
+  console.log
+    Preloaded routes: []
+
+      at Object.log (tests/performance/navigation.test.js:177:15)
+
+  console.warn
+    Preload test skipped: expect(received).toBeGreaterThan(expected)
+    
+    Expected: > 0
+    Received:   0
+
+    [0m [90m 185 |[39m       expect(preloadedCriticalRoutes[33m.[39mlength)[33m.[39mtoBeGreaterThan([35m0[39m)
+     [90m 186 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 187 |[39m       console[33m.[39mwarn([32m`Preload test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 188 |[39m     }
+     [90m 189 |[39m   }[33m,[39m [35m30000[39m)
+     [90m 190 |[39m[0m
+
+      at Object.warn (tests/performance/navigation.test.js:187:15)
+
+  console.log
+    Total Blocking Time: 0ms
+
+      at Object.log (tests/performance/webVitals.test.js:230:15)
+
+  console.log
+    Average Interaction Time: 14.1ms
+
+      at Object.log (tests/performance/webVitals.test.js:273:15)
+
+  console.log
+    Resource Metrics: {
+      totalResources: 31,
+      totalSize: 584937,
+      slowResources: [],
+      cacheHitRate: 6.451612903225806
+    }
+
+      at Object.log (tests/performance/webVitals.test.js:323:15)
+
+  console.log
+    Rapid navigation times: [ 1244, 1242, 1196, 1195 ]
+
+      at Object.log (tests/performance/navigation.test.js:211:15)
+
+  console.log
+    Page Load Times: [ 1170, 1064, 1013 ]
+
+      at Object.log (tests/performance/webVitals.test.js:359:15)
+
+  console.log
+    Load simulation interaction times: [
+      122.71419999999853,
+      127.9426999999996,
+      115.19090000000142,
+      109.2990000000027,
+      105.44319999999789,
+      107.36669999999867,
+      108.47850000000108,
+      109.92659999999887,
+      112.49179999999978,
+      107.22370000000228
+    ]
+
+      at Object.log (tests/performance/navigation.test.js:253:15)
+
+PASS tests/performance/webVitals.test.js (21.289 s)
+  Web Vitals Performance Tests
+    √ should meet Core Web Vitals thresholds for home page (2967 ms)
+    √ should meet Core Web Vitals thresholds for customers page (2689 ms)
+    √ should measure Time to Interactive (TTI) (1367 ms)
+    √ should measure Total Blocking Time (TBT) (4333 ms)
+    √ should measure Interaction to Next Paint (INP) (3849 ms)
+    √ should measure resource loading performance (1329 ms)
+    √ should maintain consistent performance across multiple page loads (3358 ms)
+
+  console.log
+    Initial memory: { used: 14593725, total: 22746589, limit: 4294705152 }
+
+      at Object.log (tests/performance/navigation.test.js:281:17)
+
+  console.log
+    Final memory: { used: 37599708, total: 58009468, limit: 4294705152 }
+
+      at Object.log (tests/performance/navigation.test.js:304:19)
+
+  console.log
+    Memory growth: 157.64%
+
+      at Object.log (tests/performance/navigation.test.js:310:19)
+
+  console.warn
+    Memory test skipped: expect(received).toBeLessThan(expected)
+    
+    Expected: < 50
+    Received:   157.64298011645417
+
+    [0m [90m 315 |[39m       }
+     [90m 316 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 317 |[39m       console[33m.[39mwarn([32m`Memory test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 318 |[39m     }
+     [90m 319 |[39m   }[33m,[39m [35m45000[39m)
+     [90m 320 |[39m })[0m
+
+      at Object.warn (tests/performance/navigation.test.js:317:15)
+
+PASS tests/performance/navigation.test.js (29.67 s)
+  Navigation Performance Tests
+    √ should navigate to customers page quickly (3092 ms)
+    √ should navigate to loans page quickly (2940 ms)
+    √ should navigate to payments page quickly (2903 ms)
+    √ should have fast click response times (1321 ms)
+    √ should preload routes effectively (1056 ms)
+    √ should handle rapid navigation without performance degradation (6269 ms)
+    √ should maintain performance under load simulation (2323 ms)
+    √ should efficiently handle memory usage during navigation (8435 ms)
+
+Test Suites: 2 passed, 2 total
+Tests:       15 passed, 15 total
+Snapshots:   0 total
+Time:        30.134 s, estimated 32 s
+Ran all test suites matching tests/performance.
