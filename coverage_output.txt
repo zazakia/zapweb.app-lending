@@ -1,0 +1,604 @@
+
+> melann-lending@0.1.0 test:coverage
+> jest --coverage
+
+  console.warn
+    Failed to create prefetch link: Error: DOM error
+        at Document.<anonymous> (D:\GitHub\zapweb.app-lending\src\lib\__tests__\navigationOptimizer.test.ts:214:17)
+        at D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:305:39
+        at Document.<anonymous> (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:312:13)
+        at Document.mockConstructor (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:102:19)
+        at createElement (D:\GitHub\zapweb.app-lending\src\lib\navigationOptimizer.ts:22:33)
+
+    [0m [90m 25 |[39m           document[33m.[39mhead[33m.[39mappendChild(link)
+     [90m 26 |[39m         } [36mcatch[39m (err) {
+    [31m[1m>[22m[39m[90m 27 |[39m           console[33m.[39mwarn([32m'Failed to create prefetch link:'[39m[33m,[39m err)
+     [90m    |[39m                   [31m[1m^[22m[39m
+     [90m 28 |[39m         }
+     [90m 29 |[39m       })
+     [90m 30 |[39m     }[0m
+
+      at warn (src/lib/navigationOptimizer.ts:27:19)
+
+  console.warn
+    Failed to create prefetch link: Error: Append error
+        at Object.<anonymous> (D:\GitHub\zapweb.app-lending\src\lib\__tests__\navigationOptimizer.test.ts:227:17)
+        at D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:305:39
+        at Object.<anonymous> (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:312:13)
+        at Object.mockConstructor [as appendChild] (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:102:19)
+        at appendChild (D:\GitHub\zapweb.app-lending\src\lib\navigationOptimizer.ts:25:25)
+
+    [0m [90m 25 |[39m           document[33m.[39mhead[33m.[39mappendChild(link)
+     [90m 26 |[39m         } [36mcatch[39m (err) {
+    [31m[1m>[22m[39m[90m 27 |[39m           console[33m.[39mwarn([32m'Failed to create prefetch link:'[39m[33m,[39m err)
+     [90m    |[39m                   [31m[1m^[22m[39m
+     [90m 28 |[39m         }
+     [90m 29 |[39m       })
+     [90m 30 |[39m     }[0m
+
+      at warn (src/lib/navigationOptimizer.ts:27:19)
+
+PASS src/lib/__tests__/navigationOptimizer.test.ts
+  NavigationOptimizer
+    Route Preloading
+      √ preloads a route only once (8 ms)
+      √ preloads multiple different routes (1 ms)
+      √ creates prefetch link elements (4 ms)
+    Data Prefetching
+      √ prefetches data and caches it (2 ms)
+      √ returns cached data on subsequent calls (1 ms)
+      √ handles fetcher errors gracefully (1 ms)
+      √ gets prefetched data correctly (1 ms)
+      √ returns undefined for non-cached data (1 ms)
+      √ clears specific prefetched data (1 ms)
+      √ clears all prefetched data (1 ms)
+    Static State Management
+      √ maintains preloaded routes across instances
+      √ maintains prefetched data across instances (1 ms)
+    Browser Environment
+      √ handles missing window object gracefully
+      √ works in browser environment
+    Error Handling
+      √ handles document.createElement errors gracefully (53 ms)
+      √ handles appendChild errors gracefully (8 ms)
+
+  console.error
+    Test console error
+
+    [0m [90m 47 |[39m     console[33m.[39merror [33m=[39m ([33m...[39margs) [33m=>[39m {
+     [90m 48 |[39m       [36mthis[39m[33m.[39mlogError([32m'error'[39m[33m,[39m args[33m.[39mjoin([32m' '[39m)[33m,[39m [32m'console'[39m[33m,[39m { originalArgs[33m:[39m args })
+    [31m[1m>[22m[39m[90m 49 |[39m       originalError[33m.[39mapply(console[33m,[39m args)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 50 |[39m     }
+     [90m 51 |[39m
+     [90m 52 |[39m     console[33m.[39mwarn [33m=[39m ([33m...[39margs) [33m=>[39m {[0m
+
+      at console.apply (src/lib/errorLogger.ts:49:21)
+      at Object.error (src/lib/__tests__/errorLogger.test.ts:83:15)
+
+  console.warn
+    Test console warning
+
+    [0m [90m 52 |[39m     console[33m.[39mwarn [33m=[39m ([33m...[39margs) [33m=>[39m {
+     [90m 53 |[39m       [36mthis[39m[33m.[39mlogError([32m'warn'[39m[33m,[39m args[33m.[39mjoin([32m' '[39m)[33m,[39m [32m'console'[39m[33m,[39m { originalArgs[33m:[39m args })
+    [31m[1m>[22m[39m[90m 54 |[39m       originalWarn[33m.[39mapply(console[33m,[39m args)
+     [90m    |[39m                    [31m[1m^[22m[39m
+     [90m 55 |[39m     }
+     [90m 56 |[39m
+     [90m 57 |[39m     [90m// Optionally capture all console.log for debugging[39m[0m
+
+      at console.apply [as warn] (src/lib/errorLogger.ts:54:20)
+      at Object.warn (src/lib/__tests__/errorLogger.test.ts:93:15)
+
+PASS src/lib/__tests__/utils.test.ts
+  Utils
+    formatCurrency
+      √ formats positive numbers correctly (111 ms)
+      √ formats zero correctly (1 ms)
+      √ formats negative numbers correctly (1 ms)
+      √ handles decimal precision (2 ms)
+      √ handles very large numbers (1 ms)
+      √ handles very small numbers (1 ms)
+      √ handles string input by converting to number (1 ms)
+      √ handles invalid input gracefully (1 ms)
+    formatDate
+      √ formats date correctly with default locale (15 ms)
+      √ handles Date object input (1 ms)
+      √ handles string date input (1 ms)
+      √ handles different date formats (2 ms)
+      √ handles invalid date input gracefully (2 ms)
+      √ handles edge cases (1 ms)
+    cn (className utility)
+      √ merges class names correctly (8 ms)
+      √ handles conditional classes (1 ms)
+      √ filters out falsy values (1 ms)
+      √ handles arrays of classes (1 ms)
+      √ handles objects with boolean values
+      √ merges Tailwind classes correctly (1 ms)
+      √ handles empty input (1 ms)
+      √ handles complex combinations (1 ms)
+    Error Handling
+      √ handles formatCurrency with non-numeric strings (2 ms)
+      √ handles formatDate with various input types (1 ms)
+      √ handles cn with various input types (1 ms)
+    Performance
+      √ formatCurrency performs well with many calls (83 ms)
+      √ formatDate performs well with many calls (114 ms)
+      √ cn performs well with many calls (7 ms)
+
+PASS src/components/__tests__/LayoutSwitcher.test.tsx
+  LayoutSwitcher
+    √ renders TopNavigationLayout when navigationPosition is top (51 ms)
+    √ renders SidebarNavigationLayout when navigationPosition is left (7 ms)
+    √ defaults to TopNavigationLayout for unknown navigationPosition (7 ms)
+    √ re-renders when settings change (20 ms)
+    √ passes children to both layout types (14 ms)
+    √ memoizes layout rendering correctly (6 ms)
+
+  console.warn
+    Failed to load error logs from localStorage: SyntaxError: Unexpected token 'i', "invalid json" is not valid JSON
+        at JSON.parse (<anonymous>)
+        at ErrorLogger.parse [as loadFromLocalStorage] (D:\GitHub\zapweb.app-lending\src\lib\errorLogger.ts:230:28)
+        at loadFromLocalStorage (D:\GitHub\zapweb.app-lending\src\lib\__tests__\errorLogger.test.ts:305:32)
+        at Object.<anonymous> (D:\GitHub\zapweb.app-lending\node_modules\expect\build\index.js:1824:9)
+        at Object.throwingMatcher [as toThrow] (D:\GitHub\zapweb.app-lending\node_modules\expect\build\index.js:2232:93)
+        at Object.toThrow (D:\GitHub\zapweb.app-lending\src\lib\__tests__\errorLogger.test.ts:305:60)
+        at Promise.finally.completed (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1559:28)
+        at new Promise (<anonymous>)
+        at callAsyncCircusFn (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1499:10)
+        at _callCircusTest (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1009:40)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at _runTest (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:949:3)
+        at _runTestsForDescribeBlock (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:839:13)
+        at _runTestsForDescribeBlock (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:829:11)
+        at _runTestsForDescribeBlock (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:829:11)
+        at run (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:757:3)
+        at runAndTransformResultsToJestFormat (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1920:21)
+        at jestAdapter (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\runner.js:101:19)
+        at runTestInternal (D:\GitHub\zapweb.app-lending\node_modules\jest-runner\build\testWorker.js:272:16)
+        at runTest (D:\GitHub\zapweb.app-lending\node_modules\jest-runner\build\testWorker.js:340:7)
+        at Object.worker (D:\GitHub\zapweb.app-lending\node_modules\jest-runner\build\testWorker.js:494:12)
+
+    [0m [90m 52 |[39m     console[33m.[39mwarn [33m=[39m ([33m...[39margs) [33m=>[39m {
+     [90m 53 |[39m       [36mthis[39m[33m.[39mlogError([32m'warn'[39m[33m,[39m args[33m.[39mjoin([32m' '[39m)[33m,[39m [32m'console'[39m[33m,[39m { originalArgs[33m:[39m args })
+    [31m[1m>[22m[39m[90m 54 |[39m       originalWarn[33m.[39mapply(console[33m,[39m args)
+     [90m    |[39m                    [31m[1m^[22m[39m
+     [90m 55 |[39m     }
+     [90m 56 |[39m
+     [90m 57 |[39m     [90m// Optionally capture all console.log for debugging[39m[0m
+
+      at console.apply [as warn] (src/lib/errorLogger.ts:54:20)
+      at ErrorLogger.warn [as loadFromLocalStorage] (src/lib/errorLogger.ts:233:17)
+      at loadFromLocalStorage (src/lib/__tests__/errorLogger.test.ts:305:32)
+      at Object.<anonymous> (node_modules/expect/build/index.js:1824:9)
+      at Object.throwingMatcher [as toThrow] (node_modules/expect/build/index.js:2232:93)
+      at Object.toThrow (src/lib/__tests__/errorLogger.test.ts:305:60)
+
+PASS src/lib/__tests__/errorLogger.test.ts
+  ErrorLogger
+    Manual Logging
+      √ logs error messages correctly (9 ms)
+      √ logs different levels correctly (2 ms)
+      √ generates unique IDs for each log entry (1 ms)
+    Console Interception
+      √ intercepts console.error calls (65 ms)
+      √ intercepts console.warn calls (6 ms)
+    Log Management
+      √ maintains maximum log limit (654 ms)
+      √ clears all logs
+      √ filters logs by level (1 ms)
+      √ gets recent logs correctly (1 ms)
+    Export Functionality
+      √ exports logs as JSON (1 ms)
+      √ exports logs as CSV (1 ms)
+    Observer Pattern
+      √ notifies subscribers when new errors are logged (2 ms)
+      √ unsubscribes correctly
+      √ supports multiple subscribers (1 ms)
+    Statistics
+      √ calculates statistics correctly
+    LocalStorage Integration
+      √ saves logs to localStorage (1 ms)
+      √ loads logs from localStorage
+      √ handles corrupted localStorage data gracefully (28 ms)
+
+  console.error
+    An update to OptimizedNavigationButton inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+    [0m [90m  96 |[39m       [36mreturn[39m
+     [90m  97 |[39m     }
+    [31m[1m>[22m[39m[90m  98 |[39m     originalError[33m.[39mcall(console[33m,[39m [33m...[39margs)
+     [90m     |[39m                   [31m[1m^[22m[39m
+     [90m  99 |[39m   }
+     [90m 100 |[39m })
+     [90m 101 |[39m[0m
+
+      at console.call [as error] (jest.setup.js:98:19)
+      at node_modules/react-dom/cjs/react-dom-client.development.js:16023:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:16022:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14396:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:6969:13)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom-client.development.js:6927:7)
+      at setIsLoading (src/components/OptimizedNavigationButton.tsx:42:22)
+      at callTimer (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:806:24)
+      at doTickInner (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:1413:29)
+      at doTick (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:1494:20)
+      at Object.tick (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:1502:20)
+      at FakeTimers.advanceTimersByTime (node_modules/@jest/fake-timers/build/index.js:576:19)
+      at Object.advanceTimersByTime (src/components/__tests__/OptimizedNavigationButton.test.tsx:180:10)
+
+PASS src/components/__tests__/OptimizedNavigationButton.test.tsx
+  OptimizedNavigationButton
+    √ renders with correct label and shortcut (48 ms)
+    √ renders with correct accessibility attributes (137 ms)
+    √ calls navigate function when clicked (78 ms)
+    √ calls preloadOnHover when mouse enters (19 ms)
+    √ shows loading state when clicked (74 ms)
+    √ does not navigate when disabled (56 ms)
+    √ applies correct CSS classes for color scheme (9 ms)
+    √ handles touch events for mobile (10 ms)
+    √ prevents multiple rapid clicks (166 ms)
+    √ renders different variants correctly (15 ms)
+    √ renders different sizes correctly (8 ms)
+    √ renders icon component correctly (6 ms)
+    √ handles keyboard events correctly (44 ms)
+    √ resets loading state after timeout (79 ms)
+
+PASS src/components/__tests__/ErrorMonitor.test.tsx
+  ErrorMonitor
+    √ renders error monitor with initial state (209 ms)
+    √ displays error statistics correctly (36 ms)
+    √ can be hidden and shown (154 ms)
+    √ filters logs by level (86 ms)
+    √ clears logs when clear button is clicked (44 ms)
+    √ exports logs as JSON (46 ms)
+    √ exports logs as CSV (36 ms)
+    √ displays error logs correctly (23 ms)
+    √ shows error badge when hidden and errors exist (6 ms)
+    √ toggles auto-refresh correctly (35 ms)
+    √ displays "No logs to display" when empty (25 ms)
+    √ subscribes to new errors on mount (20 ms)
+    √ handles error context expansion (29 ms)
+
+  console.log
+    Login attempt failed or already logged in: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/login
+
+      at log (tests/performance/webVitals.test.js:58:15)
+
+  console.log
+    Login attempt failed or already logged in: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/login
+
+      at log (tests/performance/navigation.test.js:60:15)
+
+  console.warn
+    Navigation test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:96:28)
+
+  console.warn
+    Web Vitals measurement failed: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 116 |[39m       [36mreturn[39m vitals
+     [90m 117 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 118 |[39m       console[33m.[39mwarn([32m`Web Vitals measurement failed: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 119 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 120 |[39m     }
+     [90m 121 |[39m   }[0m
+
+      at warn (tests/performance/webVitals.test.js:118:15)
+      at Object.<anonymous> (tests/performance/webVitals.test.js:124:20)
+
+  console.log
+    Login attempt failed or already logged in: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/login
+
+      at log (tests/performance/navigation.test.js:60:15)
+
+  console.log
+    Login attempt failed or already logged in: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/login
+
+      at log (tests/performance/webVitals.test.js:58:15)
+
+  console.warn
+    Web Vitals measurement failed: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/customers
+
+    [0m [90m 116 |[39m       [36mreturn[39m vitals
+     [90m 117 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 118 |[39m       console[33m.[39mwarn([32m`Web Vitals measurement failed: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 119 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 120 |[39m     }
+     [90m 121 |[39m   }[0m
+
+      at warn (tests/performance/webVitals.test.js:118:15)
+      at Object.<anonymous> (tests/performance/webVitals.test.js:149:20)
+
+  console.warn
+    Navigation test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:109:28)
+
+  console.log
+    Login attempt failed or already logged in: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/login
+
+      at log (tests/performance/navigation.test.js:60:15)
+
+  console.warn
+    TTI test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 184 |[39m       }
+     [90m 185 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 186 |[39m       console[33m.[39mwarn([32m`TTI test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 187 |[39m     }
+     [90m 188 |[39m   }[33m,[39m [35m30000[39m)
+     [90m 189 |[39m[0m
+
+      at Object.warn (tests/performance/webVitals.test.js:186:15)
+
+  console.warn
+    Navigation test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:122:28)
+
+  console.warn
+    TBT test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 231 |[39m       expect(tbt)[33m.[39mtoBeLessThan([35m300[39m) [90m// TBT should be under 300ms for good performance[39m
+     [90m 232 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 233 |[39m       console[33m.[39mwarn([32m`TBT test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 234 |[39m     }
+     [90m 235 |[39m   }[33m,[39m [35m30000[39m)
+     [90m 236 |[39m[0m
+
+      at Object.warn (tests/performance/webVitals.test.js:233:15)
+
+  console.warn
+    Click response test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 161 |[39m       }
+     [90m 162 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 163 |[39m       console[33m.[39mwarn([32m`Click response test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 164 |[39m     }
+     [90m 165 |[39m   }[33m,[39m [35m30000[39m)
+     [90m 166 |[39m[0m
+
+      at Object.warn (tests/performance/navigation.test.js:163:15)
+
+  console.warn
+    INP test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 275 |[39m       expect(avgInteractionTime)[33m.[39mtoBeLessThan([35m200[39m) [90m// Good INP threshold[39m
+     [90m 276 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 277 |[39m       console[33m.[39mwarn([32m`INP test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 278 |[39m     }
+     [90m 279 |[39m   }[33m,[39m [35m30000[39m)
+     [90m 280 |[39m[0m
+
+      at Object.warn (tests/performance/webVitals.test.js:277:15)
+
+  console.warn
+    Preload test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 185 |[39m       expect(preloadedCriticalRoutes[33m.[39mlength)[33m.[39mtoBeGreaterThan([35m0[39m)
+     [90m 186 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 187 |[39m       console[33m.[39mwarn([32m`Preload test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 188 |[39m     }
+     [90m 189 |[39m   }[33m,[39m [35m30000[39m)
+     [90m 190 |[39m[0m
+
+      at Object.warn (tests/performance/navigation.test.js:187:15)
+
+  console.warn
+    Resource metrics test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 329 |[39m
+     [90m 330 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 331 |[39m       console[33m.[39mwarn([32m`Resource metrics test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 332 |[39m     }
+     [90m 333 |[39m   }[33m,[39m [35m30000[39m)
+     [90m 334 |[39m[0m
+
+      at Object.warn (tests/performance/webVitals.test.js:331:15)
+
+  console.warn
+    Rapid navigation test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 223 |[39m
+     [90m 224 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 225 |[39m       console[33m.[39mwarn([32m`Rapid navigation test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 226 |[39m     }
+     [90m 227 |[39m   }[33m,[39m [35m60000[39m)
+     [90m 228 |[39m[0m
+
+      at Object.warn (tests/performance/navigation.test.js:225:15)
+
+  console.warn
+    Consistency test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 372 |[39m
+     [90m 373 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 374 |[39m       console[33m.[39mwarn([32m`Consistency test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 375 |[39m     }
+     [90m 376 |[39m   }[33m,[39m [35m60000[39m)
+     [90m 377 |[39m })[0m
+
+      at Object.warn (tests/performance/webVitals.test.js:374:15)
+
+PASS tests/performance/webVitals.test.js (24.377 s)
+  Web Vitals Performance Tests
+    √ should meet Core Web Vitals thresholds for home page (4295 ms)
+    √ should meet Core Web Vitals thresholds for customers page (4198 ms)
+    √ should measure Time to Interactive (TTI) (2126 ms)
+    √ should measure Total Blocking Time (TBT) (2110 ms)
+    √ should measure Interaction to Next Paint (INP) (2129 ms)
+    √ should measure resource loading performance (2102 ms)
+    √ should maintain consistent performance across multiple page loads (2168 ms)
+
+  console.warn
+    Load simulation test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 258 |[39m
+     [90m 259 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 260 |[39m       console[33m.[39mwarn([32m`Load simulation test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 261 |[39m     }
+     [90m 262 |[39m   }[33m,[39m [35m45000[39m)
+     [90m 263 |[39m[0m
+
+      at Object.warn (tests/performance/navigation.test.js:260:15)
+
+  console.warn
+    Memory test skipped: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000
+
+    [0m [90m 315 |[39m       }
+     [90m 316 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 317 |[39m       console[33m.[39mwarn([32m`Memory test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 318 |[39m     }
+     [90m 319 |[39m   }[33m,[39m [35m45000[39m)
+     [90m 320 |[39m })[0m
+
+      at Object.warn (tests/performance/navigation.test.js:317:15)
+
+PASS tests/performance/navigation.test.js (28.925 s)
+  Navigation Performance Tests
+    √ should navigate to customers page quickly (4295 ms)
+    √ should navigate to loans page quickly (4198 ms)
+    √ should navigate to payments page quickly (4165 ms)
+    √ should have fast click response times (2104 ms)
+    √ should preload routes effectively (2116 ms)
+    √ should handle rapid navigation without performance degradation (2125 ms)
+    √ should maintain performance under load simulation (2138 ms)
+    √ should efficiently handle memory usage during navigation (2114 ms)
+
+---------------------------------|---------|----------|---------|---------|------------------------------------
+File                             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                  
+---------------------------------|---------|----------|---------|---------|------------------------------------
+All files                        |    9.39 |     5.96 |    8.72 |    9.07 |                                    
+ app                             |       0 |        0 |       0 |       0 |                                    
+  layout.tsx                     |       0 |      100 |       0 |       0 | 2-21                               
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-383                              
+ app/admin/collectors            |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-642                              
+ app/admin/loan-types            |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-432                              
+ app/customers                   |       0 |        0 |       0 |       0 |                                    
+  old_page.tsx                   |       0 |        0 |       0 |       0 | 3-721                              
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-798                              
+ app/loans                       |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-715                              
+ app/loans/[id]/schedule         |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-392                              
+ app/login                       |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-110                              
+ app/payments                    |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-552                              
+ app/payments/[id]/receipt       |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-282                              
+ app/payments/daily-report       |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-333                              
+ app/reports                     |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-334                              
+ app/reports/loan-portfolio      |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-453                              
+ app/reports/monthly-financial   |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-649                              
+ app/reports/overdue-loans       |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-586                              
+ app/settings                    |       0 |        0 |       0 |       0 |                                    
+  page.tsx                       |       0 |        0 |       0 |       0 | 3-272                              
+ components                      |   32.05 |    23.39 |    25.6 |   32.57 |                                    
+  DemoModeNotice.tsx             |       0 |      100 |       0 |       0 | 1-4                                
+  ErrorMonitor.tsx               |   84.28 |    66.66 |   83.33 |   84.84 | 37,47,90-92,99-103                 
+  LayoutSwitcher.tsx             |     100 |      100 |     100 |     100 |                                    
+  LazyLoadedComponents.tsx       |       0 |        0 |       0 |       0 | 1-39                               
+  OptimizedNavigationButton.tsx  |   95.83 |    83.33 |     100 |     100 | 36-53,79                           
+  OptimizedSidebarNavigation.tsx |       0 |        0 |       0 |       0 | 3-90                               
+  ProtectedRoute.tsx             |       0 |        0 |       0 |       0 | 3-57                               
+  QuickNavigation.tsx            |       0 |        0 |       0 |       0 | 1-109                              
+  SidebarLayout.tsx              |       0 |        0 |       0 |       0 | 3-267                              
+  SidebarNavigationLayout.tsx    |       0 |        0 |       0 |       0 | 3-208                              
+  ThemeSwitcher.tsx              |       0 |        0 |       0 |       0 | 3-14                               
+  ThemedLayout.tsx               |       0 |        0 |       0 |       0 | 3-23                               
+  TopNavigationLayout.tsx        |       0 |        0 |       0 |       0 | 3-158                              
+ components/ui                   |   26.73 |    13.33 |      50 |   24.46 |                                    
+  badge.tsx                      |   83.33 |      100 |     100 |     100 |                                    
+  button.tsx                     |      90 |    66.66 |     100 |     100 | 44                                 
+  card.tsx                       |   92.85 |      100 |     100 |     100 |                                    
+  dropdown-menu.tsx              |       0 |        0 |       0 |       0 | 1-197                              
+  input.tsx                      |       0 |      100 |       0 |       0 | 1-24                               
+  label.tsx                      |       0 |      100 |     100 |       0 | 1-24                               
+  select.tsx                     |       0 |        0 |     100 |       0 | 1-157                              
+ contexts                        |       0 |        0 |       0 |       0 |                                    
+  AuthContext.tsx                |       0 |        0 |       0 |       0 | 3-112                              
+  SettingsContext.tsx            |       0 |        0 |       0 |       0 | 3-66                               
+  ThemeContext.tsx               |       0 |        0 |       0 |       0 | 3-48                               
+ hooks                           |       0 |        0 |       0 |       0 |                                    
+  usePerformanceOptimizations.ts |       0 |        0 |       0 |       0 | 1-188                              
+  usePerformanceOptimizedData.ts |       0 |        0 |       0 |       0 | 1-190                              
+ lib                             |   58.45 |     42.5 |    66.1 |   58.03 |                                    
+  errorLogger.ts                 |   79.16 |    48.71 |   80.55 |   78.88 | 60-61,70,84,98-113,218-219,242-248 
+  navigationOptimizer.ts         |   65.95 |    53.84 |   58.33 |   63.63 | 63-97                              
+  supabase.ts                    |       0 |        0 |     100 |       0 | 1-14                               
+  utils.ts                       |   24.13 |    44.44 |   27.27 |   24.07 | 29-111                             
+ lib/services                    |       0 |        0 |       0 |       0 |                                    
+  collectorService.ts            |       0 |        0 |       0 |       0 | 1-240                              
+  customerService.ts             |       0 |        0 |       0 |       0 | 1-341                              
+  loanService.ts                 |       0 |        0 |       0 |       0 | 1-538                              
+  mockServices.ts                |       0 |        0 |       0 |       0 | 7-455                              
+  paymentService.ts              |       0 |        0 |       0 |       0 | 1-491                              
+---------------------------------|---------|----------|---------|---------|------------------------------------
+Jest: "global" coverage threshold for statements (70%) not met: 9.39%
+Jest: "global" coverage threshold for branches (70%) not met: 5.96%
+Jest: "global" coverage threshold for lines (70%) not met: 9.07%
+Jest: "global" coverage threshold for functions (70%) not met: 8.72%
+Test Suites: 8 passed, 8 total
+Tests:       110 passed, 110 total
+Snapshots:   0 total
+Time:        34.208 s, estimated 36 s
+Ran all test suites.

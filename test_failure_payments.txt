@@ -1,0 +1,304 @@
+﻿  console.error
+    In HTML, <div> cannot be a child of <select>.
+    This will cause a hydration error.
+    
+      ...
+        <default requiredLevel="Cashier">
+          <div>
+            <default>
+              <div>
+                <PaymentManagementContent>
+                  <div className="min-h-scre...">
+                    <header>
+                    <main className="max-w-4xl ...">
+                      <form onSubmit={function handleProcessPayment}>
+                        <div className="grid gap-8">
+                          <Card className="bg-white b...">
+                            <div ref={null} className="rounded-lg...">
+                              <CardHeader>
+                              <CardContent className="grid grid-...">
+                                <div ref={null} className="p-6 pt-0 g...">
+                                  <div>
+                                    <Label>
+                                    <Select value="" onValueChange={function onValueChange}>
+    >                                 <select value="" onChange={function onChange}>
+                                        <SelectTrigger>
+    >                                     <div>
+                                        ...
+                                  ...
+                          ...
+
+    [0m [90m  96 |[39m       [36mreturn[39m
+     [90m  97 |[39m     }
+    [31m[1m>[22m[39m[90m  98 |[39m     originalError[33m.[39mcall(console[33m,[39m [33m...[39margs)
+     [90m     |[39m                   [31m[1m^[22m[39m
+     [90m  99 |[39m   }
+     [90m 100 |[39m })
+     [90m 101 |[39m[0m
+
+      at console.call [as error] (jest.setup.js:98:19)
+      at validateDOMNesting (node_modules/react-dom/cjs/react-dom-client.development.js:2606:19)
+      at completeWork (node_modules/react-dom/cjs/react-dom-client.development.js:11299:15)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at completeUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:15268:19)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:15149:11)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:14956:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:14936:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:14419:13)
+      at performSyncWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16231:7)
+      at flushSyncWorkAcrossRoots_impl (node_modules/react-dom/cjs/react-dom-client.development.js:16079:21)
+      at processRootScheduleInMicrotask (node_modules/react-dom/cjs/react-dom-client.development.js:16116:7)
+      at node_modules/react-dom/cjs/react-dom-client.development.js:16250:13
+      at invokeTheCallbackFunction (node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26)
+      at node_modules/jsdom/lib/jsdom/browser/Window.js:613:9
+
+  console.error
+    <select> cannot contain a nested <div>.
+    See this log for the ancestor stack trace.
+
+    [0m [90m  96 |[39m       [36mreturn[39m
+     [90m  97 |[39m     }
+    [31m[1m>[22m[39m[90m  98 |[39m     originalError[33m.[39mcall(console[33m,[39m [33m...[39margs)
+     [90m     |[39m                   [31m[1m^[22m[39m
+     [90m  99 |[39m   }
+     [90m 100 |[39m })
+     [90m 101 |[39m[0m
+
+      at console.call [as error] (jest.setup.js:98:19)
+      at node_modules/react-dom/cjs/react-dom-client.development.js:2626:21
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at validateDOMNesting (node_modules/react-dom/cjs/react-dom-client.development.js:2625:11)
+      at completeWork (node_modules/react-dom/cjs/react-dom-client.development.js:11299:15)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at completeUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:15268:19)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:15149:11)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:14956:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:14936:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:14419:13)
+      at performSyncWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16231:7)
+      at flushSyncWorkAcrossRoots_impl (node_modules/react-dom/cjs/react-dom-client.development.js:16079:21)
+      at processRootScheduleInMicrotask (node_modules/react-dom/cjs/react-dom-client.development.js:16116:7)
+      at node_modules/react-dom/cjs/react-dom-client.development.js:16250:13
+      at invokeTheCallbackFunction (node_modules/jsdom/lib/jsdom/living/generated/Function.js:19:26)
+      at node_modules/jsdom/lib/jsdom/browser/Window.js:613:9
+
+node.exe : FAIL src/app/payments/__tests__/page.test.tsx
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (FAIL src/app/pa..._/page.test.tsx:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Payment Management Page
+    ΓêÜ renders payment history correctly (80 ms)
+    ΓêÜ shows payment form when clicking New Payment (61 ms)
+    ├ù calculates new balance when payment amount is entered (73 ms)
+    ΓêÜ reverses payment after confirmation (34 ms)
+
+  ΓùÅ Payment Management Page ΓÇ║ calculates new balance when payment amount is entered
+
+    TestingLibraryElementError: Found multiple elements with the role "combobox"
+
+    Here are the matching elements:
+
+    Ignored nodes: comments, script, style
+    [36m<select>[39m
+      [36m<div>[39m
+        [36m<span>[39m
+          [0mSelect loan to pay[0m
+        [36m</span>[39m
+      [36m</div>[39m
+      [36m<option[39m
+        [33mvalue[39m=[32m"loan-1"[39m
+      [36m>[39m
+        [0mL001[0m
+        [0m - [0m
+        [0mCUS001[0m
+        [0m([0m
+        [0mΓé▒5,000.00[0m
+        [0m balance)[0m
+      [36m</option>[39m
+    [36m</select>[39m
+
+    Ignored nodes: comments, script, style
+    [36m<select>[39m
+      [36m<div>[39m
+        [36m<span />[39m
+      [36m</div>[39m
+      [36m<option[39m
+        [33mvalue[39m=[32m"Cash"[39m
+      [36m>[39m
+        [0mCash[0m
+      [36m</option>[39m
+      [36m<option[39m
+        [33mvalue[39m=[32m"Check"[39m
+      [36m>[39m
+        [0mCheck[0m
+      [36m</option>[39m
+      [36m<option[39m
+        [33mvalue[39m=[32m"Bank Transfer"[39m
+      [36m>[39m
+        [0mBank Transfer[0m
+      [36m</option>[39m
+    [36m</select>[39m
+
+    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div>[39m
+          [36m<div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100"[39m
+            [36m>[39m
+              [36m<header[39m
+                [33mclass[39m=[32m"bg-gradient-to-r from-indigo-900 via-purple-800 to-blue-900 shadow-xl"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"flex justify-between items-center py-6"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"flex items-center gap-4"[39m
+                    [36m>[39m
+                      [36m<button[39m
+                        [33mclass[39m=[32m"justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none 
+focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border hover:text-accent-foreground h-10 px-4 py-2 
+flex items-center gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-200"[39m
+                      [36m>[39m
+                        [36m<svg[39m
+                          [33maria-hidden[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"lucide lucide-arrow-left h-4 w-4"[39m
+                          [33mfill[39m=[32m"none"[39m
+                          [33mheight[39m=[32m"24"[39m
+                          [33mstroke[39m=[32m"currentColor"[39m
+                          [33mstroke-linecap[39m=[32m"round"[39m
+                          [33mstroke-linejoin[39m=[32m"round"[39m
+                          [33mstroke-width[39m=[32m"2"[39m
+                          [33mviewBox[39m=[32m"0 0 24 24"[39m
+                          [33mwidth[39m=[32m"24"[39m
+                          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                        [36m>[39m
+                          [36m<path[39m
+                            [33md[39m=[32m"m12 19-7-7 7-7"[39m
+                          [36m/>[39m
+                          [36m<path[39m
+                            [33md[39m=[32m"M19 12H5"[39m
+                          [36m/>[39m
+                        [36m</svg>[39m
+                        [0mBack to Payments[0m
+                      [36m</button>[39m
+                      [36m<div>[39m
+                        [36m<h1[39m
+                          [33mclass[39m=[32m"text-3xl font-bold text-white tracking-tight"[39m
+                        [36m>[39m
+                          [0mPayment Collection[0m
+                        [36m</h1>[39m
+                        [36m<p[39m
+                          [33mclass[39m=[32m"text-lg text-cyan-200 font-semibold"[39m
+                        [36m>[39m
+                          [0mProcess customer payment[0m
+                        [36m</p>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"flex items-center gap-6"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"flex items-center gap-3"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"text-right"[39m
+                        [36m>[39m
+                          [36m<p[39m
+                            [33mclass[39m=[32m"text-sm text-cyan-200"[39m
+                          [36m>[39m
+                            [0mWelcome[0m
+                          [36m</p>[39m
+                          [36m<p[39m
+                            [33mclass[39m=[32m"font-semibold text-white"[39m
+                          [36m>[39m
+                            [0mAdmin[0m
+                          [36m</p>[39m
+                          [36m<p[39m
+                            [33mclass[39m=[32m"text-xs text-cyan-300"[39m
+                          [36m>[39m
+                            [0mAdmin[0m
+                          [36m</p>[39m
+                        [36m</div>[39m
+                        [36m<button[39m
+                          [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background 
+focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border 
+hover:text-accent-foreground h-9 rounded-md px-3 bg-white/10 border-white/20 text-white hover:bg-red-500/20 hover:border-red-400 transition-all duration-200"[39m
+                        [36m>[39m
+                          [36m<svg[39m
+                            [33maria-hidden[39m=[32m"true"[39m
+                            [33mclass[39m=[32m"lucide lucide-log-out h-4 w-4 mr-1"[39m
+                            [33mfill[39m=[32m"none"[39m
+                            [33mheight[39m=[32m"24"[39m
+                            [33mstroke[39m=[32m"currentColor"[39m
+                            [33mstroke-linecap[39m=[32m"round"[39m
+                            [33mstroke-linejoin[39m=[32m"round"[39m
+                            [33mstroke-width[39m=[32m"2"[39m
+                            [33mviewBox[39m=[32m"0 0 24 24"[39m
+                            [33mwidth[39m=[32m"24"[39m
+                            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                          [36m>[39m
+                            [36m<path[39m
+                              [33md[39m=[32m"m16 17 5-5-5-5"[39m
+                            [36m/>[39m
+                            [36m<path[39m
+                              [33md[39m=[32m"M21 12H9"[39m
+                            [36m/>[39m
+                            [36m<path[39m
+                              [33md[39m=[32m"M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"[39m
+                            [36m/>[39m
+                          [36m</svg>[39m
+                          [0mLogout[0m
+                        [36m</button>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</header>[39m
+              [36m<main[39m
+                [33mclass[39m=[32m"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8"[39m
+              [36m>[39m
+                [36m<form>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"grid gap-8"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"rounded-lg border text-card-foreground bg-white border-gray-200 shadow-lg"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"flex flex-col space-y-1.5 p-6"[39m
+                      [36m>[39m
+                        [36m<h3[39m
+                          [33mclass[39m=[32m"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2 text-gray-800"[39m
+                        [36m>[39m
+                          [36m<svg...
+
+    [0m [90m 127 |[39m
+     [90m 128 |[39m         [90m// Select a loan (using the mocked select which is a standard <select>)[39m
+    [31m[1m>[22m[39m[90m 129 |[39m         [36mconst[39m loanSelect [33m=[39m screen[33m.[39mgetByRole([32m'combobox'[39m)
+     [90m     |[39m                                   [31m[1m^[22m[39m
+     [90m 130 |[39m         [36mawait[39m act([36masync[39m () [33m=>[39m {
+     [90m 131 |[39m             fireEvent[33m.[39mchange(loanSelect[33m,[39m { target[33m:[39m { value[33m:[39m [32m'loan-1'[39m } })
+     [90m 132 |[39m         })[0m
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:20:35)
+      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:23:10)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:55:13
+      at node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+      at Object.getByRole (src/app/payments/__tests__/page.test.tsx:129:35)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 3 passed, 4 total
+Snapshots:   0 total
+Time:        1.356 s
+Ran all test suites matching src/app/payments/__tests__/page.test.tsx.

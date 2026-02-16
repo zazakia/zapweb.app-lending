@@ -52,22 +52,22 @@ export const customerService = {
         .from('customers')
         .select('*')
         .order('created_at', { ascending: false })
-      
+
       if (limit) {
         query = query.limit(limit)
       }
-      
+
       if (offset) {
         query = query.range(offset, offset + (limit || 50) - 1)
       }
-      
+
       const { data, error } = await query
-      
+
       if (error) {
         console.error('Error fetching customers:', error)
         return mockCustomerService.getCustomers()
       }
-      
+
       return data || []
     } catch (error) {
       console.error('Error in getCustomers:', error)
@@ -78,56 +78,57 @@ export const customerService = {
   // Get customers count for pagination
   async getCustomersCount(): Promise<number> {
     if (!supabase) {
-      return 100
+      return mockCustomerService.getCustomersCount()
     }
 
     try {
       const { count, error } = await supabase
         .from('customers')
         .select('*', { count: 'exact', head: true })
-      
+
       if (error) {
         console.error('Error counting customers:', error)
-        return 100
+        return mockCustomerService.getCustomersCount()
       }
-      
+
       return count || 0
     } catch (error) {
       console.error('Error in getCustomersCount:', error)
-      return 100
+      return mockCustomerService.getCustomersCount()
     }
   },
 
   // Search customers with optimized query
   async searchCustomers(searchTerm: string, limit: number = 50): Promise<Customer[]> {
     if (!supabase) {
-      return mockCustomerService.getCustomers()
+      return mockCustomerService.searchCustomers(searchTerm)
     }
 
     try {
       const { data, error } = await supabase
         .from('customers')
-        .select('id, customer_code, first_name, middle_name, last_name, phone, email, status, created_at')
+        .select('*')
         .or(`first_name.ilike.%${searchTerm}%,last_name.ilike.%${searchTerm}%,customer_code.ilike.%${searchTerm}%,phone.ilike.%${searchTerm}%,email.ilike.%${searchTerm}%`)
         .order('created_at', { ascending: false })
         .limit(limit)
 
       if (error) {
         console.warn('Failed to search customers from database, using mock data:', error.message)
-        return mockCustomerService.getCustomers()
+        return mockCustomerService.searchCustomers(searchTerm)
       }
 
       return data || []
     } catch (error) {
-      console.warn('Schema error, falling back to mock data:', error)
-      return mockCustomerService.getCustomers()
+      console.warn('Search error, falling back to mock data:', error)
+      return mockCustomerService.searchCustomers(searchTerm)
     }
   },
 
   // Get customers with minimal data for dropdowns
   async getCustomersMinimal(): Promise<Pick<Customer, 'id' | 'customer_code' | 'first_name' | 'last_name'>[]> {
     if (!supabase) {
-      return mockCustomerService.getCustomers().map(c => ({
+      const customers = await mockCustomerService.getCustomers()
+      return customers.map(c => ({
         id: c.id,
         customer_code: c.customer_code,
         first_name: c.first_name,
@@ -144,7 +145,8 @@ export const customerService = {
 
       if (error) {
         console.warn('Failed to fetch minimal customers from database, using mock data:', error.message)
-        return mockCustomerService.getCustomers().map(c => ({
+        const customers = await mockCustomerService.getCustomers()
+        return customers.map(c => ({
           id: c.id,
           customer_code: c.customer_code,
           first_name: c.first_name,
@@ -155,7 +157,8 @@ export const customerService = {
       return data || []
     } catch (error) {
       console.warn('Schema error, falling back to mock data:', error)
-      return mockCustomerService.getCustomers().map(c => ({
+      const customers = await mockCustomerService.getCustomers()
+      return customers.map(c => ({
         id: c.id,
         customer_code: c.customer_code,
         first_name: c.first_name,
@@ -192,31 +195,6 @@ export const customerService = {
     }
   },
 
-  // Search customers
-  async searchCustomers(searchTerm: string): Promise<Customer[]> {
-    if (!supabase) {
-      return mockCustomerService.searchCustomers(searchTerm)
-    }
-
-    try {
-      const { data, error } = await supabase
-        .schema('lending1')
-        .from('customers')
-        .select('*')
-        .or(`first_name.ilike.%${searchTerm}%,last_name.ilike.%${searchTerm}%,customer_code.ilike.%${searchTerm}%,phone.ilike.%${searchTerm}%`)
-        .order('created_at', { ascending: false })
-
-      if (error) {
-        console.warn('Failed to search customers from database, using mock data:', error.message)
-        return mockCustomerService.searchCustomers(searchTerm)
-      }
-
-      return data || []
-    } catch (error) {
-      console.warn('Schema error, falling back to mock data:', error)
-      return mockCustomerService.searchCustomers(searchTerm)
-    }
-  },
 
   // Create new customer
   async createCustomer(customer: Omit<Customer, 'id' | 'created_at' | 'updated_at'>): Promise<Customer> {
@@ -226,7 +204,6 @@ export const customerService = {
 
     try {
       const { data, error } = await supabase
-        .schema('lending1')
         .from('customers')
         .insert([customer])
         .select()
@@ -252,7 +229,6 @@ export const customerService = {
 
     try {
       const { data, error } = await supabase
-        .schema('lending1')
         .from('customers')
         .update({ ...updates, updated_at: new Date().toISOString() })
         .eq('id', id)
@@ -278,7 +254,6 @@ export const customerService = {
     }
 
     const { error } = await supabase
-      .schema('lending1')
       .from('customers')
       .update({ status: 'Inactive', updated_at: new Date().toISOString() })
       .eq('id', id)
@@ -296,7 +271,6 @@ export const customerService = {
 
     try {
       const { data, error } = await supabase
-        .schema('lending1')
         .from('customers')
         .select('customer_code')
         .order('customer_code', { ascending: false })
@@ -327,9 +301,8 @@ export const customerService = {
     }
 
     const { error } = await supabase
-      .schema('lending1')
       .from('customers')
-      .update({ 
+      .update({
         credit_score: newScore,
         late_payment_count: latePaymentCount,
         late_payment_points: (100 - newScore),

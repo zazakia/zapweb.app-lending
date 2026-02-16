@@ -1,0 +1,49 @@
+﻿node.exe : FAIL src/app/customers/__tests__/page.test.tsx
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (FAIL src/app/cu..._/page.test.tsx:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Customer Management Page
+    ΓêÜ renders customer list correctly (74 ms)
+    ΓêÜ searches for customers when typing in search box (40 ms)
+    ΓêÜ shows registration form when clicking Add Customer (188 ms)
+    ├ù populates form when editing a customer (58 ms)
+    ├ù deletes customer after confirmation (22 ms)
+
+  ΓùÅ Customer Management Page ΓÇ║ populates form when editing a customer
+
+    Edit button not found
+
+    [0m [90m 102 |[39m         [36mconst[39m editButton [33m=[39m screen[33m.[39mgetAllByRole([32m'button'[39m)[33m.[39mfind(b [33m=>[39m 
+b[33m.[39mquerySelector([32m'svg.lucide-edit'[39m))
+     [90m 103 |[39m
+    [31m[1m>[22m[39m[90m 104 |[39m         [36mif[39m ([33m![39meditButton) [36mthrow[39m [36mnew[39m [33mError[39m([32m'Edit button not found'[39m)
+     [90m     |[39m                                [31m[1m^[22m[39m
+     [90m 105 |[39m
+     [90m 106 |[39m         [36mawait[39m act([36masync[39m () [33m=>[39m {
+     [90m 107 |[39m             fireEvent[33m.[39mclick(editButton)[0m
+
+      at Object.<anonymous> (src/app/customers/__tests__/page.test.tsx:104:32)
+
+  ΓùÅ Customer Management Page ΓÇ║ deletes customer after confirmation
+
+    More button not found
+
+    [0m [90m 122 |[39m         [90m// Need to open dropdown first[39m
+     [90m 123 |[39m         [36mconst[39m moreButton [33m=[39m screen[33m.[39mgetAllByRole([32m'button'[39m)[33m.[39mfind(b [33m=>[39m 
+b[33m.[39mquerySelector([32m'svg.lucide-more-horizontal'[39m))
+    [31m[1m>[22m[39m[90m 124 |[39m         [36mif[39m ([33m![39mmoreButton) [36mthrow[39m [36mnew[39m [33mError[39m([32m'More button not found'[39m)
+     [90m     |[39m                                [31m[1m^[22m[39m
+     [90m 125 |[39m
+     [90m 126 |[39m         [36mawait[39m act([36masync[39m () [33m=>[39m {
+     [90m 127 |[39m             fireEvent[33m.[39mclick(moreButton)[0m
+
+      at Object.<anonymous> (src/app/customers/__tests__/page.test.tsx:124:32)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 3 passed, 5 total
+Snapshots:   0 total
+Time:        1.726 s
+Ran all test suites matching src/app/customers/__tests__/page.test.tsx.

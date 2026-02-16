@@ -236,11 +236,11 @@ export const paymentService = {
   calculateLatePayment(maturityDate: string, paymentDate: string): { daysLate: number, isLate: boolean, lateFee: number } {
     const maturity = new Date(maturityDate)
     const payment = new Date(paymentDate)
-    
+
     // Calculate business days between dates (excluding Sundays)
     let daysLate = 0
     const currentDate = new Date(maturity)
-    
+
     while (currentDate < payment) {
       currentDate.setDate(currentDate.getDate() + 1)
       // Only count business days (exclude Sundays)
@@ -322,8 +322,8 @@ export const paymentService = {
       const createdPayment = await this.createPayment(payment)
 
       // Update loan balance and status
-      const loanStatus = newBalance === 0 ? 'Full Paid' : 
-                        isLate ? 'Past Due' : 'Good'
+      const loanStatus = newBalance === 0 ? 'Full Paid' :
+        isLate ? 'Past Due' : 'Good'
 
       const { data: updatedLoan, error: updateError } = await supabase
         .schema('lending1')
@@ -346,7 +346,7 @@ export const paymentService = {
         const { data: customer } = await supabase
           .schema('lending1')
           .from('customers')
-          .select('credit_score, late_payment_count')
+          .select('credit_score, late_payment_count, late_payment_points')
           .eq('id', paymentData.customerId)
           .single()
 
@@ -421,7 +421,7 @@ export const paymentService = {
       totalAmount: payments?.reduce((sum, p) => sum + (p.payment_amount || 0), 0) || 0,
       todayPayments: payments?.filter(p => p.payment_date === today).length || 0,
       todayAmount: payments?.filter(p => p.payment_date === today)
-                          .reduce((sum, p) => sum + (p.payment_amount || 0), 0) || 0,
+        .reduce((sum, p) => sum + (p.payment_amount || 0), 0) || 0,
       latePayments: payments?.filter(p => p.is_late_payment).length || 0,
       latePaymentFees: payments?.reduce((sum, p) => sum + (p.late_payment_fee || 0), 0) || 0
     }

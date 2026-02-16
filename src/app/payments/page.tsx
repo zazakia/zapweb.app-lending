@@ -10,11 +10,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import ProtectedRoute from '@/components/ProtectedRoute'
 import LayoutSwitcher from '@/components/LayoutSwitcher'
 import { useAuth } from '@/contexts/AuthContext'
-import { 
-  DollarSign, 
-  Plus, 
-  Search, 
-  ArrowLeft, 
+import {
+  DollarSign,
+  Plus,
+  Search,
+  ArrowLeft,
   Save,
   Receipt,
   AlertTriangle,
@@ -39,7 +39,7 @@ function PaymentManagementContent() {
   const [searchTerm, setSearchTerm] = useState('')
   const [loading, setLoading] = useState(false)
   const [selectedLoan, setSelectedLoan] = useState<Loan | null>(null)
-  
+
   const [formData, setFormData] = useState({
     loanId: '',
     customerId: '',
@@ -82,8 +82,8 @@ function PaymentManagementContent() {
         customerService.getCustomers()
       ])
       // Filter to only active loans with balance
-      setLoans(loansData.filter(loan => 
-        loan.loan_status !== 'Full Paid' && 
+      setLoans(loansData.filter(loan =>
+        loan.loan_status !== 'Full Paid' &&
         loan.current_balance > 0
       ))
       setCustomers(customersData)
@@ -97,7 +97,7 @@ function PaymentManagementContent() {
   const loadPayments = async () => {
     try {
       setLoading(true)
-      const paymentsData = searchTerm 
+      const paymentsData = searchTerm
         ? await paymentService.searchPayments(searchTerm)
         : await paymentService.getPayments()
       setPayments(paymentsData)
@@ -126,7 +126,7 @@ function PaymentManagementContent() {
   const handleProcessPayment = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    
+
     try {
       await paymentService.processPayment({
         loanId: formData.loanId,
@@ -138,7 +138,7 @@ function PaymentManagementContent() {
         collectorId: formData.collectorId,
         collectedBy: formData.collectedBy
       })
-      
+
       // Reset form
       setFormData({
         loanId: '',
@@ -202,8 +202,8 @@ function PaymentManagementContent() {
                     <p className="font-semibold text-white">{user?.fullName}</p>
                     <p className="text-xs text-cyan-300">{user?.userLevel}</p>
                   </div>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     size="sm"
                     onClick={logout}
                     className="bg-white/10 border-white/20 text-white hover:bg-red-500/20 hover:border-red-400 transition-all duration-200"
@@ -233,14 +233,14 @@ function PaymentManagementContent() {
                 <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="loanId">Select Loan <span className="text-red-500">*</span></Label>
-                    <Select value={formData.loanId} onValueChange={(value) => setFormData({...formData, loanId: value})}>
+                    <Select value={formData.loanId} onValueChange={(value) => setFormData({ ...formData, loanId: value })}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select loan to pay" />
                       </SelectTrigger>
                       <SelectContent>
                         {loans.map((loan) => (
                           <SelectItem key={loan.id} value={loan.id!}>
-                            {loan.loan_code} - {(loan as any).customers?.customer_code} 
+                            {loan.loan_code} - {(loan as any).customers?.customer_code}
                             ({formatCurrency(loan.current_balance)} balance)
                           </SelectItem>
                         ))}
@@ -253,7 +253,7 @@ function PaymentManagementContent() {
                       id="paymentDate"
                       type="date"
                       value={formData.paymentDate}
-                      onChange={(e) => setFormData({...formData, paymentDate: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, paymentDate: e.target.value })}
                       required
                     />
                   </div>
@@ -263,7 +263,7 @@ function PaymentManagementContent() {
                       id="paymentAmount"
                       type="number"
                       value={formData.paymentAmount}
-                      onChange={(e) => setFormData({...formData, paymentAmount: parseFloat(e.target.value) || 0})}
+                      onChange={(e) => setFormData({ ...formData, paymentAmount: parseFloat(e.target.value) || 0 })}
                       min="0"
                       step="0.01"
                       required
@@ -271,7 +271,7 @@ function PaymentManagementContent() {
                   </div>
                   <div>
                     <Label htmlFor="paymentMethod">Payment Method</Label>
-                    <Select value={formData.paymentMethod} onValueChange={(value) => setFormData({...formData, paymentMethod: value})}>
+                    <Select value={formData.paymentMethod} onValueChange={(value) => setFormData({ ...formData, paymentMethod: value })}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -287,7 +287,7 @@ function PaymentManagementContent() {
                     <Input
                       id="referenceNumber"
                       value={formData.referenceNumber}
-                      onChange={(e) => setFormData({...formData, referenceNumber: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, referenceNumber: e.target.value })}
                       placeholder="Check number, transfer ID, etc."
                     />
                   </div>
@@ -307,7 +307,7 @@ function PaymentManagementContent() {
                     <div>
                       <Label>Customer</Label>
                       <p className="font-medium">
-                        {(selectedLoan as any).customers?.customer_code} - 
+                        {(selectedLoan as any).customers?.customer_code} -
                         {(selectedLoan as any).customers?.first_name} {(selectedLoan as any).customers?.last_name}
                       </p>
                     </div>
@@ -333,11 +333,10 @@ function PaymentManagementContent() {
                     </div>
                     <div>
                       <Label>Status</Label>
-                      <span className={`px-2 py-1 rounded-full text-xs ${
-                        selectedLoan.loan_status === 'Good' ? 'bg-green-100 text-green-800' :
-                        selectedLoan.loan_status === 'Past Due' ? 'bg-red-100 text-red-800' :
-                        'bg-gray-100 text-gray-800'
-                      }`}>
+                      <span className={`px-2 py-1 rounded-full text-xs ${selectedLoan.loan_status === 'Good' ? 'bg-green-100 text-green-800' :
+                          selectedLoan.loan_status === 'Past Due' ? 'bg-red-100 text-red-800' :
+                            'bg-gray-100 text-gray-800'
+                        }`}>
                         {selectedLoan.loan_status}
                       </span>
                     </div>
@@ -356,8 +355,8 @@ function PaymentManagementContent() {
                 <Button type="button" variant="outline" onClick={() => setShowForm(false)}>
                   Cancel
                 </Button>
-                <Button type="submit" disabled={loading || !formData.loanId || formData.paymentAmount <= 0} 
-                        className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
+                <Button type="submit" disabled={loading || !formData.loanId || formData.paymentAmount <= 0}
+                  className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
                   <Save className="h-4 w-4 mr-2" />
                   {loading ? 'Processing...' : 'Process Payment'}
                 </Button>
@@ -396,8 +395,8 @@ function PaymentManagementContent() {
                   <p className="font-semibold text-white">{user?.fullName}</p>
                   <p className="text-xs text-cyan-300">{user?.userLevel}</p>
                 </div>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="sm"
                   onClick={logout}
                   className="bg-white/10 border-white/20 text-white hover:bg-red-500/20 hover:border-red-400 transition-all duration-200"
@@ -427,7 +426,7 @@ function PaymentManagementContent() {
                   className="pl-10 w-64"
                 />
               </div>
-              <Button 
+              <Button
                 variant="outline"
                 onClick={() => router.push('/payments/daily-report')}
                 className="flex items-center gap-2 bg-gradient-to-br from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200 border-orange-200 transition-all duration-200 group"
@@ -436,7 +435,7 @@ function PaymentManagementContent() {
                 <span className="text-orange-700 font-medium">Daily Report</span>
               </Button>
             </div>
-            <Button 
+            <Button
               onClick={handleAddPayment}
               className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 group flex items-center gap-2"
             >
@@ -499,29 +498,30 @@ function PaymentManagementContent() {
                         <td className="p-3 text-gray-900">{formatDate(payment.payment_date)}</td>
                         <td className="p-3 text-gray-900">{payment.payment_method}</td>
                         <td className="p-3">
-                          <span className={`px-2 py-1 rounded-full text-xs ${
-                            payment.payment_status === 'Active' ? 'bg-green-100 text-green-800' :
-                            payment.payment_status === 'Reversed' ? 'bg-red-100 text-red-800' :
-                            'bg-gray-100 text-gray-800'
-                          }`}>
+                          <span className={`px-2 py-1 rounded-full text-xs ${payment.payment_status === 'Active' ? 'bg-green-100 text-green-800' :
+                              payment.payment_status === 'Reversed' ? 'bg-red-100 text-red-800' :
+                                'bg-gray-100 text-gray-800'
+                            }`}>
                             {payment.payment_status}
                           </span>
                         </td>
                         <td className="p-3">
                           <div className="flex gap-2">
-                            <Button 
-                              size="sm" 
+                            <Button
+                              size="sm"
                               variant="outline"
                               onClick={() => router.push(`/payments/${payment.id}/receipt`)}
+                              aria-label="View receipt"
                               title="View Receipt"
                             >
                               <Eye className="h-4 w-4" />
                             </Button>
                             {payment.payment_status === 'Active' && (
-                              <Button 
-                                size="sm" 
+                              <Button
+                                size="sm"
                                 variant="outline"
                                 onClick={() => payment.id && handleReversePayment(payment.id)}
+                                aria-label="Reverse payment"
                                 className="text-red-600 hover:text-red-700"
                               >
                                 <Undo className="h-4 w-4" />

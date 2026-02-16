@@ -10,11 +10,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import ProtectedRoute from '@/components/ProtectedRoute'
 import LayoutSwitcher from '@/components/LayoutSwitcher'
 import { useAuth } from '@/contexts/AuthContext'
-import { 
-  CreditCard, 
-  Plus, 
-  Search, 
-  ArrowLeft, 
+import {
+  CreditCard,
+  Plus,
+  Search,
+  ArrowLeft,
   Save,
   FileText,
   Calculator,
@@ -39,7 +39,7 @@ function LoanManagementContent() {
   const [searchTerm, setSearchTerm] = useState('')
   const [loading, setLoading] = useState(false)
   const [editingLoan, setEditingLoan] = useState<Loan | null>(null)
-  
+
   const [formData, setFormData] = useState<Partial<Loan>>({
     loan_code: '',
     customer_id: '',
@@ -76,7 +76,7 @@ function LoanManagementContent() {
     if (formData.principal_amount && formData.interest_rate) {
       const interest = loanService.calculateInterest(formData.principal_amount, formData.interest_rate)
       const total = loanService.calculateTotalAmortization(formData.principal_amount, interest)
-      
+
       setFormData(prev => ({
         ...prev,
         interest_amount: interest,
@@ -116,7 +116,7 @@ function LoanManagementContent() {
   const loadLoans = async () => {
     try {
       setLoading(true)
-      const loansData = searchTerm 
+      const loansData = searchTerm
         ? await loanService.searchLoans(searchTerm)
         : await loanService.getLoans()
       setLoans(loansData)
@@ -181,7 +181,7 @@ function LoanManagementContent() {
   const handleSaveLoan = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    
+
     try {
       const loanData = {
         ...formData,
@@ -194,13 +194,13 @@ function LoanManagementContent() {
         savedLoan = await loanService.updateLoan(editingLoan.id, loanData)
       } else {
         savedLoan = await loanService.createLoan(loanData)
-        
+
         // Create amortization schedule for new loan
         if (savedLoan.id) {
           await loanService.createAmortizationSchedule(savedLoan.id, savedLoan)
         }
       }
-      
+
       // Reset form
       setFormData({
         loan_code: '',
@@ -266,8 +266,8 @@ function LoanManagementContent() {
                     <p className="font-semibold text-white">{user?.fullName}</p>
                     <p className="text-xs text-cyan-300">{user?.userLevel}</p>
                   </div>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     size="sm"
                     onClick={logout}
                     className="bg-white/10 border-white/20 text-white hover:bg-red-500/20 hover:border-red-400 transition-all duration-200"
@@ -300,14 +300,14 @@ function LoanManagementContent() {
                     <Input
                       id="loan_code"
                       value={formData.loan_code || ''}
-                      onChange={(e) => setFormData({...formData, loan_code: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, loan_code: e.target.value })}
                       className="bg-gray-100"
                       readOnly
                     />
                   </div>
                   <div>
                     <Label htmlFor="customer_id">Customer <span className="text-red-500">*</span></Label>
-                    <Select value={formData.customer_id || ''} onValueChange={(value) => setFormData({...formData, customer_id: value})}>
+                    <Select value={formData.customer_id || ''} onValueChange={(value) => setFormData({ ...formData, customer_id: value })}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select customer" />
                       </SelectTrigger>
@@ -337,7 +337,7 @@ function LoanManagementContent() {
                   </div>
                   <div>
                     <Label htmlFor="loan_category">Loan Category</Label>
-                    <Select value={formData.loan_category || ''} onValueChange={(value) => setFormData({...formData, loan_category: value})}>
+                    <Select value={formData.loan_category || ''} onValueChange={(value) => setFormData({ ...formData, loan_category: value })}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select category" />
                       </SelectTrigger>
@@ -355,7 +355,7 @@ function LoanManagementContent() {
                       id="release_date"
                       type="date"
                       value={formData.release_date || ''}
-                      onChange={(e) => setFormData({...formData, release_date: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, release_date: e.target.value })}
                       required
                     />
                   </div>
@@ -388,7 +388,7 @@ function LoanManagementContent() {
                       id="principal_amount"
                       type="number"
                       value={formData.principal_amount || 0}
-                      onChange={(e) => setFormData({...formData, principal_amount: parseFloat(e.target.value) || 0})}
+                      onChange={(e) => setFormData({ ...formData, principal_amount: parseFloat(e.target.value) || 0 })}
                       min="0"
                       step="1000"
                       required
@@ -400,7 +400,7 @@ function LoanManagementContent() {
                       id="interest_rate"
                       type="number"
                       value={formData.interest_rate || 0}
-                      onChange={(e) => setFormData({...formData, interest_rate: parseFloat(e.target.value) || 0})}
+                      onChange={(e) => setFormData({ ...formData, interest_rate: parseFloat(e.target.value) || 0 })}
                       min="0"
                       step="0.01"
                       className="bg-gray-100"
@@ -465,7 +465,7 @@ function LoanManagementContent() {
                       id="life_insurance"
                       type="number"
                       value={formData.life_insurance || 0}
-                      onChange={(e) => setFormData({...formData, life_insurance: parseFloat(e.target.value) || 0})}
+                      onChange={(e) => setFormData({ ...formData, life_insurance: parseFloat(e.target.value) || 0 })}
                       min="0"
                       step="10"
                     />
@@ -476,14 +476,14 @@ function LoanManagementContent() {
                       id="service_fee"
                       type="number"
                       value={formData.service_fee || 0}
-                      onChange={(e) => setFormData({...formData, service_fee: parseFloat(e.target.value) || 0})}
+                      onChange={(e) => setFormData({ ...formData, service_fee: parseFloat(e.target.value) || 0 })}
                       min="0"
                       step="10"
                     />
                   </div>
                   <div>
                     <Label htmlFor="approval_status">Approval Status</Label>
-                    <Select value={formData.approval_status || 'Pending'} onValueChange={(value) => setFormData({...formData, approval_status: value})}>
+                    <Select value={formData.approval_status || 'Pending'} onValueChange={(value) => setFormData({ ...formData, approval_status: value })}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select approval status" />
                       </SelectTrigger>
@@ -497,7 +497,7 @@ function LoanManagementContent() {
                   </div>
                   <div>
                     <Label htmlFor="loan_status">Loan Status</Label>
-                    <Select value={formData.loan_status || ''} onValueChange={(value) => setFormData({...formData, loan_status: value})}>
+                    <Select value={formData.loan_status || ''} onValueChange={(value) => setFormData({ ...formData, loan_status: value })}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select status" />
                       </SelectTrigger>
@@ -557,8 +557,8 @@ function LoanManagementContent() {
                   <p className="font-semibold text-white">{user?.fullName}</p>
                   <p className="text-xs text-cyan-300">{user?.userLevel}</p>
                 </div>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="sm"
                   onClick={logout}
                   className="bg-white/10 border-white/20 text-white hover:bg-red-500/20 hover:border-red-400 transition-all duration-200"
@@ -589,7 +589,7 @@ function LoanManagementContent() {
                 />
               </div>
             </div>
-            <Button 
+            <Button
               onClick={handleAddLoan}
               className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 group flex items-center gap-2"
             >
@@ -646,46 +646,45 @@ function LoanManagementContent() {
                         <td className="p-3 text-gray-900">{formatDate(loan.release_date)}</td>
                         <td className="p-3 text-gray-900">{formatDate(loan.maturity_date)}</td>
                         <td className="p-3">
-                          <span className={`px-2 py-1 rounded-full text-xs ${
-                            loan.approval_status === 'Approved' ? 'bg-green-100 text-green-800' :
-                            loan.approval_status === 'Rejected' ? 'bg-red-100 text-red-800' :
-                            loan.approval_status === 'Under Review' ? 'bg-yellow-100 text-yellow-800' :
-                            'bg-gray-100 text-gray-800'
-                          }`}>
+                          <span className={`px-2 py-1 rounded-full text-xs ${loan.approval_status === 'Approved' ? 'bg-green-100 text-green-800' :
+                              loan.approval_status === 'Rejected' ? 'bg-red-100 text-red-800' :
+                                loan.approval_status === 'Under Review' ? 'bg-yellow-100 text-yellow-800' :
+                                  'bg-gray-100 text-gray-800'
+                            }`}>
                             {loan.approval_status || 'Pending'}
                           </span>
                         </td>
                         <td className="p-3">
-                          <span className={`px-2 py-1 rounded-full text-xs ${
-                            loan.disbursement_status === 'Disbursed' ? 'bg-green-100 text-green-800' :
-                            'bg-orange-100 text-orange-800'
-                          }`}>
+                          <span className={`px-2 py-1 rounded-full text-xs ${loan.disbursement_status === 'Disbursed' ? 'bg-green-100 text-green-800' :
+                              'bg-orange-100 text-orange-800'
+                            }`}>
                             {loan.disbursement_status || 'Pending'}
                           </span>
                         </td>
                         <td className="p-3">
-                          <span className={`px-2 py-1 rounded-full text-xs ${
-                            loan.loan_status === 'Good' ? 'bg-green-100 text-green-800' :
-                            loan.loan_status === 'Past Due' ? 'bg-red-100 text-red-800' :
-                            loan.loan_status === 'Full Paid' ? 'bg-blue-100 text-blue-800' :
-                            'bg-gray-100 text-gray-800'
-                          }`}>
+                          <span className={`px-2 py-1 rounded-full text-xs ${loan.loan_status === 'Good' ? 'bg-green-100 text-green-800' :
+                              loan.loan_status === 'Past Due' ? 'bg-red-100 text-red-800' :
+                                loan.loan_status === 'Full Paid' ? 'bg-blue-100 text-blue-800' :
+                                  'bg-gray-100 text-gray-800'
+                            }`}>
                             {loan.loan_status}
                           </span>
                         </td>
                         <td className="p-3">
                           <div className="flex gap-2">
-                            <Button 
-                              size="sm" 
+                            <Button
+                              size="sm"
                               variant="outline"
                               onClick={() => handleEditLoan(loan)}
+                              aria-label="Edit loan"
                             >
                               <Edit className="h-4 w-4" />
                             </Button>
-                            <Button 
-                              size="sm" 
+                            <Button
+                              size="sm"
                               variant="outline"
                               onClick={() => router.push(`/loans/${loan.id}/schedule`)}
+                              aria-label="View schedule"
                               title="View Amortization Schedule"
                             >
                               <Calendar className="h-4 w-4" />

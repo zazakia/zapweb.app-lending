@@ -1,0 +1,362 @@
+﻿node.exe : FAIL src/app/customers/__tests__/page.test.tsx
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (FAIL src/app/cu..._/page.test.tsx:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Customer Management Page
+    ΓêÜ renders customer list correctly (117 ms)
+    ΓêÜ searches for customers when typing in search box (59 ms)
+    ΓêÜ shows registration form when clicking Add Customer (315 ms)
+    ΓêÜ populates form when editing a customer (230 ms)
+    ├ù deletes customer after confirmation (65 ms)
+
+  ΓùÅ Customer Management Page ΓÇ║ deletes customer after confirmation
+
+    TestingLibraryElementError: Unable to find an element with the text: Delete. This could be because the text is broken up by multiple elements. In this case, you can 
+provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div>[39m
+          [36m<div>[39m
+            [36m<div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"mb-6"[39m
+              [36m>[39m
+                [36m<h1[39m
+                  [33mclass[39m=[32m"text-2xl font-bold text-gray-900"[39m
+                [36m>[39m
+                  [0mCustomer Management[0m
+                [36m</h1>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"text-gray-600"[39m
+                [36m>[39m
+                  [0mManage customer information and KYC data[0m
+                [36m</p>[39m
+              [36m</div>[39m
+              [36m<div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-8"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"flex justify-between items-center"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"flex items-center gap-4"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"relative"[39m
+                      [36m>[39m
+                        [36m<svg[39m
+                          [33maria-hidden[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"lucide lucide-search absolute left-3 top-3 h-4 w-4 text-gray-400"[39m
+                          [33mfill[39m=[32m"none"[39m
+                          [33mheight[39m=[32m"24"[39m
+                          [33mstroke[39m=[32m"currentColor"[39m
+                          [33mstroke-linecap[39m=[32m"round"[39m
+                          [33mstroke-linejoin[39m=[32m"round"[39m
+                          [33mstroke-width[39m=[32m"2"[39m
+                          [33mviewBox[39m=[32m"0 0 24 24"[39m
+                          [33mwidth[39m=[32m"24"[39m
+                          [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                        [36m>[39m
+                          [36m<path[39m
+                            [33md[39m=[32m"m21 21-4.34-4.34"[39m
+                          [36m/>[39m
+                          [36m<circle[39m
+                            [33mcx[39m=[32m"11"[39m
+                            [33mcy[39m=[32m"11"[39m
+                            [33mr[39m=[32m"8"[39m
+                          [36m/>[39m
+                        [36m</svg>[39m
+                        [36m<input[39m
+                          [33mclass[39m=[32m"flex h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 ring-offset-white file:border-0 
+file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 
+focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pl-10 w-64"[39m
+                          [33mplaceholder[39m=[32m"Search customers..."[39m
+                          [33mvalue[39m=[32m""[39m
+                        [36m/>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"justify-center whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 
+focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 bg-gradient-to-r from-indigo-600 to-purple-600 
+hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 group flex items-center gap-2"[39m
+                    [36m>[39m
+                      [36m<svg[39m
+                        [33maria-hidden[39m=[32m"true"[39m
+                        [33mclass[39m=[32m"lucide lucide-plus h-4 w-4"[39m
+                        [33mfill[39m=[32m"none"[39m
+                        [33mheight[39m=[32m"24"[39m
+                        [33mstroke[39m=[32m"currentColor"[39m
+                        [33mstroke-linecap[39m=[32m"round"[39m
+                        [33mstroke-linejoin[39m=[32m"round"[39m
+                        [33mstroke-width[39m=[32m"2"[39m
+                        [33mviewBox[39m=[32m"0 0 24 24"[39m
+                        [33mwidth[39m=[32m"24"[39m
+                        [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                      [36m>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M5 12h14"[39m
+                        [36m/>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M12 5v14"[39m
+                        [36m/>[39m
+                      [36m</svg>[39m
+                      [0mAdd Customer[0m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"rounded-lg border text-card-foreground bg-gradient-to-br from-slate-50 to-slate-100 border-slate-200 shadow-xl"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"flex flex-col space-y-1.5 p-6"[39m
+                  [36m>[39m
+                    [36m<h3[39m
+                      [33mclass[39m=[32m"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2 text-slate-800"[39m
+                    [36m>[39m
+                      [36m<svg[39m
+                        [33maria-hidden[39m=[32m"true"[39m
+                        [33mclass[39m=[32m"lucide lucide-users h-5 w-5 text-indigo-600"[39m
+                        [33mfill[39m=[32m"none"[39m
+                        [33mheight[39m=[32m"24"[39m
+                        [33mstroke[39m=[32m"currentColor"[39m
+                        [33mstroke-linecap[39m=[32m"round"[39m
+                        [33mstroke-linejoin[39m=[32m"round"[39m
+                        [33mstroke-width[39m=[32m"2"[39m
+                        [33mviewBox[39m=[32m"0 0 24 24"[39m
+                        [33mwidth[39m=[32m"24"[39m
+                        [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                      [36m>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                        [36m/>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M16 3.128a4 4 0 0 1 0 7.744"[39m
+                        [36m/>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M22 21v-2a4 4 0 0 0-3-3.87"[39m
+                        [36m/>[39m
+                        [36m<circle[39m
+                          [33mcx[39m=[32m"9"[39m
+                          [33mcy[39m=[32m"7"[39m
+                          [33mr[39m=[32m"4"[39m
+                        [36m/>[39m
+                      [36m</svg>[39m
+                      [0mCustomer List[0m
+                    [36m</h3>[39m
+                    [36m<p[39m
+                      [33mclass[39m=[32m"text-sm text-slate-600"[39m
+                    [36m>[39m
+                      [0mTotal customers: [0m
+                      [0m1[0m
+                    [36m</p>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"p-6 pt-0"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"overflow-x-auto"[39m
+                    [36m>[39m
+                      [36m<table[39m
+                        [33mclass[39m=[32m"w-full text-sm"[39m
+                      [36m>[39m
+                        [36m<thead>[39m
+                          [36m<tr[39m
+                            [33mclass[39m=[32m"border-b bg-gray-100"[39m
+                          [36m>[39m
+                            [36m<th[39m
+                              [33mclass[39m=[32m"text-left p-3 font-semibold text-gray-900"[39m
+                            [36m>[39m
+                              [0mCustomer Code[0m
+                            [36m</th>[39m
+                            [36m<th[39m
+                              [33mclass[39m=[32m"text-left p-3 font-semibold text-gray-900"[39m
+                            [36m>[39m
+                              [0mName[0m
+                            [36m</th>[39m
+                            [36m<th[39m
+                              [33mclass[39m=[32m"text-left p-3 font-semibold text-gray-900"[39m
+                            [36m>[39m
+                              [0mPhone[0m
+                            [36m</th>[39m
+                            [36m<th[39m
+                              [33mclass[39m=[32m"text-left p-3 font-semibold text-gray-900"[39m
+                            [36m>[39m
+                              [0mAddress[0m
+                            [36m</th>[39m
+                            [36m<th[39m
+                              [33mclass[39m=[32m"text-left p-3 font-semibold text-gray-900"[39m
+                            [36m>[39m
+                              [0mCredit Score[0m
+                            [36m</th>[39m
+                            [36m<th[39m
+                              [33mclass[39m=[32m"text-left p-3 font-semibold text-gray-900"[39m
+                            [36m>[39m
+                              [0mStatus[0m
+                            [36m</th>[39m
+                            [36m<th[39m
+                              [33mclass[39m=[32m"text-left p-3 font-semibold text-gray-900"[39m
+                            [36m>[39m
+                              [0mActions[0m
+                            [36m</th>[39m
+                          [36m</tr>[39m
+                        [36m</thead>[39m
+                        [36m<tbody>[39m
+                          [36m<tr[39m
+                            [33mclass[39m=[32m"border-b hover:bg-gray-50"[39m
+                          [36m>[39m
+                            [36m<td[39m
+                              [33mclass[39m=[32m"p-3 font-medium text-gray-900"[39m
+                            [36m>[39m
+                              [0mCUS001[0m
+                            [36m</td>[39m
+                            [36m<td[39m
+                              [33mclass[39m=[32m"p-3 text-gray-900"[39m
+                            [36m>[39m
+                              [0mJuan[0m
+                              [0m [0m
+                              [0m [0m
+                              [0mDela Cruz[0m
+                            [36m</td>[39m
+                            [36m<td[39m
+                              [33mclass[39m=[32m"p-3 text-gray-900"[39m
+                            [36m>[39m
+                              [0m09123456789[0m
+                            [36m</td>[39m
+                            [36m<td[39m
+                              [33mclass[39m=[32m"p-3 text-gray-900"[39m
+                            [36m>[39m
+                              [0mManila[0m
+                            [36m</td>[39m
+                            [36m<td[39m
+                              [33mclass[39m=[32m"p-3"[39m
+                            [36m>[39m
+                              [36m<span[39m
+                                [33mclass[39m=[32m"px-2 py-1 rounded-full text-xs bg-green-100 text-green-800"[39m
+                              [36m>[39m
+                                [0m95[0m
+                              [36m</span>[39m
+                            [36m</td>[39m
+                            [36m<td[39m
+                              [33mclass[39m=[32m"p-3"[39m
+                            [36m>[39m
+                              [36m<span[39m
+                                [33mclass[39m=[32m"px-2 py-1 rounded-full text-xs bg-green-100 text-green-800"[39m
+                              [36m>[39m
+                                [0mActive[0m
+                              [36m</span>[39m
+                            [36m</td>[39m
+                            [36m<td[39m
+                              [33mclass[39m=[32m"p-3"[39m
+                            [36m>[39m
+                              [36m<div[39m
+                                [33mclass[39m=[32m"flex gap-2"[39m
+                              [36m>[39m
+                                [36m<button[39m
+                                  [33maria-label[39m=[32m"Edit customer"[39m
+                                  [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors 
+focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input 
+bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"[39m
+                                [36m>[39m
+                                  [36m<svg[39m
+                                    [33maria-hidden[39m=[32m"true"[39m
+                                    [33mclass[39m=[32m"lucide lucide-square-pen h-4 w-4"[39m
+                                    [33mfill[39m=[32m"none"[39m
+                                    [33mheight[39m=[32m"24"[39m
+                                    [33mstroke[39m=[32m"currentColor"[39m
+                                    [33mstroke-linecap[39m=[32m"round"[39m
+                                    [33mstroke-linejoin[39m=[32m"round"[39m
+                                    [33mstroke-width[39m=[32m"2"[39m
+                                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                                    [33mwidth[39m=[32m"24"[39m
+                                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                                  [36m>[39m
+                                    [36m<path[39m
+                                      [33md[39m=[32m"M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"[39m
+                                    [36m/>[39m
+                                    [36m<path[39m
+                                      [33md[39m=[32m"M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 
+.506-.852z"[39m
+                                    [36m/>[39m
+                                  [36m</svg>[39m
+                                [36m</button>[39m
+                                [36m<button[39m
+                                  [33maria-expanded[39m=[32m"false"[39m
+                                  [33maria-haspopup[39m=[32m"menu"[39m
+                                  [33maria-label[39m=[32m"More actions"[39m
+                                  [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors 
+focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input 
+bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"[39m
+                                  [33mdata-state[39m=[32m"closed"[39m
+                                  [33mid[39m=[32m"radix-┬½r2m┬╗"[39m
+                                  [33mtype[39m=[32m"button"[39m
+                                [36m>[39m
+                                  [36m<svg[39m
+                                    [33maria-hidden[39m=[32m"true"[39m
+                                    [33mclass[39m=[32m"lucide lucide-ellipsis h-4 w-4"[39m
+                                    [33mfill[39m=[32m"none"[39m
+                                    [33mheight[39m=[32m"24"[39m
+                                    [33mstroke[39m=[32m"currentColor"[39m
+                                    [33mstroke-linecap[39m=[32m"round"[39m
+                                    [33mstroke-linejoin[39m=[32m"round"[39m
+                                    [33mstroke-width[39m=[32m"2"[39m
+                                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                                    [33mwidth[39m=[32m"24"[39m
+                                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                                  [36m>[39m
+                                    [36m<circle[39m
+                                      [33mcx[39m=[32m"12"[39m
+                                      [33mcy[39m=[32m"12"[39m
+                                      [33mr[39m=[32m"1"[39m
+                                    [36m/>[39m
+                                    [36m<circle[39m
+                                      [33mcx[39m=[32m"19"[39m
+                                      [33mcy[39m=[32m"12"[39m
+                                      [33mr[39m=[32m"1"[39m
+                                    [36m/>[39m
+                                    [36m<circle[39m
+                                      [33mcx[39m=[32m"5"[39m
+                                      [33mcy[39m=[32m"12"[39m
+                                      [33mr[39m=[32m"1"[39m
+                                    [36m/>[39m
+                                  [36m</svg>[39m
+                                [36m</button>[39m
+                              [36m</div>[39m
+                            [36m</td>[39m
+                          [36m</tr>[39m
+                        [36m</tbody>[39m
+                      [36m</table>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+    [0m [90m 124 |[39m         })
+     [90m 125 |[39m
+    [31m[1m>[22m[39m[90m 126 |[39m         [36mconst[39m deleteItem [33m=[39m screen[33m.[39mgetByText([32m'Delete'[39m)
+     [90m     |[39m                                   [31m[1m^[22m[39m
+     [90m 127 |[39m
+     [90m 128 |[39m         [36mawait[39m act([36masync[39m () [33m=>[39m {
+     [90m 129 |[39m             fireEvent[33m.[39mclick(deleteItem)[0m
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+      at Object.getByText (src/app/customers/__tests__/page.test.tsx:126:35)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 4 passed, 5 total
+Snapshots:   0 total
+Time:        3.48 s
+Ran all test suites matching src/app/customers/__tests__/page.test.tsx.

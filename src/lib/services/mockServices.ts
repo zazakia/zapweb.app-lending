@@ -129,9 +129,14 @@ export const mockCustomerService = {
     return mockCustomers.find(c => c.id === id) || null
   },
 
+  async getCustomersCount(): Promise<number> {
+    await delay(200)
+    return mockCustomers.length
+  },
+
   async searchCustomers(searchTerm: string): Promise<Customer[]> {
     await delay(300)
-    return mockCustomers.filter(c => 
+    return mockCustomers.filter(c =>
       c.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       c.last_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       c.customer_code.toLowerCase().includes(searchTerm.toLowerCase())
@@ -154,7 +159,7 @@ export const mockCustomerService = {
     await delay(800)
     const index = mockCustomers.findIndex(c => c.id === id)
     if (index === -1) throw new Error('Customer not found')
-    
+
     mockCustomers[index] = { ...mockCustomers[index], ...updates, updated_at: new Date().toISOString() }
     return mockCustomers[index]
   },
@@ -203,7 +208,7 @@ export const mockLoanService = {
     await delay(300)
     const loan = mockLoans.find(l => l.id === id)
     if (!loan) return null
-    
+
     return {
       ...loan,
       customers: mockCustomers.find(c => c.id === loan.customer_id),
@@ -227,7 +232,7 @@ export const mockLoanService = {
     await delay(800)
     const index = mockLoans.findIndex(l => l.id === id)
     if (index === -1) throw new Error('Loan not found')
-    
+
     mockLoans[index] = { ...mockLoans[index], ...updates, updated_at: new Date().toISOString() }
     return mockLoans[index]
   },
@@ -247,14 +252,14 @@ export const mockLoanService = {
     return maturity.toISOString().split('T')[0]
   },
 
-  async createAmortizationSchedule(): Promise<any[]> {
+  async createAmortizationSchedule(loanId: string, loan: Loan): Promise<any[]> {
     await delay(300)
     return []
   },
 
   async searchLoans(searchTerm: string): Promise<Loan[]> {
     await delay(300)
-    return mockLoans.filter(l => 
+    return mockLoans.filter(l =>
       l.loan_code.toLowerCase().includes(searchTerm.toLowerCase())
     ).map(loan => ({
       ...loan,
@@ -310,7 +315,7 @@ export const mockPaymentService = {
 
   async processPayment(paymentData: any): Promise<{ payment: Payment, updatedLoan: any }> {
     await delay(1000)
-    
+
     const newPayment: Payment = {
       id: (mockPayments.length + 1).toString(),
       payment_id: `PAY${(mockPayments.length + 1).toString().padStart(6, '0')}`,
@@ -326,9 +331,9 @@ export const mockPaymentService = {
       payment_status: 'Active',
       created_at: new Date().toISOString()
     }
-    
+
     mockPayments.push(newPayment)
-    
+
     // Update loan balance
     const loanIndex = mockLoans.findIndex(l => l.id === paymentData.loanId)
     if (loanIndex !== -1) {
@@ -337,13 +342,13 @@ export const mockPaymentService = {
         mockLoans[loanIndex].loan_status = 'Full Paid'
       }
     }
-    
+
     return { payment: newPayment, updatedLoan: mockLoans[loanIndex] }
   },
 
   async searchPayments(searchTerm: string): Promise<Payment[]> {
     await delay(300)
-    return mockPayments.filter(p => 
+    return mockPayments.filter(p =>
       p.payment_id.toLowerCase().includes(searchTerm.toLowerCase())
     ).map(payment => ({
       ...payment,
@@ -352,10 +357,6 @@ export const mockPaymentService = {
     })) as any
   },
 
-  async reversePayment(): Promise<void> {
-    await delay(500)
-    // Mock implementation
-  },
 
   async generatePaymentId(): Promise<string> {
     await delay(200)
@@ -366,7 +367,7 @@ export const mockPaymentService = {
     await delay(300)
     const payment = mockPayments.find(p => p.id === id)
     if (!payment) return null
-    
+
     return {
       ...payment,
       loans: mockLoans.find(l => l.id === payment.loan_id),
@@ -408,7 +409,7 @@ export const mockPaymentService = {
     await delay(800)
     const index = mockPayments.findIndex(p => p.id === id)
     if (index === -1) throw new Error('Payment not found')
-    
+
     mockPayments[index] = { ...mockPayments[index], ...updates, updated_at: new Date().toISOString() }
     return mockPayments[index]
   },
@@ -427,7 +428,7 @@ export const mockPaymentService = {
   async getPaymentSummary() {
     await delay(300)
     const today = new Date().toISOString().split('T')[0]
-    
+
     return {
       totalPayments: mockPayments.length,
       totalAmount: mockPayments.reduce((sum, p) => sum + p.payment_amount, 0),
@@ -441,7 +442,7 @@ export const mockPaymentService = {
   async getDailyCollectionReport(date: string) {
     await delay(300)
     const dayPayments = mockPayments.filter(p => p.payment_date === date)
-    
+
     return {
       date,
       payments: dayPayments.map(payment => ({

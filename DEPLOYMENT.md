@@ -100,8 +100,15 @@ npm run deploy:vercel
 
 ### Vercel
 - Optimized for Next.js applications
-- Zero-config deployment
-- Environment variables managed via Vercel dashboard
+- Zero-config deployment (or using `vercel.json`)
+- Environment variables managed via Vercel dashboard:
+  1. Go to Project Settings > Environment Variables
+  2. Add `NEXT_PUBLIC_SUPABASE_URL`
+  3. Add `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- Manual deployment via CLI:
+  ```bash
+  vercel --prod
+  ```
 
 ## 🚨 Troubleshooting
 

@@ -1,0 +1,182 @@
+﻿node.exe : FAIL src/hooks/__tests__/usePerformanceOptimizations.test.ts
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (FAIL src/hooks/...zations.test.ts:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  usePerformanceOptimizations
+    ├ù preloads critical routes after a delay (22 ms)
+    ├ù handles keyboard shortcuts (4 ms)
+    ├ù disables preloading on slow connections (3 ms)
+    ├ù performs idle optimizations (3 ms)
+    useWebVitalsOptimizations
+      ΓêÜ appends preload links to head (4 ms)
+    useMemoryOptimizations
+      ΓêÜ clears caches on cleanup (2 ms)
+
+  ΓùÅ usePerformanceOptimizations ΓÇ║ preloads critical routes after a delay
+
+    TypeError: window.cancelIdleCallback is not a function
+
+    [0m [90m  98 |[39m       })
+     [90m  99 |[39m
+    [31m[1m>[22m[39m[90m 100 |[39m       [36mreturn[39m () [33m=>[39m window[33m.[39mcancelIdleCallback(idleCallback)
+     [90m     |[39m                           [31m[1m^[22m[39m
+     [90m 101 |[39m     }
+     [90m 102 |[39m   }[33m,[39m [])
+     [90m 103 |[39m[0m
+
+      at cancelIdleCallback (src/hooks/usePerformanceOptimizations.ts:100:27)
+      at Object.react-stack-bottom-frame (node_modules/react-dom/cjs/react-dom-client.development.js:23961:13)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at commitHookEffectListUnmount (node_modules/react-dom/cjs/react-dom-client.development.js:11996:17)
+      at commitHookPassiveUnmountEffects (node_modules/react-dom/cjs/react-dom-client.development.js:12043:11)
+      at commitPassiveUnmountEffectsInsideOfDeletedTree_begin (node_modules/react-dom/cjs/react-dom-client.development.js:14269:13)
+      at recursivelyTraversePassiveUnmountEffects (node_modules/react-dom/cjs/react-dom-client.development.js:14167:13)
+      at commitPassiveUnmountOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14194:11)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15736:9)
+      at flushPendingEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15702:14)
+      at flushSpawnedWork (node_modules/react-dom/cjs/react-dom-client.development.js:15668:44)
+      at commitRoot (node_modules/react-dom/cjs/react-dom-client.development.js:15403:9)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:14526:15)
+      at performSyncWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16231:7)
+      at flushSyncWorkAcrossRoots_impl (node_modules/react-dom/cjs/react-dom-client.development.js:16079:21)
+      at flushSyncWork$1 (node_modules/react-dom/cjs/react-dom-client.development.js:14721:12)
+      at ReactDOMRoot.process.env.NODE_ENV.ReactDOMHydrationRoot.unmount.ReactDOMRoot.unmount [as unmount] 
+(node_modules/react-dom/cjs/react-dom-client.development.js:24774:11)
+      at Object.unmount (node_modules/@testing-library/react/dist/pure.js:164:12)
+      at node_modules/@testing-library/react/dist/pure.js:308:12
+      at node_modules/@testing-library/react/dist/act-compat.js:48:24
+      at process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:789:22)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at node_modules/@testing-library/react/dist/pure.js:307:28
+          at Array.forEach (<anonymous>)
+      at cleanup (node_modules/@testing-library/react/dist/pure.js:303:22)
+      at Object.<anonymous> (node_modules/@testing-library/react/dist/index.js:28:25)
+
+  ΓùÅ usePerformanceOptimizations ΓÇ║ handles keyboard shortcuts
+
+    TypeError: window.cancelIdleCallback is not a function
+
+    [0m [90m  98 |[39m       })
+     [90m  99 |[39m
+    [31m[1m>[22m[39m[90m 100 |[39m       [36mreturn[39m () [33m=>[39m window[33m.[39mcancelIdleCallback(idleCallback)
+     [90m     |[39m                           [31m[1m^[22m[39m
+     [90m 101 |[39m     }
+     [90m 102 |[39m   }[33m,[39m [])
+     [90m 103 |[39m[0m
+
+      at cancelIdleCallback (src/hooks/usePerformanceOptimizations.ts:100:27)
+      at Object.react-stack-bottom-frame (node_modules/react-dom/cjs/react-dom-client.development.js:23961:13)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at commitHookEffectListUnmount (node_modules/react-dom/cjs/react-dom-client.development.js:11996:17)
+      at commitHookPassiveUnmountEffects (node_modules/react-dom/cjs/react-dom-client.development.js:12043:11)
+      at commitPassiveUnmountEffectsInsideOfDeletedTree_begin (node_modules/react-dom/cjs/react-dom-client.development.js:14269:13)
+      at recursivelyTraversePassiveUnmountEffects (node_modules/react-dom/cjs/react-dom-client.development.js:14167:13)
+      at commitPassiveUnmountOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14194:11)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15736:9)
+      at flushPendingEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15702:14)
+      at flushSpawnedWork (node_modules/react-dom/cjs/react-dom-client.development.js:15668:44)
+      at commitRoot (node_modules/react-dom/cjs/react-dom-client.development.js:15403:9)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:14526:15)
+      at performSyncWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16231:7)
+      at flushSyncWorkAcrossRoots_impl (node_modules/react-dom/cjs/react-dom-client.development.js:16079:21)
+      at flushSyncWork$1 (node_modules/react-dom/cjs/react-dom-client.development.js:14721:12)
+      at ReactDOMRoot.process.env.NODE_ENV.ReactDOMHydrationRoot.unmount.ReactDOMRoot.unmount [as unmount] 
+(node_modules/react-dom/cjs/react-dom-client.development.js:24774:11)
+      at Object.unmount (node_modules/@testing-library/react/dist/pure.js:164:12)
+      at node_modules/@testing-library/react/dist/pure.js:308:12
+      at node_modules/@testing-library/react/dist/act-compat.js:48:24
+      at process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:789:22)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at node_modules/@testing-library/react/dist/pure.js:307:28
+          at Array.forEach (<anonymous>)
+      at cleanup (node_modules/@testing-library/react/dist/pure.js:303:22)
+      at Object.<anonymous> (node_modules/@testing-library/react/dist/index.js:28:25)
+
+  ΓùÅ usePerformanceOptimizations ΓÇ║ disables preloading on slow connections
+
+    TypeError: window.cancelIdleCallback is not a function
+
+    [0m [90m  98 |[39m       })
+     [90m  99 |[39m
+    [31m[1m>[22m[39m[90m 100 |[39m       [36mreturn[39m () [33m=>[39m window[33m.[39mcancelIdleCallback(idleCallback)
+     [90m     |[39m                           [31m[1m^[22m[39m
+     [90m 101 |[39m     }
+     [90m 102 |[39m   }[33m,[39m [])
+     [90m 103 |[39m[0m
+
+      at cancelIdleCallback (src/hooks/usePerformanceOptimizations.ts:100:27)
+      at Object.react-stack-bottom-frame (node_modules/react-dom/cjs/react-dom-client.development.js:23961:13)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at commitHookEffectListUnmount (node_modules/react-dom/cjs/react-dom-client.development.js:11996:17)
+      at commitHookPassiveUnmountEffects (node_modules/react-dom/cjs/react-dom-client.development.js:12043:11)
+      at commitPassiveUnmountEffectsInsideOfDeletedTree_begin (node_modules/react-dom/cjs/react-dom-client.development.js:14269:13)
+      at recursivelyTraversePassiveUnmountEffects (node_modules/react-dom/cjs/react-dom-client.development.js:14167:13)
+      at commitPassiveUnmountOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14194:11)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15736:9)
+      at flushPendingEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15702:14)
+      at flushSpawnedWork (node_modules/react-dom/cjs/react-dom-client.development.js:15668:44)
+      at commitRoot (node_modules/react-dom/cjs/react-dom-client.development.js:15403:9)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:14526:15)
+      at performSyncWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16231:7)
+      at flushSyncWorkAcrossRoots_impl (node_modules/react-dom/cjs/react-dom-client.development.js:16079:21)
+      at flushSyncWork$1 (node_modules/react-dom/cjs/react-dom-client.development.js:14721:12)
+      at ReactDOMRoot.process.env.NODE_ENV.ReactDOMHydrationRoot.unmount.ReactDOMRoot.unmount [as unmount] 
+(node_modules/react-dom/cjs/react-dom-client.development.js:24774:11)
+      at Object.unmount (node_modules/@testing-library/react/dist/pure.js:164:12)
+      at node_modules/@testing-library/react/dist/pure.js:308:12
+      at node_modules/@testing-library/react/dist/act-compat.js:48:24
+      at process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:789:22)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at node_modules/@testing-library/react/dist/pure.js:307:28
+          at Array.forEach (<anonymous>)
+      at cleanup (node_modules/@testing-library/react/dist/pure.js:303:22)
+      at Object.<anonymous> (node_modules/@testing-library/react/dist/index.js:28:25)
+
+  ΓùÅ usePerformanceOptimizations ΓÇ║ performs idle optimizations
+
+    TypeError: window.cancelIdleCallback is not a function
+
+    [0m [90m  98 |[39m       })
+     [90m  99 |[39m
+    [31m[1m>[22m[39m[90m 100 |[39m       [36mreturn[39m () [33m=>[39m window[33m.[39mcancelIdleCallback(idleCallback)
+     [90m     |[39m                           [31m[1m^[22m[39m
+     [90m 101 |[39m     }
+     [90m 102 |[39m   }[33m,[39m [])
+     [90m 103 |[39m[0m
+
+      at cancelIdleCallback (src/hooks/usePerformanceOptimizations.ts:100:27)
+      at Object.react-stack-bottom-frame (node_modules/react-dom/cjs/react-dom-client.development.js:23961:13)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at commitHookEffectListUnmount (node_modules/react-dom/cjs/react-dom-client.development.js:11996:17)
+      at commitHookPassiveUnmountEffects (node_modules/react-dom/cjs/react-dom-client.development.js:12043:11)
+      at commitPassiveUnmountEffectsInsideOfDeletedTree_begin (node_modules/react-dom/cjs/react-dom-client.development.js:14269:13)
+      at recursivelyTraversePassiveUnmountEffects (node_modules/react-dom/cjs/react-dom-client.development.js:14167:13)
+      at commitPassiveUnmountOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14194:11)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15736:9)
+      at flushPendingEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15702:14)
+      at flushSpawnedWork (node_modules/react-dom/cjs/react-dom-client.development.js:15668:44)
+      at commitRoot (node_modules/react-dom/cjs/react-dom-client.development.js:15403:9)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:14526:15)
+      at performSyncWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16231:7)
+      at flushSyncWorkAcrossRoots_impl (node_modules/react-dom/cjs/react-dom-client.development.js:16079:21)
+      at flushSyncWork$1 (node_modules/react-dom/cjs/react-dom-client.development.js:14721:12)
+      at ReactDOMRoot.process.env.NODE_ENV.ReactDOMHydrationRoot.unmount.ReactDOMRoot.unmount [as unmount] 
+(node_modules/react-dom/cjs/react-dom-client.development.js:24774:11)
+      at Object.unmount (node_modules/@testing-library/react/dist/pure.js:164:12)
+      at node_modules/@testing-library/react/dist/pure.js:308:12
+      at node_modules/@testing-library/react/dist/act-compat.js:48:24
+      at process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:789:22)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at node_modules/@testing-library/react/dist/pure.js:307:28
+          at Array.forEach (<anonymous>)
+      at cleanup (node_modules/@testing-library/react/dist/pure.js:303:22)
+      at Object.<anonymous> (node_modules/@testing-library/react/dist/index.js:28:25)
+
+Test Suites: 1 failed, 1 total
+Tests:       4 failed, 2 passed, 6 total
+Snapshots:   0 total
+Time:        0.946 s
+Ran all test suites matching src/hooks/__tests__/usePerformanceOptimizations.test.ts.

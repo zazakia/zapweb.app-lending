@@ -11,11 +11,11 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import ProtectedRoute from '@/components/ProtectedRoute'
 import LayoutSwitcher from '@/components/LayoutSwitcher'
 import { useAuth } from '@/contexts/AuthContext'
-import { 
-  Users, 
-  Plus, 
-  Search, 
-  ArrowLeft, 
+import {
+  Users,
+  Plus,
+  Search,
+  ArrowLeft,
   Save,
   FileText,
   Phone,
@@ -75,7 +75,7 @@ function CustomerManagementContent() {
   const [searchTerm, setSearchTerm] = useState('')
   const [loading, setLoading] = useState(false)
   const [editingCustomer, setEditingCustomer] = useState<Customer | null>(null)
-  
+
   const [formData, setFormData] = useState<Partial<Customer>>({
     customer_code: '',
     first_name: '',
@@ -117,7 +117,7 @@ function CustomerManagementContent() {
   const loadCustomers = async () => {
     try {
       setLoading(true)
-      const customersData = searchTerm 
+      const customersData = searchTerm
         ? await customerService.searchCustomers(searchTerm)
         : await customerService.getCustomers()
       setCustomers(customersData)
@@ -189,10 +189,10 @@ function CustomerManagementContent() {
   }
 
   const handleStatusChange = async (id: string, newStatus: string) => {
-    const confirmMessage = newStatus === 'Blacklisted' 
+    const confirmMessage = newStatus === 'Blacklisted'
       ? 'Are you sure you want to blacklist this customer? This will prevent them from getting new loans.'
       : `Are you sure you want to change the customer status to ${newStatus}?`
-    
+
     if (confirm(confirmMessage)) {
       try {
         await customerService.updateCustomer(id, { status: newStatus })
@@ -206,7 +206,7 @@ function CustomerManagementContent() {
   const handleSaveCustomer = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    
+
     try {
       const customerData = {
         ...formData,
@@ -218,7 +218,7 @@ function CustomerManagementContent() {
       } else {
         await customerService.createCustomer(customerData)
       }
-      
+
       setFormData({
         customer_code: '',
         first_name: '',
@@ -304,7 +304,7 @@ function CustomerManagementContent() {
                     <Input
                       id="customer_code"
                       value={formData.customer_code || ''}
-                      onChange={(e) => setFormData({...formData, customer_code: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, customer_code: e.target.value })}
                       className="bg-gray-100"
                       readOnly
                     />
@@ -314,7 +314,7 @@ function CustomerManagementContent() {
                     <Input
                       id="first_name"
                       value={formData.first_name || ''}
-                      onChange={(e) => setFormData({...formData, first_name: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, first_name: e.target.value })}
                       required
                     />
                   </div>
@@ -323,7 +323,7 @@ function CustomerManagementContent() {
                     <Input
                       id="middle_name"
                       value={formData.middle_name || ''}
-                      onChange={(e) => setFormData({...formData, middle_name: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, middle_name: e.target.value })}
                     />
                   </div>
                   <div>
@@ -331,7 +331,7 @@ function CustomerManagementContent() {
                     <Input
                       id="last_name"
                       value={formData.last_name || ''}
-                      onChange={(e) => setFormData({...formData, last_name: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, last_name: e.target.value })}
                       required
                     />
                   </div>
@@ -341,12 +341,12 @@ function CustomerManagementContent() {
                       id="date_of_birth"
                       type="date"
                       value={formData.date_of_birth || ''}
-                      onChange={(e) => setFormData({...formData, date_of_birth: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, date_of_birth: e.target.value })}
                     />
                   </div>
                   <div>
                     <Label htmlFor="gender">Gender</Label>
-                    <Select value={formData.gender || ''} onValueChange={(value) => setFormData({...formData, gender: value})}>
+                    <Select value={formData.gender || ''} onValueChange={(value) => setFormData({ ...formData, gender: value })}>
                       <SelectTrigger className="bg-white text-gray-900">
                         <SelectValue placeholder="Select gender" className="text-gray-900" />
                       </SelectTrigger>
@@ -359,7 +359,7 @@ function CustomerManagementContent() {
                   </div>
                   <div>
                     <Label htmlFor="civil_status">Civil Status</Label>
-                    <Select value={formData.civil_status || ''} onValueChange={(value) => setFormData({...formData, civil_status: value})}>
+                    <Select value={formData.civil_status || ''} onValueChange={(value) => setFormData({ ...formData, civil_status: value })}>
                       <SelectTrigger className="bg-white text-gray-900">
                         <SelectValue placeholder="Select civil status" className="text-gray-900" />
                       </SelectTrigger>
@@ -375,7 +375,7 @@ function CustomerManagementContent() {
                     <Input
                       id="address"
                       value={formData.address || ''}
-                      onChange={(e) => setFormData({...formData, address: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                     />
                   </div>
                   <div>
@@ -383,7 +383,7 @@ function CustomerManagementContent() {
                     <Input
                       id="phone"
                       value={formData.phone || ''}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="09XXXXXXXXX"
                     />
                   </div>
@@ -393,7 +393,7 @@ function CustomerManagementContent() {
                       id="email"
                       type="email"
                       value={formData.email || ''}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
                   </div>
                 </CardContent>
@@ -413,7 +413,7 @@ function CustomerManagementContent() {
                     <Input
                       id="occupation"
                       value={formData.occupation || ''}
-                      onChange={(e) => setFormData({...formData, occupation: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, occupation: e.target.value })}
                     />
                   </div>
                   <div>
@@ -421,7 +421,7 @@ function CustomerManagementContent() {
                     <Input
                       id="employer"
                       value={formData.employer || ''}
-                      onChange={(e) => setFormData({...formData, employer: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, employer: e.target.value })}
                     />
                   </div>
                   <div>
@@ -430,7 +430,7 @@ function CustomerManagementContent() {
                       id="monthly_income"
                       type="number"
                       value={formData.monthly_income || 0}
-                      onChange={(e) => setFormData({...formData, monthly_income: parseFloat(e.target.value) || 0})}
+                      onChange={(e) => setFormData({ ...formData, monthly_income: parseFloat(e.target.value) || 0 })}
                       min="0"
                       step="1000"
                     />
@@ -455,7 +455,7 @@ function CustomerManagementContent() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <Label htmlFor="id1_type">ID Type <span className="text-red-500">*</span></Label>
-                          <Select value={formData.id1_type || ''} onValueChange={(value) => setFormData({...formData, id1_type: value})}>
+                          <Select value={formData.id1_type || ''} onValueChange={(value) => setFormData({ ...formData, id1_type: value })}>
                             <SelectTrigger>
                               <SelectValue placeholder="Select ID type" />
                             </SelectTrigger>
@@ -471,7 +471,7 @@ function CustomerManagementContent() {
                           <Input
                             id="id1_number"
                             value={formData.id1_number || ''}
-                            onChange={(e) => setFormData({...formData, id1_number: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, id1_number: e.target.value })}
                             required
                           />
                         </div>
@@ -480,7 +480,7 @@ function CustomerManagementContent() {
                           <Input
                             id="id1_issued_by"
                             value={formData.id1_issued_by || ''}
-                            onChange={(e) => setFormData({...formData, id1_issued_by: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, id1_issued_by: e.target.value })}
                           />
                         </div>
                         <div>
@@ -489,7 +489,7 @@ function CustomerManagementContent() {
                             id="id1_expiry_date"
                             type="date"
                             value={formData.id1_expiry_date || ''}
-                            onChange={(e) => setFormData({...formData, id1_expiry_date: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, id1_expiry_date: e.target.value })}
                           />
                         </div>
                       </div>
@@ -501,7 +501,7 @@ function CustomerManagementContent() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <Label htmlFor="id2_type">ID Type</Label>
-                          <Select value={formData.id2_type || ''} onValueChange={(value) => setFormData({...formData, id2_type: value})}>
+                          <Select value={formData.id2_type || ''} onValueChange={(value) => setFormData({ ...formData, id2_type: value })}>
                             <SelectTrigger>
                               <SelectValue placeholder="Select ID type" />
                             </SelectTrigger>
@@ -517,7 +517,7 @@ function CustomerManagementContent() {
                           <Input
                             id="id2_number"
                             value={formData.id2_number || ''}
-                            onChange={(e) => setFormData({...formData, id2_number: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, id2_number: e.target.value })}
                           />
                         </div>
                         <div>
@@ -525,7 +525,7 @@ function CustomerManagementContent() {
                           <Input
                             id="id2_issued_by"
                             value={formData.id2_issued_by || ''}
-                            onChange={(e) => setFormData({...formData, id2_issued_by: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, id2_issued_by: e.target.value })}
                           />
                         </div>
                         <div>
@@ -534,7 +534,7 @@ function CustomerManagementContent() {
                             id="id2_expiry_date"
                             type="date"
                             value={formData.id2_expiry_date || ''}
-                            onChange={(e) => setFormData({...formData, id2_expiry_date: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, id2_expiry_date: e.target.value })}
                           />
                         </div>
                       </div>
@@ -557,7 +557,7 @@ function CustomerManagementContent() {
                     <Input
                       id="emergency_contact_name"
                       value={formData.emergency_contact_name || ''}
-                      onChange={(e) => setFormData({...formData, emergency_contact_name: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, emergency_contact_name: e.target.value })}
                     />
                   </div>
                   <div>
@@ -565,7 +565,7 @@ function CustomerManagementContent() {
                     <Input
                       id="emergency_contact_phone"
                       value={formData.emergency_contact_phone || ''}
-                      onChange={(e) => setFormData({...formData, emergency_contact_phone: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, emergency_contact_phone: e.target.value })}
                     />
                   </div>
                   <div>
@@ -573,7 +573,7 @@ function CustomerManagementContent() {
                     <Input
                       id="emergency_contact_relationship"
                       value={formData.emergency_contact_relationship || ''}
-                      onChange={(e) => setFormData({...formData, emergency_contact_relationship: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, emergency_contact_relationship: e.target.value })}
                     />
                   </div>
                   <div>
@@ -581,7 +581,7 @@ function CustomerManagementContent() {
                     <Input
                       id="collateral_description"
                       value={formData.collateral_description || ''}
-                      onChange={(e) => setFormData({...formData, collateral_description: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, collateral_description: e.target.value })}
                     />
                   </div>
                   <div>
@@ -590,7 +590,7 @@ function CustomerManagementContent() {
                       id="collateral_value"
                       type="number"
                       value={formData.collateral_value || 0}
-                      onChange={(e) => setFormData({...formData, collateral_value: parseFloat(e.target.value) || 0})}
+                      onChange={(e) => setFormData({ ...formData, collateral_value: parseFloat(e.target.value) || 0 })}
                       min="0"
                       step="1000"
                     />
@@ -600,13 +600,13 @@ function CustomerManagementContent() {
                     <Input
                       id="loan_purpose"
                       value={formData.loan_purpose || ''}
-                      onChange={(e) => setFormData({...formData, loan_purpose: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, loan_purpose: e.target.value })}
                       placeholder="Business capital, education, etc."
                     />
                   </div>
                   <div>
                     <Label htmlFor="status">Customer Status</Label>
-                    <Select value={formData.status || 'Active'} onValueChange={(value) => setFormData({...formData, status: value})}>
+                    <Select value={formData.status || 'Active'} onValueChange={(value) => setFormData({ ...formData, status: value })}>
                       <SelectTrigger className="bg-white text-gray-900">
                         <SelectValue placeholder="Select status" className="text-gray-900" />
                       </SelectTrigger>
@@ -662,7 +662,7 @@ function CustomerManagementContent() {
                 />
               </div>
             </div>
-            <Button 
+            <Button
               onClick={handleAddCustomer}
               className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 group flex items-center gap-2"
             >
@@ -710,61 +710,60 @@ function CustomerManagementContent() {
                         <td className="p-3 text-gray-900">{customer.phone}</td>
                         <td className="p-3 text-gray-900">{customer.address}</td>
                         <td className="p-3">
-                          <span className={`px-2 py-1 rounded-full text-xs ${
-                            (customer.credit_score || 0) >= 90 ? 'bg-green-100 text-green-800' :
-                            (customer.credit_score || 0) >= 70 ? 'bg-yellow-100 text-yellow-800' :
-                            'bg-red-100 text-red-800'
-                          }`}>
+                          <span className={`px-2 py-1 rounded-full text-xs ${(customer.credit_score || 0) >= 90 ? 'bg-green-100 text-green-800' :
+                              (customer.credit_score || 0) >= 70 ? 'bg-yellow-100 text-yellow-800' :
+                                'bg-red-100 text-red-800'
+                            }`}>
                             {customer.credit_score || 0}
                           </span>
                         </td>
                         <td className="p-3">
-                          <span className={`px-2 py-1 rounded-full text-xs ${
-                            customer.status === 'Active' ? 'bg-green-100 text-green-800' :
-                            customer.status === 'Blacklisted' ? 'bg-red-100 text-red-800' :
-                            'bg-gray-100 text-gray-800'
-                          }`}>
+                          <span className={`px-2 py-1 rounded-full text-xs ${customer.status === 'Active' ? 'bg-green-100 text-green-800' :
+                              customer.status === 'Blacklisted' ? 'bg-red-100 text-red-800' :
+                                'bg-gray-100 text-gray-800'
+                            }`}>
                             {customer.status}
                           </span>
                         </td>
                         <td className="p-3">
                           <div className="flex gap-2">
-                            <Button 
-                              size="sm" 
+                            <Button
+                              size="sm"
                               variant="outline"
                               onClick={() => handleEditCustomer(customer)}
+                              aria-label="Edit customer"
                             >
                               <Edit className="h-4 w-4" />
                             </Button>
                             <DropdownMenu>
                               <DropdownMenuTrigger asChild>
-                                <Button size="sm" variant="outline">
+                                <Button size="sm" variant="outline" aria-label="More actions">
                                   <MoreHorizontal className="h-4 w-4" />
                                 </Button>
                               </DropdownMenuTrigger>
                               <DropdownMenuContent>
-                                <DropdownMenuItem 
+                                <DropdownMenuItem
                                   onClick={() => customer.id && handleStatusChange(customer.id, 'Active')}
                                   disabled={customer.status === 'Active'}
                                 >
                                   <UserCheck className="h-4 w-4 mr-2 text-green-600" />
                                   Set Active
                                 </DropdownMenuItem>
-                                <DropdownMenuItem 
+                                <DropdownMenuItem
                                   onClick={() => customer.id && handleStatusChange(customer.id, 'Inactive')}
                                   disabled={customer.status === 'Inactive'}
                                 >
                                   <UserX className="h-4 w-4 mr-2 text-gray-600" />
                                   Set Inactive
                                 </DropdownMenuItem>
-                                <DropdownMenuItem 
+                                <DropdownMenuItem
                                   onClick={() => customer.id && handleStatusChange(customer.id, 'Blacklisted')}
                                   disabled={customer.status === 'Blacklisted'}
                                 >
                                   <Ban className="h-4 w-4 mr-2 text-red-600" />
                                   Blacklist
                                 </DropdownMenuItem>
-                                <DropdownMenuItem 
+                                <DropdownMenuItem
                                   onClick={() => customer.id && handleDeleteCustomer(customer.id)}
                                   className="text-red-600 hover:text-red-700"
                                 >
