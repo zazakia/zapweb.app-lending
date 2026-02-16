@@ -1,0 +1,410 @@
+FAIL tests/performance/lighthouse.test.js
+  Lighthouse Performance Tests
+    × should meet performance benchmarks for home page (4 ms)
+    × should meet performance benchmarks for customers page
+    × should meet performance benchmarks for loans page
+    × should have efficient bundle sizes
+
+  ● Lighthouse Performance Tests › should meet performance benchmarks for home page
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    D:\GitHub\zapweb.app-lending\node_modules\lighthouse\core\index.js:7
+    import Trace from './gather/gatherers/trace.js';
+    ^^^^^^
+
+    SyntaxError: Cannot use import statement outside a module
+
+    [0m [90m 11 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+     [90m 12 |[39m     [90m// Dynamic import for ESM module[39m
+    [31m[1m>[22m[39m[90m 13 |[39m     lighthouse [33m=[39m ([36mawait[39m [36mimport[39m([32m'lighthouse'[39m))[33m.[39m[36mdefault[39m
+     [90m    |[39m                         [31m[1m^[22m[39m
+     [90m 14 |[39m
+     [90m 15 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m 16 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m[0m
+
+      at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1314:40)
+      at tests/performance/lighthouse.test.js:13:25
+      at Object.<anonymous> (tests/performance/lighthouse.test.js:13:19)
+
+  ● Lighthouse Performance Tests › should meet performance benchmarks for customers page
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    D:\GitHub\zapweb.app-lending\node_modules\lighthouse\core\index.js:7
+    import Trace from './gather/gatherers/trace.js';
+    ^^^^^^
+
+    SyntaxError: Cannot use import statement outside a module
+
+    [0m [90m 11 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+     [90m 12 |[39m     [90m// Dynamic import for ESM module[39m
+    [31m[1m>[22m[39m[90m 13 |[39m     lighthouse [33m=[39m ([36mawait[39m [36mimport[39m([32m'lighthouse'[39m))[33m.[39m[36mdefault[39m
+     [90m    |[39m                         [31m[1m^[22m[39m
+     [90m 14 |[39m
+     [90m 15 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m 16 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m[0m
+
+      at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1314:40)
+      at tests/performance/lighthouse.test.js:13:25
+      at Object.<anonymous> (tests/performance/lighthouse.test.js:13:19)
+
+  ● Lighthouse Performance Tests › should meet performance benchmarks for loans page
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    D:\GitHub\zapweb.app-lending\node_modules\lighthouse\core\index.js:7
+    import Trace from './gather/gatherers/trace.js';
+    ^^^^^^
+
+    SyntaxError: Cannot use import statement outside a module
+
+    [0m [90m 11 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+     [90m 12 |[39m     [90m// Dynamic import for ESM module[39m
+    [31m[1m>[22m[39m[90m 13 |[39m     lighthouse [33m=[39m ([36mawait[39m [36mimport[39m([32m'lighthouse'[39m))[33m.[39m[36mdefault[39m
+     [90m    |[39m                         [31m[1m^[22m[39m
+     [90m 14 |[39m
+     [90m 15 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m 16 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m[0m
+
+      at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1314:40)
+      at tests/performance/lighthouse.test.js:13:25
+      at Object.<anonymous> (tests/performance/lighthouse.test.js:13:19)
+
+  ● Lighthouse Performance Tests › should have efficient bundle sizes
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    D:\GitHub\zapweb.app-lending\node_modules\lighthouse\core\index.js:7
+    import Trace from './gather/gatherers/trace.js';
+    ^^^^^^
+
+    SyntaxError: Cannot use import statement outside a module
+
+    [0m [90m 11 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+     [90m 12 |[39m     [90m// Dynamic import for ESM module[39m
+    [31m[1m>[22m[39m[90m 13 |[39m     lighthouse [33m=[39m ([36mawait[39m [36mimport[39m([32m'lighthouse'[39m))[33m.[39m[36mdefault[39m
+     [90m    |[39m                         [31m[1m^[22m[39m
+     [90m 14 |[39m
+     [90m 15 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m 16 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m[0m
+
+      at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1314:40)
+      at tests/performance/lighthouse.test.js:13:25
+      at Object.<anonymous> (tests/performance/lighthouse.test.js:13:19)
+
+FAIL tests/performance/webVitals.test.js
+  Web Vitals Performance Tests
+    × should meet Core Web Vitals thresholds for home page (119 ms)
+    × should meet Core Web Vitals thresholds for customers page (98 ms)
+    × should measure Time to Interactive (TTI) (69 ms)
+    × should measure Total Blocking Time (TBT) (101 ms)
+    × should measure Interaction to Next Paint (INP) (165 ms)
+    × should measure resource loading performance (75 ms)
+    × should maintain consistent performance across multiple page loads (76 ms)
+
+  ● Web Vitals Performance Tests › should meet Core Web Vitals thresholds for home page
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.js' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.js'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  ● Web Vitals Performance Tests › should meet Core Web Vitals thresholds for customers page
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.js' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.js'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  ● Web Vitals Performance Tests › should measure Time to Interactive (TTI)
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.js' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.js'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  ● Web Vitals Performance Tests › should measure Total Blocking Time (TBT)
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.js' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.js'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  ● Web Vitals Performance Tests › should measure Interaction to Next Paint (INP)
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.js' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.js'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  ● Web Vitals Performance Tests › should measure resource loading performance
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.js' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.js'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  ● Web Vitals Performance Tests › should maintain consistent performance across multiple page loads
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.js' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.js'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:96:28)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:109:28)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:122:28)
+
+  console.log
+    Click response time: 0.30000000074505806ms
+
+      at Object.log (tests/performance/navigation.test.js:159:17)
+
+  console.log
+    Preloaded routes: []
+
+      at Object.log (tests/performance/navigation.test.js:177:15)
+
+  console.warn
+    Preload test skipped: expect(received).toBeGreaterThan(expected)
+    
+    Expected: > 0
+    Received:   0
+
+    [0m [90m 185 |[39m       expect(preloadedCriticalRoutes[33m.[39mlength)[33m.[39mtoBeGreaterThan([35m0[39m)
+     [90m 186 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 187 |[39m       console[33m.[39mwarn([32m`Preload test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 188 |[39m     }
+     [90m 189 |[39m   }[33m,[39m [35m30000[39m)
+     [90m 190 |[39m[0m
+
+      at Object.warn (tests/performance/navigation.test.js:187:15)
+
+  console.log
+    Rapid navigation times: [ 986, 1206, 1125, 949 ]
+
+      at Object.log (tests/performance/navigation.test.js:211:15)
+
+  console.warn
+    Load simulation test skipped: page.waitForTimeout is not a function
+
+    [0m [90m 258 |[39m
+     [90m 259 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 260 |[39m       console[33m.[39mwarn([32m`Load simulation test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 261 |[39m     }
+     [90m 262 |[39m   }[33m,[39m [35m45000[39m)
+     [90m 263 |[39m[0m
+
+      at Object.warn (tests/performance/navigation.test.js:260:15)
+
+  console.log
+    Initial memory: { used: 13670859, total: 22795323, limit: 4294705152 }
+
+      at Object.log (tests/performance/navigation.test.js:281:17)
+
+  console.warn
+    Memory test skipped: page.waitForTimeout is not a function
+
+    [0m [90m 315 |[39m       }
+     [90m 316 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 317 |[39m       console[33m.[39mwarn([32m`Memory test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 318 |[39m     }
+     [90m 319 |[39m   }[33m,[39m [35m45000[39m)
+     [90m 320 |[39m })[0m
+
+      at Object.warn (tests/performance/navigation.test.js:317:15)
+
+PASS tests/performance/navigation.test.js (22.135 s)
+  Navigation Performance Tests
+    √ should navigate to customers page quickly (4606 ms)
+    √ should navigate to loans page quickly (2371 ms)
+    √ should navigate to payments page quickly (2503 ms)
+    √ should have fast click response times (1260 ms)
+    √ should preload routes effectively (1054 ms)
+    √ should handle rapid navigation without performance degradation (5358 ms)
+    √ should maintain performance under load simulation (1088 ms)
+    √ should efficiently handle memory usage during navigation (2309 ms)
+
+Test Suites: 2 failed, 1 passed, 3 total
+Tests:       11 failed, 8 passed, 19 total
+Snapshots:   0 total
+Time:        22.642 s
+Ran all test suites matching tests/performance.

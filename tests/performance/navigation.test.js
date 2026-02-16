@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 const puppeteer = require('puppeteer')
 
 describe('Navigation Performance Tests', () => {
@@ -19,12 +22,12 @@ describe('Navigation Performance Tests', () => {
 
   beforeEach(async () => {
     page = await browser.newPage()
-    
+
     // Enable performance monitoring
     await page.evaluateOnNewDocument(() => {
       window.navigationTimes = []
-      window.performance.mark = window.performance.mark || function() {}
-      window.performance.measure = window.performance.measure || function() {}
+      window.performance.mark = window.performance.mark || function () { }
+      window.performance.measure = window.performance.measure || function () { }
     })
   })
 
@@ -34,25 +37,54 @@ describe('Navigation Performance Tests', () => {
     }
   })
 
+  const login = async () => {
+    try {
+      await page.goto('http://127.0.0.1:3000/login', { waitUntil: 'networkidle0' })
+      const isLogin = await page.$('input[type="text"]') // Simplified check
+      if (isLogin) {
+        await page.type('input[type="text"]', 'admin') // Username field often first input
+        await page.type('input[type="password"]', 'admin123')
+
+        // Find click handler or submit
+        const buttons = await page.$$('button')
+        for (const button of buttons) {
+          const text = await page.evaluate(el => el.textContent, button)
+          if (text.includes('Login')) {
+            await button.click()
+            break
+          }
+        }
+        await page.waitForNavigation({ waitUntil: 'networkidle0' })
+      }
+    } catch (e) {
+      console.log('Login attempt failed or already logged in:', e.message)
+    }
+  }
+
   const measureNavigationTime = async (fromUrl, toUrl, selector) => {
     try {
+      // Ensure we are logged in
+      await login()
+
       // Go to initial page
-      await page.goto(fromUrl, { waitUntil: 'networkidle0' })
-      
+      await page.goto(fromUrl.replace('localhost', '127.0.0.1'), { waitUntil: 'networkidle0' })
+
       // Mark start time
       const startTime = Date.now()
-      
+
       // Click navigation element
+      // Need to wait for selector to be available
+      await page.waitForSelector(selector, { timeout: 5000 })
       await page.click(selector)
-      
+
       // Wait for navigation to complete
-      await page.waitForURL(toUrl, { timeout: 5000 })
+      await page.waitForURL(toUrl.replace('localhost', '127.0.0.1'), { timeout: 5000 })
       await page.waitForLoadState('networkidle')
-      
+
       // Calculate navigation time
       const endTime = Date.now()
       const navigationTime = endTime - startTime
-      
+
       return navigationTime
     } catch (error) {
       console.warn(`Navigation test skipped: ${error.message}`)
@@ -62,11 +94,11 @@ describe('Navigation Performance Tests', () => {
 
   it('should navigate to customers page quickly', async () => {
     const navigationTime = await measureNavigationTime(
-      'http://localhost:3000',
-      'http://localhost:3000/customers',
+      'http://127.0.0.1:3000',
+      'http://127.0.0.1:3000/customers',
       '[href="/customers"]'
     )
-    
+
     if (navigationTime !== null) {
       console.log(`Customers navigation time: ${navigationTime}ms`)
       expect(navigationTime).toBeLessThan(2000) // Should navigate in under 2 seconds
@@ -75,11 +107,11 @@ describe('Navigation Performance Tests', () => {
 
   it('should navigate to loans page quickly', async () => {
     const navigationTime = await measureNavigationTime(
-      'http://localhost:3000',
-      'http://localhost:3000/loans',
+      'http://127.0.0.1:3000',
+      'http://127.0.0.1:3000/loans',
       '[href="/loans"]'
     )
-    
+
     if (navigationTime !== null) {
       console.log(`Loans navigation time: ${navigationTime}ms`)
       expect(navigationTime).toBeLessThan(2000)
@@ -88,11 +120,11 @@ describe('Navigation Performance Tests', () => {
 
   it('should navigate to payments page quickly', async () => {
     const navigationTime = await measureNavigationTime(
-      'http://localhost:3000',
-      'http://localhost:3000/payments',
+      'http://127.0.0.1:3000',
+      'http://127.0.0.1:3000/payments',
       '[href="/payments"]'
     )
-    
+
     if (navigationTime !== null) {
       console.log(`Payments navigation time: ${navigationTime}ms`)
       expect(navigationTime).toBeLessThan(2000)
@@ -101,8 +133,8 @@ describe('Navigation Performance Tests', () => {
 
   it('should have fast click response times', async () => {
     try {
-      await page.goto('http://localhost:3000', { waitUntil: 'networkidle0' })
-      
+      await page.goto('http://127.0.0.1:3000', { waitUntil: 'networkidle0' })
+
       // Test button click response time
       const clickResponseTime = await page.evaluate(() => {
         return new Promise((resolve) => {
@@ -111,18 +143,18 @@ describe('Navigation Performance Tests', () => {
             resolve(null)
             return
           }
-          
+
           const startTime = performance.now()
-          
+
           button.addEventListener('click', () => {
             const endTime = performance.now()
             resolve(endTime - startTime)
           }, { once: true })
-          
+
           button.click()
         })
       })
-      
+
       if (clickResponseTime !== null) {
         console.log(`Click response time: ${clickResponseTime}ms`)
         expect(clickResponseTime).toBeLessThan(50) // Should respond in under 50ms
@@ -134,22 +166,22 @@ describe('Navigation Performance Tests', () => {
 
   it('should preload routes effectively', async () => {
     try {
-      await page.goto('http://localhost:3000', { waitUntil: 'networkidle0' })
-      
+      await page.goto('http://127.0.0.1:3000', { waitUntil: 'networkidle0' })
+
       // Check if routes are preloaded
       const preloadedRoutes = await page.evaluate(() => {
         const prefetchLinks = document.querySelectorAll('link[rel="prefetch"]')
         return Array.from(prefetchLinks).map(link => link.href)
       })
-      
+
       console.log('Preloaded routes:', preloadedRoutes)
-      
+
       // Should have preloaded critical routes
       const expectedRoutes = ['/customers', '/loans', '/payments']
-      const preloadedCriticalRoutes = expectedRoutes.filter(route => 
+      const preloadedCriticalRoutes = expectedRoutes.filter(route =>
         preloadedRoutes.some(preloaded => preloaded.includes(route))
       )
-      
+
       expect(preloadedCriticalRoutes.length).toBeGreaterThan(0)
     } catch (error) {
       console.warn(`Preload test skipped: ${error.message}`)
@@ -158,37 +190,37 @@ describe('Navigation Performance Tests', () => {
 
   it('should handle rapid navigation without performance degradation', async () => {
     try {
-      await page.goto('http://localhost:3000', { waitUntil: 'networkidle0' })
-      
+      await page.goto('http://127.0.0.1:3000', { waitUntil: 'networkidle0' })
+
       const routes = [
-        'http://localhost:3000/customers',
-        'http://localhost:3000/loans',
-        'http://localhost:3000/payments',
-        'http://localhost:3000',
+        'http://127.0.0.1:3000/customers',
+        'http://127.0.0.1:3000/loans',
+        'http://127.0.0.1:3000/payments',
+        'http://127.0.0.1:3000',
       ]
-      
+
       const navigationTimes = []
-      
+
       for (let i = 0; i < routes.length; i++) {
         const startTime = Date.now()
         await page.goto(routes[i], { waitUntil: 'networkidle0' })
         const endTime = Date.now()
         navigationTimes.push(endTime - startTime)
       }
-      
+
       console.log('Rapid navigation times:', navigationTimes)
-      
+
       // All navigations should be reasonably fast
       navigationTimes.forEach((time, index) => {
         expect(time).toBeLessThan(3000) // Each navigation under 3 seconds
       })
-      
+
       // Performance shouldn't degrade significantly
       const avgTime = navigationTimes.reduce((a, b) => a + b, 0) / navigationTimes.length
       const maxTime = Math.max(...navigationTimes)
-      
+
       expect(maxTime).toBeLessThan(avgTime * 2) // No navigation should be twice the average
-      
+
     } catch (error) {
       console.warn(`Rapid navigation test skipped: ${error.message}`)
     }
@@ -196,14 +228,14 @@ describe('Navigation Performance Tests', () => {
 
   it('should maintain performance under load simulation', async () => {
     try {
-      await page.goto('http://localhost:3000', { waitUntil: 'networkidle0' })
-      
+      await page.goto('http://127.0.0.1:3000', { waitUntil: 'networkidle0' })
+
       // Simulate multiple rapid interactions
       const interactionTimes = []
-      
+
       for (let i = 0; i < 10; i++) {
         const startTime = performance.now()
-        
+
         // Simulate button clicks and form interactions
         await page.evaluate(() => {
           const buttons = document.querySelectorAll('button')
@@ -211,19 +243,19 @@ describe('Navigation Performance Tests', () => {
             buttons[Math.floor(Math.random() * buttons.length)].click()
           }
         })
-        
-        await page.waitForTimeout(100) // Wait a bit between interactions
-        
+
+        await new Promise(r => setTimeout(r, 100)) // Wait a bit between interactions
+
         const endTime = performance.now()
         interactionTimes.push(endTime - startTime)
       }
-      
+
       console.log('Load simulation interaction times:', interactionTimes)
-      
+
       // All interactions should remain responsive
       const avgInteractionTime = interactionTimes.reduce((a, b) => a + b, 0) / interactionTimes.length
       expect(avgInteractionTime).toBeLessThan(200) // Average under 200ms
-      
+
     } catch (error) {
       console.warn(`Load simulation test skipped: ${error.message}`)
     }
@@ -231,8 +263,8 @@ describe('Navigation Performance Tests', () => {
 
   it('should efficiently handle memory usage during navigation', async () => {
     try {
-      await page.goto('http://localhost:3000', { waitUntil: 'networkidle0' })
-      
+      await page.goto('http://127.0.0.1:3000', { waitUntil: 'networkidle0' })
+
       // Get initial memory usage
       const initialMemory = await page.evaluate(() => {
         if (performance.memory) {
@@ -244,18 +276,18 @@ describe('Navigation Performance Tests', () => {
         }
         return null
       })
-      
+
       if (initialMemory) {
         console.log('Initial memory:', initialMemory)
-        
+
         // Navigate through several pages
         const routes = ['/customers', '/loans', '/payments', '/']
-        
+
         for (const route of routes) {
-          await page.goto(`http://localhost:3000${route}`, { waitUntil: 'networkidle0' })
-          await page.waitForTimeout(1000)
+          await page.goto(`http://127.0.0.1:3000${route}`, { waitUntil: 'networkidle0' })
+          await new Promise(r => setTimeout(r, 1000))
         }
-        
+
         // Get final memory usage
         const finalMemory = await page.evaluate(() => {
           if (performance.memory) {
@@ -267,16 +299,16 @@ describe('Navigation Performance Tests', () => {
           }
           return null
         })
-        
+
         if (finalMemory) {
           console.log('Final memory:', finalMemory)
-          
+
           // Memory shouldn't grow excessively
           const memoryGrowth = finalMemory.used - initialMemory.used
           const memoryGrowthPercent = (memoryGrowth / initialMemory.used) * 100
-          
+
           console.log(`Memory growth: ${memoryGrowthPercent.toFixed(2)}%`)
-          
+
           // Memory growth should be reasonable (less than 50% increase)
           expect(memoryGrowthPercent).toBeLessThan(50)
         }

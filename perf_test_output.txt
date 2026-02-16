@@ -1,0 +1,59 @@
+FAIL tests/performance/navigation.test.js
+  ● Test suite failed to run
+
+    The error below may be caused by using the wrong test environment, see https://jestjs.io/docs/configuration#testenvironment-string.
+    Consider using the "jsdom" test environment.
+
+    ReferenceError: window is not defined
+
+    [0m [90m 54 |[39m
+     [90m 55 |[39m [90m// Mock window.matchMedia[39m
+    [31m[1m>[22m[39m[90m 56 |[39m [33mObject[39m[33m.[39mdefineProperty(window[33m,[39m [32m'matchMedia'[39m[33m,[39m {
+     [90m    |[39m                       [31m[1m^[22m[39m
+     [90m 57 |[39m   writable[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 58 |[39m   value[33m:[39m jest[33m.[39mfn()[33m.[39mmockImplementation(query [33m=>[39m ({
+     [90m 59 |[39m     matches[33m:[39m [36mfalse[39m[33m,[39m[0m
+
+      at Object.window (jest.setup.js:56:23)
+
+FAIL tests/performance/lighthouse.test.js
+  ● Test suite failed to run
+
+    The error below may be caused by using the wrong test environment, see https://jestjs.io/docs/configuration#testenvironment-string.
+    Consider using the "jsdom" test environment.
+
+    ReferenceError: window is not defined
+
+    [0m [90m 54 |[39m
+     [90m 55 |[39m [90m// Mock window.matchMedia[39m
+    [31m[1m>[22m[39m[90m 56 |[39m [33mObject[39m[33m.[39mdefineProperty(window[33m,[39m [32m'matchMedia'[39m[33m,[39m {
+     [90m    |[39m                       [31m[1m^[22m[39m
+     [90m 57 |[39m   writable[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 58 |[39m   value[33m:[39m jest[33m.[39mfn()[33m.[39mmockImplementation(query [33m=>[39m ({
+     [90m 59 |[39m     matches[33m:[39m [36mfalse[39m[33m,[39m[0m
+
+      at Object.window (jest.setup.js:56:23)
+
+FAIL tests/performance/webVitals.test.js
+  ● Test suite failed to run
+
+    The error below may be caused by using the wrong test environment, see https://jestjs.io/docs/configuration#testenvironment-string.
+    Consider using the "jsdom" test environment.
+
+    ReferenceError: window is not defined
+
+    [0m [90m 54 |[39m
+     [90m 55 |[39m [90m// Mock window.matchMedia[39m
+    [31m[1m>[22m[39m[90m 56 |[39m [33mObject[39m[33m.[39mdefineProperty(window[33m,[39m [32m'matchMedia'[39m[33m,[39m {
+     [90m    |[39m                       [31m[1m^[22m[39m
+     [90m 57 |[39m   writable[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 58 |[39m   value[33m:[39m jest[33m.[39mfn()[33m.[39mmockImplementation(query [33m=>[39m ({
+     [90m 59 |[39m     matches[33m:[39m [36mfalse[39m[33m,[39m[0m
+
+      at Object.window (jest.setup.js:56:23)
+
+Test Suites: 3 failed, 3 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        1.403 s, estimated 3 s
+Ran all test suites matching tests/performance.

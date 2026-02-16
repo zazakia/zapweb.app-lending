@@ -1,0 +1,55 @@
+  console.log
+    Home Page Web Vitals: { FCP: 201.90000000223517, LCP: 201.90000000223517, FID: 0, CLS: 0 }
+
+      at Object.log (tests/performance/webVitals.test.js:127:15)
+
+  console.log
+    Customers Page Web Vitals: { FCP: 210.59999999776483, LCP: 210.59999999776483, FID: 0, CLS: 0 }
+
+      at Object.log (tests/performance/webVitals.test.js:152:15)
+
+  console.log
+    Time to Interactive: 167.5ms
+
+      at Object.log (tests/performance/webVitals.test.js:182:17)
+
+  console.log
+    Total Blocking Time: 0ms
+
+      at Object.log (tests/performance/webVitals.test.js:230:15)
+
+  console.log
+    Average Interaction Time: 11.439999999850988ms
+
+      at Object.log (tests/performance/webVitals.test.js:273:15)
+
+  console.log
+    Resource Metrics: {
+      totalResources: 31,
+      totalSize: 584937,
+      slowResources: [],
+      cacheHitRate: 6.451612903225806
+    }
+
+      at Object.log (tests/performance/webVitals.test.js:323:15)
+
+  console.log
+    Page Load Times: [ 1060, 932, 922 ]
+
+      at Object.log (tests/performance/webVitals.test.js:359:15)
+
+PASS tests/performance/webVitals.test.js (19.682 s)
+  Web Vitals Performance Tests
+    √ should meet Core Web Vitals thresholds for home page (3562 ms)
+    √ should meet Core Web Vitals thresholds for customers page (2186 ms)
+    √ should measure Time to Interactive (TTI) (1093 ms)
+    √ should measure Total Blocking Time (TBT) (4107 ms)
+    √ should measure Interaction to Next Paint (INP) (3686 ms)
+    √ should measure resource loading performance (1112 ms)
+    √ should maintain consistent performance across multiple page loads (2963 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       7 passed, 7 total
+Snapshots:   0 total
+Time:        19.724 s
+Ran all test suites matching tests/performance/webVitals.test.js.

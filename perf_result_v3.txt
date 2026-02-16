@@ -1,0 +1,251 @@
+FAIL tests/performance/webVitals.test.js
+  Web Vitals Performance Tests
+    × should meet Core Web Vitals thresholds for home page (117 ms)
+    × should meet Core Web Vitals thresholds for customers page (114 ms)
+    × should measure Time to Interactive (TTI) (73 ms)
+    × should measure Total Blocking Time (TBT) (147 ms)
+    × should measure Interaction to Next Paint (INP) (116 ms)
+    × should measure resource loading performance (88 ms)
+    × should maintain consistent performance across multiple page loads (68 ms)
+
+  ● Web Vitals Performance Tests › should meet Core Web Vitals thresholds for home page
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.cjs' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.cjs'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  ● Web Vitals Performance Tests › should meet Core Web Vitals thresholds for customers page
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.cjs' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.cjs'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  ● Web Vitals Performance Tests › should measure Time to Interactive (TTI)
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.cjs' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.cjs'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  ● Web Vitals Performance Tests › should measure Total Blocking Time (TBT)
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.cjs' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.cjs'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  ● Web Vitals Performance Tests › should measure Interaction to Next Paint (INP)
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.cjs' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.cjs'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  ● Web Vitals Performance Tests › should measure resource loading performance
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.cjs' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.cjs'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  ● Web Vitals Performance Tests › should maintain consistent performance across multiple page loads
+
+    Cannot find module 'web-vitals/dist/web-vitals.umd.cjs' from 'tests/performance/webVitals.test.js'
+
+    [0m [90m 26 |[39m     [90m// Inject web-vitals library[39m
+     [90m 27 |[39m     [36mawait[39m page[33m.[39maddScriptTag({
+    [31m[1m>[22m[39m[90m 28 |[39m       path[33m:[39m require[33m.[39mresolve([32m'web-vitals/dist/web-vitals.umd.cjs'[39m)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 29 |[39m     })
+     [90m 30 |[39m   })
+     [90m 31 |[39m[0m
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.resolve (tests/performance/webVitals.test.js:28:21)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:96:28)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:109:28)
+
+  console.warn
+    Navigation test skipped: Node is either not clickable or not an Element
+
+    [0m [90m 88 |[39m       [36mreturn[39m navigationTime
+     [90m 89 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 90 |[39m       console[33m.[39mwarn([32m`Navigation test skipped: ${error.message}`[39m)
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 91 |[39m       [36mreturn[39m [36mnull[39m
+     [90m 92 |[39m     }
+     [90m 93 |[39m   }[0m
+
+      at warn (tests/performance/navigation.test.js:90:15)
+      at Object.<anonymous> (tests/performance/navigation.test.js:122:28)
+
+  console.log
+    Click response time: 0.30000000074505806ms
+
+      at Object.log (tests/performance/navigation.test.js:159:17)
+
+  console.log
+    Preloaded routes: []
+
+      at Object.log (tests/performance/navigation.test.js:177:15)
+
+  console.warn
+    Preload test skipped: expect(received).toBeGreaterThan(expected)
+    
+    Expected: > 0
+    Received:   0
+
+    [0m [90m 185 |[39m       expect(preloadedCriticalRoutes[33m.[39mlength)[33m.[39mtoBeGreaterThan([35m0[39m)
+     [90m 186 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 187 |[39m       console[33m.[39mwarn([32m`Preload test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 188 |[39m     }
+     [90m 189 |[39m   }[33m,[39m [35m30000[39m)
+     [90m 190 |[39m[0m
+
+      at Object.warn (tests/performance/navigation.test.js:187:15)
+
+  console.log
+    Rapid navigation times: [ 1000, 1237, 1171, 992 ]
+
+      at Object.log (tests/performance/navigation.test.js:211:15)
+
+  console.log
+    Load simulation interaction times: [
+      106.19980000000214,
+      124.44310000000041,
+      127.84179999999833,
+      123.19919999999911,
+      109.94259999999849,
+      122.38409999999931,
+      134.66509999999835,
+      128.78770000000077,
+      107.23020000000179,
+      106.71319999999832
+    ]
+
+      at Object.log (tests/performance/navigation.test.js:253:15)
+
+  console.log
+    Initial memory: { used: 14680418, total: 22795590, limit: 4294705152 }
+
+      at Object.log (tests/performance/navigation.test.js:281:17)
+
+  console.log
+    Final memory: { used: 30638336, total: 59447236, limit: 4294705152 }
+
+      at Object.log (tests/performance/navigation.test.js:304:19)
+
+  console.log
+    Memory growth: 108.70%
+
+      at Object.log (tests/performance/navigation.test.js:310:19)
+
+  console.warn
+    Memory test skipped: expect(received).toBeLessThan(expected)
+    
+    Expected: < 50
+    Received:   108.70206829260584
+
+    [0m [90m 315 |[39m       }
+     [90m 316 |[39m     } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 317 |[39m       console[33m.[39mwarn([32m`Memory test skipped: ${error.message}`[39m)
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 318 |[39m     }
+     [90m 319 |[39m   }[33m,[39m [35m45000[39m)
+     [90m 320 |[39m })[0m
+
+      at Object.warn (tests/performance/navigation.test.js:317:15)
+
+PASS tests/performance/navigation.test.js (29.558 s)
+  Navigation Performance Tests
+    √ should navigate to customers page quickly (3036 ms)
+    √ should navigate to loans page quickly (2703 ms)
+    √ should navigate to payments page quickly (2729 ms)
+    √ should have fast click response times (1368 ms)
+    √ should preload routes effectively (1080 ms)
+    √ should handle rapid navigation without performance degradation (5490 ms)
+    √ should maintain performance under load simulation (2339 ms)
+    √ should efficiently handle memory usage during navigation (9568 ms)
+
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       7 failed, 8 passed, 15 total
+Snapshots:   0 total
+Time:        30.044 s
+Ran all test suites matching tests/performance.
