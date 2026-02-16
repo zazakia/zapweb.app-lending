@@ -1,0 +1,98 @@
+  console.warn
+    Failed to create prefetch link: Error: DOM error
+        at Document.<anonymous> (D:\GitHub\zapweb.app-lending\src\lib\__tests__\navigationOptimizer.test.ts:212:15)
+        at D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:305:39
+        at Document.<anonymous> (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:312:13)
+        at Document.mockConstructor (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:102:19)
+        at createElement (D:\GitHub\zapweb.app-lending\src\lib\navigationOptimizer.ts:22:33)
+
+    [0m [90m 25 |[39m           document[33m.[39mhead[33m.[39mappendChild(link)
+     [90m 26 |[39m         } [36mcatch[39m (err) {
+    [31m[1m>[22m[39m[90m 27 |[39m           console[33m.[39mwarn([32m'Failed to create prefetch link:'[39m[33m,[39m err)
+     [90m    |[39m                   [31m[1m^[22m[39m
+     [90m 28 |[39m         }
+     [90m 29 |[39m       })
+     [90m 30 |[39m     }[0m
+
+      at warn (src/lib/navigationOptimizer.ts:27:19)
+
+  console.warn
+    Failed to create prefetch link: Error: Append error
+        at Object.<anonymous> (D:\GitHub\zapweb.app-lending\src\lib\__tests__\navigationOptimizer.test.ts:225:15)
+        at D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:305:39
+        at Object.<anonymous> (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:312:13)
+        at Object.mockConstructor [as appendChild] (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:102:19)
+        at appendChild (D:\GitHub\zapweb.app-lending\src\lib\navigationOptimizer.ts:25:25)
+
+    [0m [90m 25 |[39m           document[33m.[39mhead[33m.[39mappendChild(link)
+     [90m 26 |[39m         } [36mcatch[39m (err) {
+    [31m[1m>[22m[39m[90m 27 |[39m           console[33m.[39mwarn([32m'Failed to create prefetch link:'[39m[33m,[39m err)
+     [90m    |[39m                   [31m[1m^[22m[39m
+     [90m 28 |[39m         }
+     [90m 29 |[39m       })
+     [90m 30 |[39m     }[0m
+
+      at warn (src/lib/navigationOptimizer.ts:27:19)
+
+FAIL src/lib/__tests__/navigationOptimizer.test.ts
+  NavigationOptimizer
+    Route Preloading
+      √ preloads a route only once (5 ms)
+      √ preloads multiple different routes (1 ms)
+      × creates prefetch link elements (1 ms)
+    Data Prefetching
+      √ prefetches data and caches it (2 ms)
+      √ returns cached data on subsequent calls
+      √ handles fetcher errors gracefully
+      √ gets prefetched data correctly
+      √ returns undefined for non-cached data
+      √ clears specific prefetched data (1 ms)
+      √ clears all prefetched data
+    Static State Management
+      √ maintains preloaded routes across instances
+      √ maintains prefetched data across instances
+    Browser Environment
+      √ handles missing window object gracefully
+      × works in browser environment
+    Error Handling
+      √ handles document.createElement errors gracefully (14 ms)
+      √ handles appendChild errors gracefully (4 ms)
+
+  ● NavigationOptimizer › Route Preloading › creates prefetch link elements
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: "link"
+
+    Number of calls: 0
+
+    [0m [90m 68 |[39m       [33mNavigationOptimizer[39m[33m.[39mpreloadRoute([32m'/customers'[39m)
+     [90m 69 |[39m       
+    [31m[1m>[22m[39m[90m 70 |[39m       expect(document[33m.[39mcreateElement)[33m.[39mtoHaveBeenCalledWith([32m'link'[39m)
+     [90m    |[39m                                      [31m[1m^[22m[39m
+     [90m 71 |[39m       expect(mockLink[33m.[39mrel)[33m.[39mtoBe([32m'prefetch'[39m)
+     [90m 72 |[39m       expect(mockLink[33m.[39mhref)[33m.[39mtoBe([32m'/customers'[39m)
+     [90m 73 |[39m       expect(mockAppendChild)[33m.[39mtoHaveBeenCalledWith(mockLink)[0m
+
+      at Object.toHaveBeenCalledWith (src/lib/__tests__/navigationOptimizer.test.ts:70:38)
+
+  ● NavigationOptimizer › Browser Environment › works in browser environment
+
+    TypeError: Cannot redefine property: window
+        at Object.defineProperty (<anonymous>)
+
+    [0m [90m 194 |[39m
+     [90m 195 |[39m     it([32m'works in browser environment'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 196 |[39m       [33mObject[39m[33m.[39mdefineProperty(global[33m,[39m [32m'window'[39m[33m,[39m {
+     [90m     |[39m              [31m[1m^[22m[39m
+     [90m 197 |[39m         value[33m:[39m {
+     [90m 198 |[39m           location[33m:[39m { href[33m:[39m [32m'https://example.com'[39m }[33m,[39m
+     [90m 199 |[39m         }[33m,[39m[0m
+
+      at Object.defineProperty (src/lib/__tests__/navigationOptimizer.test.ts:196:14)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 14 passed, 16 total
+Snapshots:   0 total
+Time:        0.793 s, estimated 1 s
+Ran all test suites matching src/lib/__tests__/navigationOptimizer.test.ts.

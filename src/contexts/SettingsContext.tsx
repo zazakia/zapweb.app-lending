@@ -6,6 +6,7 @@ export interface LayoutSettings {
   theme: 'light' | 'dark' | 'system'
   compactMode: boolean
   sidebarCollapsed: boolean
+  navigationPosition: 'top' | 'left'
 }
 
 interface SettingsContextType {
@@ -17,7 +18,8 @@ interface SettingsContextType {
 const defaultSettings: LayoutSettings = {
   theme: 'light',
   compactMode: false,
-  sidebarCollapsed: false
+  sidebarCollapsed: false,
+  navigationPosition: 'left'
 }
 
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined)

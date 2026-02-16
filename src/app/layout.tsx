@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 import { AuthProvider } from '@/contexts/AuthContext'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { SettingsProvider } from '@/contexts/SettingsContext'
-import ErrorMonitor from '@/components/ErrorMonitor'
+
 
 export default function RootLayout({
   children,
@@ -30,7 +30,7 @@ export default function RootLayout({
           <AuthProvider>
             <div className="min-h-screen bg-background font-sans antialiased">
               {children}
-              {process.env.NODE_ENV === 'development' && <ErrorMonitor />}
+
             </div>
           </AuthProvider>
         </SettingsProvider>

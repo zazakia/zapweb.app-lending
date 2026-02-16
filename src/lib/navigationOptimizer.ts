@@ -5,23 +5,27 @@ import { useCallback, useEffect } from 'react'
 export class NavigationOptimizer {
   private static preloadedRoutes = new Set<string>()
   private static prefetchedData = new Map<string, any>()
-  
+
   // Preload route components
   static preloadRoute(path: string) {
     if (this.preloadedRoutes.has(path)) return
-    
+
     this.preloadedRoutes.add(path)
-    
+
     // Use Next.js router prefetch
     if (typeof window !== 'undefined') {
       import('next/router').then(({ default: router }) => {
         router.prefetch(path)
       }).catch(() => {
-        // Fallback for app router
-        const link = document.createElement('link')
-        link.rel = 'prefetch'
-        link.href = path
-        document.head.appendChild(link)
+        try {
+          // Fallback for app router
+          const link = document.createElement('link')
+          link.rel = 'prefetch'
+          link.href = path
+          document.head.appendChild(link)
+        } catch (err) {
+          console.warn('Failed to create prefetch link:', err)
+        }
       })
     }
   }
@@ -29,7 +33,7 @@ export class NavigationOptimizer {
   // Prefetch page data
   static async prefetchData(path: string, dataFetcher: () => Promise<any>) {
     if (this.prefetchedData.has(path)) return this.prefetchedData.get(path)
-    
+
     try {
       const data = await dataFetcher()
       this.prefetchedData.set(path, data)
@@ -64,7 +68,7 @@ export function useOptimizedNavigation() {
     // Show immediate loading state
     if (showLoading) {
       document.body.style.cursor = 'wait'
-      
+
       // Add loading class to body
       document.body.classList.add('page-transitioning')
     }

@@ -1,0 +1,135 @@
+  console.error
+    Test console error
+
+    [0m [90m 47 |[39m     console[33m.[39merror [33m=[39m ([33m...[39margs) [33m=>[39m {
+     [90m 48 |[39m       [36mthis[39m[33m.[39mlogError([32m'error'[39m[33m,[39m args[33m.[39mjoin([32m' '[39m)[33m,[39m [32m'console'[39m[33m,[39m { originalArgs[33m:[39m args })
+    [31m[1m>[22m[39m[90m 49 |[39m       originalError[33m.[39mapply(console[33m,[39m args)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 50 |[39m     }
+     [90m 51 |[39m
+     [90m 52 |[39m     console[33m.[39mwarn [33m=[39m ([33m...[39margs) [33m=>[39m {[0m
+
+      at console.apply (src/lib/errorLogger.ts:49:21)
+      at Object.error (src/lib/__tests__/errorLogger.test.ts:83:15)
+
+  console.warn
+    Test console warning
+
+    [0m [90m 52 |[39m     console[33m.[39mwarn [33m=[39m ([33m...[39margs) [33m=>[39m {
+     [90m 53 |[39m       [36mthis[39m[33m.[39mlogError([32m'warn'[39m[33m,[39m args[33m.[39mjoin([32m' '[39m)[33m,[39m [32m'console'[39m[33m,[39m { originalArgs[33m:[39m args })
+    [31m[1m>[22m[39m[90m 54 |[39m       originalWarn[33m.[39mapply(console[33m,[39m args)
+     [90m    |[39m                    [31m[1m^[22m[39m
+     [90m 55 |[39m     }
+     [90m 56 |[39m
+     [90m 57 |[39m     [90m// Optionally capture all console.log for debugging[39m[0m
+
+      at console.apply [as warn] (src/lib/errorLogger.ts:54:20)
+      at Object.warn (src/lib/__tests__/errorLogger.test.ts:93:15)
+
+  console.warn
+    Failed to load error logs from localStorage: SyntaxError: Unexpected token 'i', "invalid json" is not valid JSON
+        at JSON.parse (<anonymous>)
+        at ErrorLogger.parse [as loadFromLocalStorage] (D:\GitHub\zapweb.app-lending\src\lib\errorLogger.ts:230:28)
+        at loadFromLocalStorage (D:\GitHub\zapweb.app-lending\src\lib\__tests__\errorLogger.test.ts:305:32)
+        at Object.<anonymous> (D:\GitHub\zapweb.app-lending\node_modules\expect\build\index.js:1824:9)
+        at Object.throwingMatcher [as toThrow] (D:\GitHub\zapweb.app-lending\node_modules\expect\build\index.js:2232:93)
+        at Object.toThrow (D:\GitHub\zapweb.app-lending\src\lib\__tests__\errorLogger.test.ts:305:60)
+        at Promise.finally.completed (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1559:28)
+        at new Promise (<anonymous>)
+        at callAsyncCircusFn (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1499:10)
+        at _callCircusTest (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1009:40)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at _runTest (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:949:3)
+        at _runTestsForDescribeBlock (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:839:13)
+        at _runTestsForDescribeBlock (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:829:11)
+        at _runTestsForDescribeBlock (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:829:11)
+        at run (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:757:3)
+        at runAndTransformResultsToJestFormat (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1920:21)
+        at jestAdapter (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\runner.js:101:19)
+        at runTestInternal (D:\GitHub\zapweb.app-lending\node_modules\jest-runner\build\index.js:272:16)
+        at runTest (D:\GitHub\zapweb.app-lending\node_modules\jest-runner\build\index.js:340:7)
+
+    [0m [90m 52 |[39m     console[33m.[39mwarn [33m=[39m ([33m...[39margs) [33m=>[39m {
+     [90m 53 |[39m       [36mthis[39m[33m.[39mlogError([32m'warn'[39m[33m,[39m args[33m.[39mjoin([32m' '[39m)[33m,[39m [32m'console'[39m[33m,[39m { originalArgs[33m:[39m args })
+    [31m[1m>[22m[39m[90m 54 |[39m       originalWarn[33m.[39mapply(console[33m,[39m args)
+     [90m    |[39m                    [31m[1m^[22m[39m
+     [90m 55 |[39m     }
+     [90m 56 |[39m
+     [90m 57 |[39m     [90m// Optionally capture all console.log for debugging[39m[0m
+
+      at console.apply [as warn] (src/lib/errorLogger.ts:54:20)
+      at ErrorLogger.warn [as loadFromLocalStorage] (src/lib/errorLogger.ts:233:17)
+      at loadFromLocalStorage (src/lib/__tests__/errorLogger.test.ts:305:32)
+      at Object.<anonymous> (node_modules/expect/build/index.js:1824:9)
+      at Object.throwingMatcher [as toThrow] (node_modules/expect/build/index.js:2232:93)
+      at Object.toThrow (src/lib/__tests__/errorLogger.test.ts:305:60)
+
+PASS src/lib/__tests__/errorLogger.test.ts
+  ErrorLogger
+    Manual Logging
+      √ logs error messages correctly (3 ms)
+      √ logs different levels correctly (2 ms)
+      √ generates unique IDs for each log entry
+    Console Interception
+      √ intercepts console.error calls (21 ms)
+      √ intercepts console.warn calls (3 ms)
+    Log Management
+      √ maintains maximum log limit (245 ms)
+      √ clears all logs (1 ms)
+      √ filters logs by level
+      √ gets recent logs correctly (1 ms)
+    Export Functionality
+      √ exports logs as JSON (1 ms)
+      √ exports logs as CSV
+    Observer Pattern
+      √ notifies subscribers when new errors are logged (1 ms)
+      √ unsubscribes correctly
+      √ supports multiple subscribers
+    Statistics
+      √ calculates statistics correctly
+    LocalStorage Integration
+      √ saves logs to localStorage
+      √ loads logs from localStorage
+      √ handles corrupted localStorage data gracefully (11 ms)
+
+PASS src/lib/__tests__/utils.test.ts
+  Utils
+    formatCurrency
+      √ formats positive numbers correctly (13 ms)
+      √ formats zero correctly (1 ms)
+      √ formats negative numbers correctly
+      √ handles decimal precision (1 ms)
+      √ handles very large numbers
+      √ handles very small numbers
+      √ handles string input by converting to number (1 ms)
+      √ handles invalid input gracefully
+    formatDate
+      √ formats date correctly with default locale (4 ms)
+      √ handles Date object input
+      √ handles string date input (1 ms)
+      √ handles different date formats (1 ms)
+      √ handles invalid date input gracefully
+      √ handles edge cases (1 ms)
+    cn (className utility)
+      √ merges class names correctly (4 ms)
+      √ handles conditional classes
+      √ filters out falsy values (1 ms)
+      √ handles arrays of classes
+      √ handles objects with boolean values
+      √ merges Tailwind classes correctly
+      √ handles empty input
+      √ handles complex combinations (1 ms)
+    Error Handling
+      √ handles formatCurrency with non-numeric strings (1 ms)
+      √ handles formatDate with various input types
+      √ handles cn with various input types
+    Performance
+      √ formatCurrency performs well with many calls (39 ms)
+      √ formatDate performs well with many calls (67 ms)
+      √ cn performs well with many calls (4 ms)
+
+Test Suites: 2 passed, 2 total
+Tests:       46 passed, 46 total
+Snapshots:   0 total
+Time:        1.353 s
+Ran all test suites matching src/lib/__tests__/utils.test.ts|src/lib/__tests__/errorLogger.test.ts.

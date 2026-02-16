@@ -22,7 +22,7 @@ describe('ErrorLogger', () => {
     console.error = originalConsole.error
     console.warn = originalConsole.warn
     console.log = originalConsole.log
-    
+
     // Clear logs
     errorLogger.clearLogs()
   })
@@ -35,7 +35,7 @@ describe('ErrorLogger', () => {
   describe('Manual Logging', () => {
     it('logs error messages correctly', () => {
       errorLogger.log('error', 'Test error message', { userId: '123' })
-      
+
       const logs = errorLogger.getLogs()
       expect(logs).toHaveLength(1)
       expect(logs[0]).toMatchObject({
@@ -53,10 +53,10 @@ describe('ErrorLogger', () => {
       errorLogger.log('warn', 'Warning message')
       errorLogger.log('info', 'Info message')
       errorLogger.log('debug', 'Debug message')
-      
+
       const logs = errorLogger.getLogs()
       expect(logs).toHaveLength(4)
-      
+
       const levels = logs.map(log => log.level)
       expect(levels).toContain('error')
       expect(levels).toContain('warn')
@@ -68,11 +68,11 @@ describe('ErrorLogger', () => {
       errorLogger.log('error', 'Message 1')
       errorLogger.log('error', 'Message 2')
       errorLogger.log('error', 'Message 3')
-      
+
       const logs = errorLogger.getLogs()
       const ids = logs.map(log => log.id)
       const uniqueIds = [...new Set(ids)]
-      
+
       expect(uniqueIds).toHaveLength(3)
     })
   })
@@ -81,20 +81,20 @@ describe('ErrorLogger', () => {
     it('intercepts console.error calls', () => {
       const originalError = console.error
       console.error('Test console error')
-      
+
       const logs = errorLogger.getLogs()
       const errorLogs = logs.filter(log => log.level === 'error' && log.source === 'console')
-      
+
       expect(errorLogs).toHaveLength(1)
       expect(errorLogs[0].message).toBe('Test console error')
     })
 
     it('intercepts console.warn calls', () => {
       console.warn('Test console warning')
-      
+
       const logs = errorLogger.getLogs()
       const warnLogs = logs.filter(log => log.level === 'warn' && log.source === 'console')
-      
+
       expect(warnLogs).toHaveLength(1)
       expect(warnLogs[0].message).toBe('Test console warning')
     })
@@ -106,7 +106,7 @@ describe('ErrorLogger', () => {
       for (let i = 0; i < 1100; i++) {
         errorLogger.log('info', `Message ${i}`)
       }
-      
+
       const logs = errorLogger.getLogs()
       expect(logs.length).toBeLessThanOrEqual(1000)
     })
@@ -114,11 +114,11 @@ describe('ErrorLogger', () => {
     it('clears all logs', () => {
       errorLogger.log('error', 'Test error')
       errorLogger.log('warn', 'Test warning')
-      
+
       expect(errorLogger.getLogs()).toHaveLength(2)
-      
+
       errorLogger.clearLogs()
-      
+
       expect(errorLogger.getLogs()).toHaveLength(0)
     })
 
@@ -127,31 +127,46 @@ describe('ErrorLogger', () => {
       errorLogger.log('error', 'Error 2')
       errorLogger.log('warn', 'Warning 1')
       errorLogger.log('info', 'Info 1')
-      
+
       const errorLogs = errorLogger.getLogsByLevel('error')
       const warnLogs = errorLogger.getLogsByLevel('warn')
-      
+
       expect(errorLogs).toHaveLength(2)
       expect(warnLogs).toHaveLength(1)
       expect(errorLogs.every(log => log.level === 'error')).toBe(true)
     })
 
     it('gets recent logs correctly', () => {
-      // Add some logs
+      // Add some logs - this uses the current real date
       errorLogger.log('error', 'Old error')
-      
-      // Mock date to simulate time passing
-      const originalDate = Date.now
-      Date.now = jest.fn(() => originalDate() + 10 * 60 * 1000) // 10 minutes later
-      
+
+      // Mock Date to simulate 10 minutes passing
+      const RealDate = Date
+      const mockNow = Date.now() + 10 * 60 * 1000
+
+      // @ts-ignore
+      global.Date = class extends RealDate {
+        constructor(arg?: any) {
+          if (arg) {
+            super(arg)
+            return
+          }
+          return new RealDate(mockNow)
+        }
+        static now() {
+          return mockNow
+        }
+      } as any
+
       errorLogger.log('error', 'Recent error')
-      
+
       const recentLogs = errorLogger.getRecentLogs(5) // Last 5 minutes
-      
+
       expect(recentLogs).toHaveLength(1)
       expect(recentLogs[0].message).toBe('Recent error')
-      
-      Date.now = originalDate
+
+      // Restore Date
+      global.Date = RealDate
     })
   })
 
@@ -164,7 +179,7 @@ describe('ErrorLogger', () => {
     it('exports logs as JSON', () => {
       const exportedLogs = errorLogger.exportLogs()
       const parsedLogs = JSON.parse(exportedLogs)
-      
+
       expect(Array.isArray(parsedLogs)).toBe(true)
       expect(parsedLogs).toHaveLength(2)
       expect(parsedLogs[0]).toHaveProperty('id')
@@ -176,10 +191,10 @@ describe('ErrorLogger', () => {
     it('exports logs as CSV', () => {
       const csvExport = errorLogger.exportLogsAsCSV()
       const lines = csvExport.split('\n')
-      
+
       expect(lines[0]).toBe('timestamp,level,message,source,url')
       expect(lines).toHaveLength(3) // Header + 2 data rows
-      
+
       // Check that each data line has the correct number of columns
       lines.slice(1).forEach(line => {
         if (line.trim()) {
@@ -193,11 +208,11 @@ describe('ErrorLogger', () => {
   describe('Observer Pattern', () => {
     it('notifies subscribers when new errors are logged', () => {
       const mockCallback = jest.fn()
-      
+
       const unsubscribe = errorLogger.subscribe(mockCallback)
-      
+
       errorLogger.log('error', 'Test error')
-      
+
       expect(mockCallback).toHaveBeenCalledTimes(1)
       expect(mockCallback).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -205,30 +220,30 @@ describe('ErrorLogger', () => {
           message: 'Test error',
         })
       )
-      
+
       unsubscribe()
     })
 
     it('unsubscribes correctly', () => {
       const mockCallback = jest.fn()
-      
+
       const unsubscribe = errorLogger.subscribe(mockCallback)
       unsubscribe()
-      
+
       errorLogger.log('error', 'Test error')
-      
+
       expect(mockCallback).not.toHaveBeenCalled()
     })
 
     it('supports multiple subscribers', () => {
       const mockCallback1 = jest.fn()
       const mockCallback2 = jest.fn()
-      
+
       errorLogger.subscribe(mockCallback1)
       errorLogger.subscribe(mockCallback2)
-      
+
       errorLogger.log('error', 'Test error')
-      
+
       expect(mockCallback1).toHaveBeenCalledTimes(1)
       expect(mockCallback2).toHaveBeenCalledTimes(1)
     })
@@ -244,7 +259,7 @@ describe('ErrorLogger', () => {
 
     it('calculates statistics correctly', () => {
       const stats = errorLogger.getStats()
-      
+
       expect(stats.total).toBe(4)
       expect(stats.byLevel.error).toBe(2)
       expect(stats.byLevel.warn).toBe(1)
@@ -257,7 +272,7 @@ describe('ErrorLogger', () => {
   describe('LocalStorage Integration', () => {
     it('saves logs to localStorage', () => {
       errorLogger.log('error', 'Test error')
-      
+
       // In development mode, logs should be saved automatically
       // We can't easily test this due to the environment check
       // But we can test the method directly
@@ -274,18 +289,18 @@ describe('ErrorLogger', () => {
           source: 'manual',
         },
       ]
-      
+
       localStorageMock.getItem.mockReturnValue(JSON.stringify(mockLogs))
-      
+
       errorLogger.loadFromLocalStorage()
-      
+
       const logs = errorLogger.getLogs()
       expect(logs.some(log => log.message === 'Saved error')).toBe(true)
     })
 
     it('handles corrupted localStorage data gracefully', () => {
       localStorageMock.getItem.mockReturnValue('invalid json')
-      
+
       // Should not throw an error
       expect(() => errorLogger.loadFromLocalStorage()).not.toThrow()
     })

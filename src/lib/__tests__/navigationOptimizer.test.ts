@@ -36,37 +36,45 @@ describe('NavigationOptimizer', () => {
   describe('Route Preloading', () => {
     it('preloads a route only once', () => {
       const path = '/customers'
-      
+
       NavigationOptimizer.preloadRoute(path)
       NavigationOptimizer.preloadRoute(path) // Second call should be ignored
-      
+
       expect(NavigationOptimizer['preloadedRoutes'].has(path)).toBe(true)
       expect(NavigationOptimizer['preloadedRoutes'].size).toBe(1)
     })
 
     it('preloads multiple different routes', () => {
       const paths = ['/customers', '/loans', '/payments']
-      
+
       paths.forEach(path => NavigationOptimizer.preloadRoute(path))
-      
+
       expect(NavigationOptimizer['preloadedRoutes'].size).toBe(3)
       paths.forEach(path => {
         expect(NavigationOptimizer['preloadedRoutes'].has(path)).toBe(true)
       })
     })
 
-    it('creates prefetch link elements', () => {
+    it('creates prefetch link elements', async () => {
       const mockLink = {
         rel: '',
         href: '',
       }
       const mockAppendChild = jest.fn()
-      
-      ;(document.createElement as jest.Mock).mockReturnValue(mockLink)
-      ;(document.head.appendChild as jest.Mock).mockImplementation(mockAppendChild)
-      
+
+        ; (document.createElement as jest.Mock).mockReturnValue(mockLink)
+        ; (document.head.appendChild as jest.Mock).mockImplementation(mockAppendChild)
+
+      // Force the import to fail to trigger fallback
+      jest.mock('next/router', () => {
+        throw new Error('Import failed')
+      })
+
       NavigationOptimizer.preloadRoute('/customers')
-      
+
+      // Wait for promises to resolve
+      await new Promise(resolve => setTimeout(resolve, 0))
+
       expect(document.createElement).toHaveBeenCalledWith('link')
       expect(mockLink.rel).toBe('prefetch')
       expect(mockLink.href).toBe('/customers')
@@ -79,9 +87,9 @@ describe('NavigationOptimizer', () => {
       const path = '/customers'
       const mockData = { customers: [{ id: 1, name: 'John' }] }
       const mockFetcher = jest.fn().mockResolvedValue(mockData)
-      
+
       const result = await NavigationOptimizer.prefetchData(path, mockFetcher)
-      
+
       expect(mockFetcher).toHaveBeenCalledTimes(1)
       expect(result).toEqual(mockData)
       expect(NavigationOptimizer.getPrefetchedData(path)).toEqual(mockData)
@@ -91,13 +99,13 @@ describe('NavigationOptimizer', () => {
       const path = '/customers'
       const mockData = { customers: [{ id: 1, name: 'John' }] }
       const mockFetcher = jest.fn().mockResolvedValue(mockData)
-      
+
       // First call
       await NavigationOptimizer.prefetchData(path, mockFetcher)
-      
+
       // Second call should return cached data
       const result = await NavigationOptimizer.prefetchData(path, mockFetcher)
-      
+
       expect(mockFetcher).toHaveBeenCalledTimes(1) // Only called once
       expect(result).toEqual(mockData)
     })
@@ -106,27 +114,27 @@ describe('NavigationOptimizer', () => {
       const path = '/customers'
       const mockError = new Error('Network error')
       const mockFetcher = jest.fn().mockRejectedValue(mockError)
-      
+
       const consoleSpy = jest.spyOn(console, 'warn').mockImplementation()
-      
+
       const result = await NavigationOptimizer.prefetchData(path, mockFetcher)
-      
+
       expect(result).toBeNull()
       expect(consoleSpy).toHaveBeenCalledWith(
         expect.stringContaining('Failed to prefetch data'),
         mockError
       )
-      
+
       consoleSpy.mockRestore()
     })
 
     it('gets prefetched data correctly', () => {
       const path = '/customers'
       const mockData = { customers: [] }
-      
+
       // Manually set cached data
       NavigationOptimizer['prefetchedData'].set(path, mockData)
-      
+
       const result = NavigationOptimizer.getPrefetchedData(path)
       expect(result).toEqual(mockData)
     })
@@ -139,12 +147,12 @@ describe('NavigationOptimizer', () => {
     it('clears specific prefetched data', () => {
       const path1 = '/customers'
       const path2 = '/loans'
-      
+
       NavigationOptimizer['prefetchedData'].set(path1, { data: 'test1' })
       NavigationOptimizer['prefetchedData'].set(path2, { data: 'test2' })
-      
+
       NavigationOptimizer.clearPrefetchedData(path1)
-      
+
       expect(NavigationOptimizer.getPrefetchedData(path1)).toBeUndefined()
       expect(NavigationOptimizer.getPrefetchedData(path2)).toBeDefined()
     })
@@ -152,9 +160,9 @@ describe('NavigationOptimizer', () => {
     it('clears all prefetched data', () => {
       NavigationOptimizer['prefetchedData'].set('/customers', { data: 'test1' })
       NavigationOptimizer['prefetchedData'].set('/loans', { data: 'test2' })
-      
+
       NavigationOptimizer.clearPrefetchedData()
-      
+
       expect(NavigationOptimizer['prefetchedData'].size).toBe(0)
     })
   })
@@ -162,7 +170,7 @@ describe('NavigationOptimizer', () => {
   describe('Static State Management', () => {
     it('maintains preloaded routes across instances', () => {
       NavigationOptimizer.preloadRoute('/customers')
-      
+
       // Check that the static state persists
       expect(NavigationOptimizer['preloadedRoutes'].has('/customers')).toBe(true)
     })
@@ -171,9 +179,9 @@ describe('NavigationOptimizer', () => {
       const path = '/customers'
       const mockData = { test: 'data' }
       const mockFetcher = jest.fn().mockResolvedValue(mockData)
-      
+
       await NavigationOptimizer.prefetchData(path, mockFetcher)
-      
+
       // Check that the static state persists
       expect(NavigationOptimizer.getPrefetchedData(path)).toEqual(mockData)
     })
@@ -182,24 +190,18 @@ describe('NavigationOptimizer', () => {
   describe('Browser Environment', () => {
     it('handles missing window object gracefully', () => {
       const originalWindow = global.window
-      
+
       // @ts-ignore
       delete global.window
-      
+
       // Should not throw an error
       expect(() => NavigationOptimizer.preloadRoute('/test')).not.toThrow()
-      
+
       global.window = originalWindow
     })
 
     it('works in browser environment', () => {
-      Object.defineProperty(global, 'window', {
-        value: {
-          location: { href: 'https://example.com' },
-        },
-        writable: true,
-      })
-      
+      // In JSDOM window is already defined, so we just need to verify it doesn't throw
       expect(() => NavigationOptimizer.preloadRoute('/test')).not.toThrow()
     })
   })
@@ -207,24 +209,24 @@ describe('NavigationOptimizer', () => {
   describe('Error Handling', () => {
     it('handles document.createElement errors gracefully', () => {
       const originalCreateElement = document.createElement
-      
-      ;(document.createElement as jest.Mock).mockImplementation(() => {
-        throw new Error('DOM error')
-      })
-      
+
+        ; (document.createElement as jest.Mock).mockImplementation(() => {
+          throw new Error('DOM error')
+        })
+
       // Should not throw
       expect(() => NavigationOptimizer.preloadRoute('/test')).not.toThrow()
-      
+
       document.createElement = originalCreateElement
     })
 
     it('handles appendChild errors gracefully', () => {
       const mockLink = { rel: '', href: '' }
-      ;(document.createElement as jest.Mock).mockReturnValue(mockLink)
-      ;(document.head.appendChild as jest.Mock).mockImplementation(() => {
-        throw new Error('Append error')
-      })
-      
+        ; (document.createElement as jest.Mock).mockReturnValue(mockLink)
+        ; (document.head.appendChild as jest.Mock).mockImplementation(() => {
+          throw new Error('Append error')
+        })
+
       // Should not throw
       expect(() => NavigationOptimizer.preloadRoute('/test')).not.toThrow()
     })

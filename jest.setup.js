@@ -69,18 +69,18 @@ Object.defineProperty(window, 'matchMedia', {
 
 // Mock IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
-  constructor() {}
-  disconnect() {}
-  observe() {}
-  unobserve() {}
+  constructor() { }
+  disconnect() { }
+  observe() { }
+  unobserve() { }
 }
 
 // Mock ResizeObserver
 global.ResizeObserver = class ResizeObserver {
-  constructor() {}
-  disconnect() {}
-  observe() {}
-  unobserve() {}
+  constructor() { }
+  disconnect() { }
+  observe() { }
+  unobserve() { }
 }
 
 // Suppress console errors in tests unless explicitly testing them

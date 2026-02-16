@@ -5,11 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { errorLogger, ErrorLogEntry } from '@/lib/errorLogger'
-import { 
-  AlertTriangle, 
-  Bug, 
-  Download, 
-  Trash2, 
+import {
+  AlertTriangle,
+  Bug,
+  Download,
+  Trash2,
   RefreshCw,
   Eye,
   EyeOff,
@@ -19,11 +19,12 @@ import {
 
 interface ErrorMonitorProps {
   className?: string
+  initialVisible?: boolean
 }
 
-export default function ErrorMonitor({ className }: ErrorMonitorProps) {
+export default function ErrorMonitor({ className, initialVisible = true }: ErrorMonitorProps) {
   const [logs, setLogs] = useState<ErrorLogEntry[]>([])
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(initialVisible)
   const [filter, setFilter] = useState<'all' | 'error' | 'warn' | 'info'>('all')
   const [autoRefresh, setAutoRefresh] = useState(true)
 
@@ -138,7 +139,8 @@ export default function ErrorMonitor({ className }: ErrorMonitorProps) {
                 variant="ghost"
                 size="sm"
                 onClick={() => setAutoRefresh(!autoRefresh)}
-                className={autoRefresh ? 'text-green-600' : 'text-gray-400'}
+                className={autoRefresh ? 'text-green-600' : ''}
+                title={autoRefresh ? 'Disable auto-refresh' : 'Enable auto-refresh'}
               >
                 <RefreshCw className={`h-4 w-4 ${autoRefresh ? 'animate-spin' : ''}`} />
               </Button>
@@ -146,6 +148,8 @@ export default function ErrorMonitor({ className }: ErrorMonitorProps) {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsVisible(false)}
+                title="Hide"
+                aria-label="Hide"
               >
                 <EyeOff className="h-4 w-4" />
               </Button>

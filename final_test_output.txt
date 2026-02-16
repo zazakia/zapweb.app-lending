@@ -1,0 +1,641 @@
+
+> melann-lending@0.1.0 test
+> jest
+
+FAIL tests/performance/lighthouse.test.js
+  ● Test suite failed to run
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    D:\GitHub\zapweb.app-lending\node_modules\lighthouse\core\index.js:7
+    import Trace from './gather/gatherers/trace.js';
+    ^^^^^^
+
+    SyntaxError: Cannot use import statement outside a module
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mconst[39m lighthouse [33m=[39m require([32m'lighthouse'[39m)
+     [90m   |[39m                    [31m[1m^[22m[39m
+     [90m 2 |[39m [36mconst[39m puppeteer [33m=[39m require([32m'puppeteer'[39m)
+     [90m 3 |[39m
+     [90m 4 |[39m describe([32m'Lighthouse Performance Tests'[39m[33m,[39m () [33m=>[39m {[0m
+
+      at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1314:40)
+      at Object.require (tests/performance/lighthouse.test.js:1:20)
+
+  console.warn
+    Failed to create prefetch link: Error: DOM error
+        at Document.<anonymous> (D:\GitHub\zapweb.app-lending\src\lib\__tests__\navigationOptimizer.test.ts:214:17)
+        at D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:305:39
+        at Document.<anonymous> (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:312:13)
+        at Document.mockConstructor (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:102:19)
+        at createElement (D:\GitHub\zapweb.app-lending\src\lib\navigationOptimizer.ts:22:33)
+
+    [0m [90m 25 |[39m           document[33m.[39mhead[33m.[39mappendChild(link)
+     [90m 26 |[39m         } [36mcatch[39m (err) {
+    [31m[1m>[22m[39m[90m 27 |[39m           console[33m.[39mwarn([32m'Failed to create prefetch link:'[39m[33m,[39m err)
+     [90m    |[39m                   [31m[1m^[22m[39m
+     [90m 28 |[39m         }
+     [90m 29 |[39m       })
+     [90m 30 |[39m     }[0m
+
+      at warn (src/lib/navigationOptimizer.ts:27:19)
+
+  console.error
+    Test console error
+
+    [0m [90m 47 |[39m     console[33m.[39merror [33m=[39m ([33m...[39margs) [33m=>[39m {
+     [90m 48 |[39m       [36mthis[39m[33m.[39mlogError([32m'error'[39m[33m,[39m args[33m.[39mjoin([32m' '[39m)[33m,[39m [32m'console'[39m[33m,[39m { originalArgs[33m:[39m args })
+    [31m[1m>[22m[39m[90m 49 |[39m       originalError[33m.[39mapply(console[33m,[39m args)
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 50 |[39m     }
+     [90m 51 |[39m
+     [90m 52 |[39m     console[33m.[39mwarn [33m=[39m ([33m...[39margs) [33m=>[39m {[0m
+
+      at console.apply (src/lib/errorLogger.ts:49:21)
+      at Object.error (src/lib/__tests__/errorLogger.test.ts:83:15)
+
+  console.warn
+    Failed to create prefetch link: Error: Append error
+        at Object.<anonymous> (D:\GitHub\zapweb.app-lending\src\lib\__tests__\navigationOptimizer.test.ts:227:17)
+        at D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:305:39
+        at Object.<anonymous> (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:312:13)
+        at Object.mockConstructor [as appendChild] (D:\GitHub\zapweb.app-lending\node_modules\jest-mock\build\index.js:102:19)
+        at appendChild (D:\GitHub\zapweb.app-lending\src\lib\navigationOptimizer.ts:25:25)
+
+    [0m [90m 25 |[39m           document[33m.[39mhead[33m.[39mappendChild(link)
+     [90m 26 |[39m         } [36mcatch[39m (err) {
+    [31m[1m>[22m[39m[90m 27 |[39m           console[33m.[39mwarn([32m'Failed to create prefetch link:'[39m[33m,[39m err)
+     [90m    |[39m                   [31m[1m^[22m[39m
+     [90m 28 |[39m         }
+     [90m 29 |[39m       })
+     [90m 30 |[39m     }[0m
+
+      at warn (src/lib/navigationOptimizer.ts:27:19)
+
+  console.warn
+    Test console warning
+
+    [0m [90m 52 |[39m     console[33m.[39mwarn [33m=[39m ([33m...[39margs) [33m=>[39m {
+     [90m 53 |[39m       [36mthis[39m[33m.[39mlogError([32m'warn'[39m[33m,[39m args[33m.[39mjoin([32m' '[39m)[33m,[39m [32m'console'[39m[33m,[39m { originalArgs[33m:[39m args })
+    [31m[1m>[22m[39m[90m 54 |[39m       originalWarn[33m.[39mapply(console[33m,[39m args)
+     [90m    |[39m                    [31m[1m^[22m[39m
+     [90m 55 |[39m     }
+     [90m 56 |[39m
+     [90m 57 |[39m     [90m// Optionally capture all console.log for debugging[39m[0m
+
+      at console.apply [as warn] (src/lib/errorLogger.ts:54:20)
+      at Object.warn (src/lib/__tests__/errorLogger.test.ts:93:15)
+
+PASS src/lib/__tests__/navigationOptimizer.test.ts
+  NavigationOptimizer
+    Route Preloading
+      √ preloads a route only once (39 ms)
+      √ preloads multiple different routes (1 ms)
+      √ creates prefetch link elements (4 ms)
+    Data Prefetching
+      √ prefetches data and caches it (1 ms)
+      √ returns cached data on subsequent calls (1 ms)
+      √ handles fetcher errors gracefully (1 ms)
+      √ gets prefetched data correctly (1 ms)
+      √ returns undefined for non-cached data
+      √ clears specific prefetched data (1 ms)
+      √ clears all prefetched data
+    Static State Management
+      √ maintains preloaded routes across instances
+      √ maintains prefetched data across instances (1 ms)
+    Browser Environment
+      √ handles missing window object gracefully
+      √ works in browser environment
+    Error Handling
+      √ handles document.createElement errors gracefully (55 ms)
+      √ handles appendChild errors gracefully (7 ms)
+
+FAIL src/lib/__tests__/utils.test.ts
+  Utils
+    formatCurrency
+      √ formats positive numbers correctly (83 ms)
+      √ formats zero correctly (1 ms)
+      √ formats negative numbers correctly
+      √ handles decimal precision (1 ms)
+      √ handles very large numbers (1 ms)
+      √ handles very small numbers (1 ms)
+      √ handles string input by converting to number
+      √ handles invalid input gracefully (1 ms)
+    formatDate
+      √ formats date correctly with default locale (11 ms)
+      √ handles Date object input (1 ms)
+      √ handles string date input (1 ms)
+      √ handles different date formats (2 ms)
+      √ handles invalid date input gracefully (1 ms)
+      √ handles edge cases (1 ms)
+    cn (className utility)
+      √ merges class names correctly (9 ms)
+      √ handles conditional classes (1 ms)
+      √ filters out falsy values (1 ms)
+      √ handles arrays of classes
+      √ handles objects with boolean values (1 ms)
+      √ merges Tailwind classes correctly (1 ms)
+      √ handles empty input
+      √ handles complex combinations (1 ms)
+    Error Handling
+      √ handles formatCurrency with non-numeric strings (1 ms)
+      √ handles formatDate with various input types (1 ms)
+      √ handles cn with various input types
+    Performance
+      √ formatCurrency performs well with many calls (77 ms)
+      × formatDate performs well with many calls (123 ms)
+      √ cn performs well with many calls (6 ms)
+
+  ● Utils › Performance › formatDate performs well with many calls
+
+    expect(received).toBeLessThan(expected)
+
+    Expected: < 100
+    Received:   121.41499999999996
+
+    [0m [90m 240 |[39m       
+     [90m 241 |[39m       [90m// Should complete 1000 operations in reasonable time (less than 100ms)[39m
+    [31m[1m>[22m[39m[90m 242 |[39m       expect(duration)[33m.[39mtoBeLessThan([35m100[39m)
+     [90m     |[39m                        [31m[1m^[22m[39m
+     [90m 243 |[39m     })
+     [90m 244 |[39m
+     [90m 245 |[39m     it([32m'cn performs well with many calls'[39m[33m,[39m () [33m=>[39m {[0m
+
+      at Object.toBeLessThan (src/lib/__tests__/utils.test.ts:242:24)
+
+PASS src/components/__tests__/LayoutSwitcher.test.tsx
+  LayoutSwitcher
+    √ renders TopNavigationLayout when navigationPosition is top (47 ms)
+    √ renders SidebarNavigationLayout when navigationPosition is left (5 ms)
+    √ defaults to TopNavigationLayout for unknown navigationPosition (5 ms)
+    √ re-renders when settings change (8 ms)
+    √ passes children to both layout types (11 ms)
+    √ memoizes layout rendering correctly (4 ms)
+
+  console.warn
+    Failed to load error logs from localStorage: SyntaxError: Unexpected token 'i', "invalid json" is not valid JSON
+        at JSON.parse (<anonymous>)
+        at ErrorLogger.parse [as loadFromLocalStorage] (D:\GitHub\zapweb.app-lending\src\lib\errorLogger.ts:230:28)
+        at loadFromLocalStorage (D:\GitHub\zapweb.app-lending\src\lib\__tests__\errorLogger.test.ts:305:32)
+        at Object.<anonymous> (D:\GitHub\zapweb.app-lending\node_modules\expect\build\index.js:1824:9)
+        at Object.throwingMatcher [as toThrow] (D:\GitHub\zapweb.app-lending\node_modules\expect\build\index.js:2232:93)
+        at Object.toThrow (D:\GitHub\zapweb.app-lending\src\lib\__tests__\errorLogger.test.ts:305:60)
+        at Promise.finally.completed (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1559:28)
+        at new Promise (<anonymous>)
+        at callAsyncCircusFn (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1499:10)
+        at _callCircusTest (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1009:40)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5)
+        at _runTest (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:949:3)
+        at _runTestsForDescribeBlock (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:839:13)
+        at _runTestsForDescribeBlock (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:829:11)
+        at _runTestsForDescribeBlock (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:829:11)
+        at run (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:757:3)
+        at runAndTransformResultsToJestFormat (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\jestAdapterInit.js:1920:21)
+        at jestAdapter (D:\GitHub\zapweb.app-lending\node_modules\jest-circus\build\runner.js:101:19)
+        at runTestInternal (D:\GitHub\zapweb.app-lending\node_modules\jest-runner\build\testWorker.js:272:16)
+        at runTest (D:\GitHub\zapweb.app-lending\node_modules\jest-runner\build\testWorker.js:340:7)
+        at Object.worker (D:\GitHub\zapweb.app-lending\node_modules\jest-runner\build\testWorker.js:494:12)
+
+    [0m [90m 52 |[39m     console[33m.[39mwarn [33m=[39m ([33m...[39margs) [33m=>[39m {
+     [90m 53 |[39m       [36mthis[39m[33m.[39mlogError([32m'warn'[39m[33m,[39m args[33m.[39mjoin([32m' '[39m)[33m,[39m [32m'console'[39m[33m,[39m { originalArgs[33m:[39m args })
+    [31m[1m>[22m[39m[90m 54 |[39m       originalWarn[33m.[39mapply(console[33m,[39m args)
+     [90m    |[39m                    [31m[1m^[22m[39m
+     [90m 55 |[39m     }
+     [90m 56 |[39m
+     [90m 57 |[39m     [90m// Optionally capture all console.log for debugging[39m[0m
+
+      at console.apply [as warn] (src/lib/errorLogger.ts:54:20)
+      at ErrorLogger.warn [as loadFromLocalStorage] (src/lib/errorLogger.ts:233:17)
+      at loadFromLocalStorage (src/lib/__tests__/errorLogger.test.ts:305:32)
+      at Object.<anonymous> (node_modules/expect/build/index.js:1824:9)
+      at Object.throwingMatcher [as toThrow] (node_modules/expect/build/index.js:2232:93)
+      at Object.toThrow (src/lib/__tests__/errorLogger.test.ts:305:60)
+
+PASS src/lib/__tests__/errorLogger.test.ts
+  ErrorLogger
+    Manual Logging
+      √ logs error messages correctly (28 ms)
+      √ logs different levels correctly (2 ms)
+      √ generates unique IDs for each log entry
+    Console Interception
+      √ intercepts console.error calls (88 ms)
+      √ intercepts console.warn calls (6 ms)
+    Log Management
+      √ maintains maximum log limit (632 ms)
+      √ clears all logs (1 ms)
+      √ filters logs by level
+      √ gets recent logs correctly
+    Export Functionality
+      √ exports logs as JSON (2 ms)
+      √ exports logs as CSV (1 ms)
+    Observer Pattern
+      √ notifies subscribers when new errors are logged (1 ms)
+      √ unsubscribes correctly (1 ms)
+      √ supports multiple subscribers (1 ms)
+    Statistics
+      √ calculates statistics correctly (1 ms)
+    LocalStorage Integration
+      √ saves logs to localStorage
+      √ loads logs from localStorage (1 ms)
+      √ handles corrupted localStorage data gracefully (26 ms)
+
+PASS src/components/__tests__/ErrorMonitor.test.tsx
+  ErrorMonitor
+    √ renders error monitor with initial state (95 ms)
+    √ displays error statistics correctly (36 ms)
+    √ can be hidden and shown (123 ms)
+    √ filters logs by level (72 ms)
+    √ clears logs when clear button is clicked (45 ms)
+    √ exports logs as JSON (32 ms)
+    √ exports logs as CSV (29 ms)
+    √ displays error logs correctly (30 ms)
+    √ shows error badge when hidden and errors exist (5 ms)
+    √ toggles auto-refresh correctly (23 ms)
+    √ displays "No logs to display" when empty (17 ms)
+    √ subscribes to new errors on mount (15 ms)
+    √ handles error context expansion (21 ms)
+
+  console.error
+    An update to OptimizedNavigationButton inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+    [0m [90m 94 |[39m       [36mreturn[39m
+     [90m 95 |[39m     }
+    [31m[1m>[22m[39m[90m 96 |[39m     originalError[33m.[39mcall(console[33m,[39m [33m...[39margs)
+     [90m    |[39m                   [31m[1m^[22m[39m
+     [90m 97 |[39m   }
+     [90m 98 |[39m })
+     [90m 99 |[39m[0m
+
+      at console.call [as error] (jest.setup.js:96:19)
+      at node_modules/react-dom/cjs/react-dom-client.development.js:16023:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:16022:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14396:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:6969:13)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom-client.development.js:6927:7)
+      at setIsLoading (src/components/OptimizedNavigationButton.tsx:42:22)
+      at callTimer (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:806:24)
+      at doTickInner (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:1413:29)
+      at doTick (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:1494:20)
+      at Object.tick (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:1502:20)
+      at FakeTimers.advanceTimersByTime (node_modules/@jest/fake-timers/build/index.js:576:19)
+      at Object.advanceTimersByTime (src/components/__tests__/OptimizedNavigationButton.test.tsx:180:10)
+
+PASS src/components/__tests__/OptimizedNavigationButton.test.tsx
+  OptimizedNavigationButton
+    √ renders with correct label and shortcut (60 ms)
+    √ renders with correct accessibility attributes (57 ms)
+    √ calls navigate function when clicked (72 ms)
+    √ calls preloadOnHover when mouse enters (8 ms)
+    √ shows loading state when clicked (52 ms)
+    √ does not navigate when disabled (61 ms)
+    √ applies correct CSS classes for color scheme (7 ms)
+    √ handles touch events for mobile (6 ms)
+    √ prevents multiple rapid clicks (159 ms)
+    √ renders different variants correctly (11 ms)
+    √ renders different sizes correctly (8 ms)
+    √ renders icon component correctly (5 ms)
+    √ handles keyboard events correctly (51 ms)
+    √ resets loading state after timeout (168 ms)
+
+FAIL tests/performance/navigation.test.js
+  Navigation Performance Tests
+    × should navigate to customers page quickly (4 ms)
+    × should navigate to loans page quickly
+    × should navigate to payments page quickly (1 ms)
+    × should have fast click response times
+    × should preload routes effectively
+    × should handle rapid navigation without performance degradation
+    × should maintain performance under load simulation (1 ms)
+    × should efficiently handle memory usage during navigation
+
+  ● Navigation Performance Tests › should navigate to customers page quickly
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/navigation.test.js:8:15)
+
+  ● Navigation Performance Tests › should navigate to loans page quickly
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/navigation.test.js:8:15)
+
+  ● Navigation Performance Tests › should navigate to payments page quickly
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/navigation.test.js:8:15)
+
+  ● Navigation Performance Tests › should have fast click response times
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/navigation.test.js:8:15)
+
+  ● Navigation Performance Tests › should preload routes effectively
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/navigation.test.js:8:15)
+
+  ● Navigation Performance Tests › should handle rapid navigation without performance degradation
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/navigation.test.js:8:15)
+
+  ● Navigation Performance Tests › should maintain performance under load simulation
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/navigation.test.js:8:15)
+
+  ● Navigation Performance Tests › should efficiently handle memory usage during navigation
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/navigation.test.js:8:15)
+
+FAIL tests/performance/webVitals.test.js
+  Web Vitals Performance Tests
+    × should meet Core Web Vitals thresholds for home page (4 ms)
+    × should meet Core Web Vitals thresholds for customers page
+    × should measure Time to Interactive (TTI) (1 ms)
+    × should measure Total Blocking Time (TBT)
+    × should measure Interaction to Next Paint (INP)
+    × should measure resource loading performance
+    × should maintain consistent performance across multiple page loads
+
+  ● Web Vitals Performance Tests › should meet Core Web Vitals thresholds for home page
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/webVitals.test.js:8:15)
+
+  ● Web Vitals Performance Tests › should meet Core Web Vitals thresholds for customers page
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/webVitals.test.js:8:15)
+
+  ● Web Vitals Performance Tests › should measure Time to Interactive (TTI)
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/webVitals.test.js:8:15)
+
+  ● Web Vitals Performance Tests › should measure Total Blocking Time (TBT)
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/webVitals.test.js:8:15)
+
+  ● Web Vitals Performance Tests › should measure Interaction to Next Paint (INP)
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/webVitals.test.js:8:15)
+
+  ● Web Vitals Performance Tests › should measure resource loading performance
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/webVitals.test.js:8:15)
+
+  ● Web Vitals Performance Tests › should maintain consistent performance across multiple page loads
+
+    ws does not work in the browser. Browser clients must use the native WebSocket object
+
+    [0m [90m  6 |[39m
+     [90m  7 |[39m   beforeAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m  8 |[39m     browser [33m=[39m [36mawait[39m puppeteer[33m.[39mlaunch({
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m  9 |[39m       headless[33m:[39m [36mtrue[39m[33m,[39m
+     [90m 10 |[39m       args[33m:[39m [[32m'--no-sandbox'[39m[33m,[39m [32m'--disable-setuid-sandbox'[39m]
+     [90m 11 |[39m     })[0m
+
+      at new module.exports (node_modules/ws/browser.js:4:9)
+      at node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:20:18
+      at NodeWebSocketTransport.create (node_modules/puppeteer-core/src/node/NodeWebSocketTransport.ts:19:12)
+      at ChromeLauncher.createCdpSocketConnection (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:322:48)
+      at ChromeLauncher.launch (node_modules/puppeteer-core/src/node/BrowserLauncher.ts:176:27)
+      at Object.<anonymous> (tests/performance/webVitals.test.js:8:15)
+
+A worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks. Active timers can also cause this, ensure that .unref() was called on them.
+Test Suites: 4 failed, 5 passed, 9 total
+Tests:       16 failed, 94 passed, 110 total
+Snapshots:   0 total
+Time:        5.19 s
+Ran all test suites.

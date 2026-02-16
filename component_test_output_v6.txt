@@ -1,0 +1,388 @@
+FAIL src/components/__tests__/ErrorMonitor.test.tsx
+  ErrorMonitor
+    √ renders error monitor with initial state (51 ms)
+    √ displays error statistics correctly (18 ms)
+    √ can be hidden and shown (76 ms)
+    √ filters logs by level (84 ms)
+    √ clears logs when clear button is clicked (30 ms)
+    × exports logs as JSON (42 ms)
+    × exports logs as CSV (5 ms)
+    × displays error logs correctly (18 ms)
+    √ shows error badge when hidden and errors exist (2 ms)
+    √ toggles auto-refresh correctly (15 ms)
+    √ displays "No logs to display" when empty (11 ms)
+    √ subscribes to new errors on mount (10 ms)
+    × handles error context expansion (16 ms)
+
+  ● ErrorMonitor › exports logs as JSON
+
+    TypeError: Cannot set properties of undefined (setting '__reactFiber$vg57kjiwnnl')
+
+    [0m [90m 93 |[39m       [36mreturn[39m el
+     [90m 94 |[39m     })
+    [31m[1m>[22m[39m[90m 95 |[39m     render([33m<[39m[33mErrorMonitor[39m initialVisible[33m=[39m{[36mtrue[39m} [33m/[39m[33m>[39m)
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 96 |[39m     [36mconst[39m exportButton [33m=[39m screen[33m.[39mgetByRole([32m'button'[39m[33m,[39m { name[33m:[39m [35m/Export as JSON/i[39m })
+     [90m 97 |[39m     fireEvent[33m.[39mclick(exportButton)
+     [90m 98 |[39m     expect(errorLogger[33m.[39mexportLogs)[33m.[39mtoHaveBeenCalled()[0m
+
+      at completeWork (node_modules/react-dom/cjs/react-dom-client.development.js:11366:44)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at completeUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:15268:19)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:15149:11)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:14956:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:14936:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:14462:44)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:16216:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:566:34)
+      at process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:859:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (src/components/__tests__/ErrorMonitor.test.tsx:95:11)
+
+  ● ErrorMonitor › exports logs as CSV
+
+    TypeError: Cannot set properties of undefined (setting '__reactFiber$vg57kjiwnnl')
+
+    [0m [90m 112 |[39m       [36mreturn[39m el
+     [90m 113 |[39m     })
+    [31m[1m>[22m[39m[90m 114 |[39m     render([33m<[39m[33mErrorMonitor[39m initialVisible[33m=[39m{[36mtrue[39m} [33m/[39m[33m>[39m)
+     [90m     |[39m           [31m[1m^[22m[39m
+     [90m 115 |[39m     [36mconst[39m exportButton [33m=[39m screen[33m.[39mgetByRole([32m'button'[39m[33m,[39m { name[33m:[39m [35m/Export as CSV/i[39m })
+     [90m 116 |[39m     fireEvent[33m.[39mclick(exportButton)
+     [90m 117 |[39m     expect(errorLogger[33m.[39mexportLogsAsCSV)[33m.[39mtoHaveBeenCalled()[0m
+
+      at completeWork (node_modules/react-dom/cjs/react-dom-client.development.js:11366:44)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at completeUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:15268:19)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:15149:11)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:14956:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:14936:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:14462:44)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:16216:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:566:34)
+      at process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:859:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (src/components/__tests__/ErrorMonitor.test.tsx:114:11)
+
+  ● ErrorMonitor › displays error logs correctly
+
+    TestingLibraryElementError: Unable to find an element with the text: /console/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"fixed bottom-4 right-4 w-96 max-h-96 z-50 undefined"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"rounded-lg bg-card text-card-foreground shadow-lg border"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1.5 p-6 pb-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center justify-between"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-center gap-2"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"lucide lucide-bug h-5 w-5 text-indigo-600"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"m8 2 1.88 1.88"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M14.12 3.88 16 2"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M12 20v-9"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M6.53 9C4.6 8.8 3 7.1 3 5"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M6 13H2"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M3 21c0-2.1 1.7-3.9 3.8-4"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M20.97 5c0 2.1-1.6 3.8-3.5 4"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M22 13h-4"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M17.2 17c2.1.1 3.8 1.9 3.8 4"[39m
+                    [36m/>[39m
+                  [36m</svg>[39m
+                  [36m<h3[39m
+                    [33mclass[39m=[32m"font-semibold tracking-tight text-lg"[39m
+                  [36m>[39m
+                    [0mError Monitor[0m
+                  [36m</h3>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-center gap-1"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-green-600"[39m
+                    [33mtitle[39m=[32m"Disable auto-refresh"[39m
+                  [36m>[39m
+                    [36m<svg[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"lucide lucide-refresh-cw h-4 w-4 animate-spin"[39m
+                      [33mfill[39m=[32m"none"[39m
+                      [33mheight[39m=[32m"24"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-linecap[39m=[32m"round"[39m
+                      [33mstroke-linejoin[39m=[32m"round"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"24"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M21 3v5h-5"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M8 16H3v5"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</button>[39m
+                  [36m<button[39m
+                    [33maria-label[39m=[32m"Hide"[39m
+                    [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"[39m
+                    [33mtitle[39m=[32m"Hide"[39m
+                  [36m>[39m
+                    [36m<svg[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"lucide lucide-eye-off h-4 w-4"[39m
+                      [33mfill[39m=[32m"none"[39m
+                      [33mheight[39m=[32m"24"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-linecap[39m=[32m"round"[39m
+                      [33mstroke-linejoin[39m=[32m"round"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"24"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M14.084 14.158a3 3 0 0 1-4.242-4.242"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"m2 2 20 20"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</button>[39m
+                [...
+
+    [0m [90m 124 |[39m     render([33m<[39m[33mErrorMonitor[39m initialVisible[33m=[39m{[36mtrue[39m} [33m/[39m[33m>[39m)
+     [90m 125 |[39m     expect(screen[33m.[39mgetByText([32m'Test Error'[39m))[33m.[39mtoBeInTheDocument()
+    [31m[1m>[22m[39m[90m 126 |[39m     expect(screen[33m.[39mgetByText([35m/console/i[39m))[33m.[39mtoBeInTheDocument()
+     [90m     |[39m                   [31m[1m^[22m[39m
+     [90m 127 |[39m   })
+     [90m 128 |[39m
+     [90m 129 |[39m   it([32m'shows error badge when hidden and errors exist'[39m[33m,[39m () [33m=>[39m {[0m
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+      at Object.getByText (src/components/__tests__/ErrorMonitor.test.tsx:126:19)
+
+  ● ErrorMonitor › handles error context expansion
+
+    TestingLibraryElementError: Unable to find an element with the text: Expanded info. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"fixed bottom-4 right-4 w-96 max-h-96 z-50 undefined"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"rounded-lg bg-card text-card-foreground shadow-lg border"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1.5 p-6 pb-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center justify-between"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-center gap-2"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"lucide lucide-bug h-5 w-5 text-indigo-600"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"m8 2 1.88 1.88"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M14.12 3.88 16 2"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M12 20v-9"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M6.53 9C4.6 8.8 3 7.1 3 5"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M6 13H2"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M3 21c0-2.1 1.7-3.9 3.8-4"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M20.97 5c0 2.1-1.6 3.8-3.5 4"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M22 13h-4"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M17.2 17c2.1.1 3.8 1.9 3.8 4"[39m
+                    [36m/>[39m
+                  [36m</svg>[39m
+                  [36m<h3[39m
+                    [33mclass[39m=[32m"font-semibold tracking-tight text-lg"[39m
+                  [36m>[39m
+                    [0mError Monitor[0m
+                  [36m</h3>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-center gap-1"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-green-600"[39m
+                    [33mtitle[39m=[32m"Disable auto-refresh"[39m
+                  [36m>[39m
+                    [36m<svg[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"lucide lucide-refresh-cw h-4 w-4 animate-spin"[39m
+                      [33mfill[39m=[32m"none"[39m
+                      [33mheight[39m=[32m"24"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-linecap[39m=[32m"round"[39m
+                      [33mstroke-linejoin[39m=[32m"round"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"24"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M21 3v5h-5"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M8 16H3v5"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</button>[39m
+                  [36m<button[39m
+                    [33maria-label[39m=[32m"Hide"[39m
+                    [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"[39m
+                    [33mtitle[39m=[32m"Hide"[39m
+                  [36m>[39m
+                    [36m<svg[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"lucide lucide-eye-off h-4 w-4"[39m
+                      [33mfill[39m=[32m"none"[39m
+                      [33mheight[39m=[32m"24"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-linecap[39m=[32m"round"[39m
+                      [33mstroke-linejoin[39m=[32m"round"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"24"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M14.084 14.158a3 3 0 0 1-4.242-4.242"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"m2 2 20 20"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</button>[39m
+                [...
+
+    [0m [90m 158 |[39m     [36mconst[39m contextToggle [33m=[39m screen[33m.[39mgetByText([32m'Context'[39m)
+     [90m 159 |[39m     fireEvent[33m.[39mclick(contextToggle)
+    [31m[1m>[22m[39m[90m 160 |[39m     expect(screen[33m.[39mgetByText([32m'Expanded info'[39m))[33m.[39mtoBeInTheDocument()
+     [90m     |[39m                   [31m[1m^[22m[39m
+     [90m 161 |[39m   })
+     [90m 162 |[39m })[0m
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+      at Object.getByText (src/components/__tests__/ErrorMonitor.test.tsx:160:19)
+
+Test Suites: 1 failed, 1 total
+Tests:       4 failed, 9 passed, 13 total
+Snapshots:   0 total
+Time:        2.163 s
+Ran all test suites matching src/components/__tests__/ErrorMonitor.test.tsx.

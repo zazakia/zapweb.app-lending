@@ -6,26 +6,43 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatCurrency(amount: number): string {
+  const numericAmount = typeof amount === 'number' ? amount : parseFloat(amount as any);
+  const safeAmount = isNaN(numericAmount) || !isFinite(numericAmount) ? 0 : numericAmount;
+
   return new Intl.NumberFormat('en-PH', {
     style: 'currency',
     currency: 'PHP',
-  }).format(amount)
+  }).format(safeAmount)
 }
 
 export function formatDate(date: string | Date): string {
-  return new Intl.DateTimeFormat('en-PH', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }).format(new Date(date))
+  try {
+    const d = new Date(date)
+    if (isNaN(d.getTime())) return 'Invalid Date'
+
+    return new Intl.DateTimeFormat('en-PH', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }).format(d)
+  } catch {
+    return 'Invalid Date'
+  }
 }
 
 export function formatShortDate(date: string | Date): string {
-  return new Intl.DateTimeFormat('en-PH', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(new Date(date))
+  try {
+    const d = new Date(date)
+    if (isNaN(d.getTime())) return 'Invalid Date'
+
+    return new Intl.DateTimeFormat('en-PH', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(d)
+  } catch {
+    return 'Invalid Date'
+  }
 }
 
 export function calculateInterest(principal: number, rate: number): number {
@@ -35,7 +52,7 @@ export function calculateInterest(principal: number, rate: number): number {
 export function calculateMaturityDate(releaseDate: Date, termDays: number): Date {
   const maturityDate = new Date(releaseDate)
   let daysAdded = 0
-  
+
   while (daysAdded < termDays) {
     maturityDate.setDate(maturityDate.getDate() + 1)
     // Skip Sundays (0 = Sunday)
@@ -43,16 +60,16 @@ export function calculateMaturityDate(releaseDate: Date, termDays: number): Date
       daysAdded++
     }
   }
-  
+
   return maturityDate
 }
 
 export function calculateDaysLate(maturityDate: Date, paymentDate: Date): number {
   if (paymentDate <= maturityDate) return 0
-  
+
   let daysLate = 0
   const currentDate = new Date(maturityDate)
-  
+
   while (currentDate < paymentDate) {
     currentDate.setDate(currentDate.getDate() + 1)
     // Count business days only (skip Sundays)
@@ -60,7 +77,7 @@ export function calculateDaysLate(maturityDate: Date, paymentDate: Date): number
       daysLate++
     }
   }
-  
+
   return daysLate
 }
 
@@ -80,10 +97,17 @@ export function generatePaymentId(): string {
 }
 
 export function formatTime(dateTime: string | Date): string {
-  return new Intl.DateTimeFormat('en-PH', {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: true
-  }).format(new Date(dateTime))
+  try {
+    const d = new Date(dateTime)
+    if (isNaN(d.getTime())) return 'Invalid Time'
+
+    return new Intl.DateTimeFormat('en-PH', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    }).format(d)
+  } catch {
+    return 'Invalid Time'
+  }
 }

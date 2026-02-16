@@ -1,0 +1,843 @@
+PASS src/components/__tests__/LayoutSwitcher.test.tsx
+  LayoutSwitcher
+    √ renders TopNavigationLayout when navigationPosition is top (44 ms)
+    √ renders SidebarNavigationLayout when navigationPosition is left (6 ms)
+    √ defaults to TopNavigationLayout for unknown navigationPosition (5 ms)
+    √ re-renders when settings change (9 ms)
+    √ passes children to both layout types (13 ms)
+    √ memoizes layout rendering correctly (3 ms)
+
+  console.error
+    An update to OptimizedNavigationButton inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+    [0m [90m 94 |[39m       [36mreturn[39m
+     [90m 95 |[39m     }
+    [31m[1m>[22m[39m[90m 96 |[39m     originalError[33m.[39mcall(console[33m,[39m [33m...[39margs)
+     [90m    |[39m                   [31m[1m^[22m[39m
+     [90m 97 |[39m   }
+     [90m 98 |[39m })
+     [90m 99 |[39m[0m
+
+      at console.call [as error] (jest.setup.js:96:19)
+      at node_modules/react-dom/cjs/react-dom-client.development.js:16023:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:1522:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:16022:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14396:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:6969:13)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom-client.development.js:6927:7)
+      at setIsLoading (src/components/OptimizedNavigationButton.tsx:42:22)
+      at callTimer (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:806:24)
+      at doTickInner (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:1413:29)
+      at doTick (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:1494:20)
+      at Object.tick (node_modules/@sinonjs/fake-timers/src/fake-timers-src.js:1502:20)
+      at FakeTimers.advanceTimersByTime (node_modules/@jest/fake-timers/build/index.js:576:19)
+      at Object.advanceTimersByTime (src/components/__tests__/OptimizedNavigationButton.test.tsx:180:10)
+
+PASS src/components/__tests__/OptimizedNavigationButton.test.tsx
+  OptimizedNavigationButton
+    √ renders with correct label and shortcut (63 ms)
+    √ renders with correct accessibility attributes (66 ms)
+    √ calls navigate function when clicked (55 ms)
+    √ calls preloadOnHover when mouse enters (12 ms)
+    √ shows loading state when clicked (55 ms)
+    √ does not navigate when disabled (63 ms)
+    √ applies correct CSS classes for color scheme (8 ms)
+    √ handles touch events for mobile (10 ms)
+    √ prevents multiple rapid clicks (193 ms)
+    √ renders different variants correctly (11 ms)
+    √ renders different sizes correctly (10 ms)
+    √ renders icon component correctly (8 ms)
+    √ handles keyboard events correctly (47 ms)
+    √ resets loading state after timeout (88 ms)
+
+FAIL src/components/__tests__/ErrorMonitor.test.tsx
+  ErrorMonitor
+    √ renders error monitor with initial state (84 ms)
+    √ displays error statistics correctly (28 ms)
+    × can be hidden and shown (242 ms)
+    √ filters logs by level (199 ms)
+    √ clears logs when clear button is clicked (92 ms)
+    × exports logs as JSON (1 ms)
+    × exports logs as CSV (9 ms)
+    × displays error logs correctly (9 ms)
+    × shows error badge when hidden and errors exist (7 ms)
+    × toggles auto-refresh correctly (7 ms)
+    × displays "No logs to display" when empty (7 ms)
+    × subscribes to new errors on mount (7 ms)
+    × handles error context expansion (8 ms)
+
+  ● ErrorMonitor › can be hidden and shown
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/hide/i`
+
+    Here are the accessible roles:
+
+      heading:
+
+      Name "Error Monitor":
+      [36m<h3[39m
+        [33mclass[39m=[32m"font-semibold tracking-tight text-lg"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      button:
+
+      Name "":
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-green-600"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"[39m
+      [36m/>[39m
+
+      Name "Export as JSON":
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"[39m
+        [33mtitle[39m=[32m"Export as JSON"[39m
+      [36m/>[39m
+
+      Name "Export as CSV":
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"[39m
+        [33mtitle[39m=[32m"Export as CSV"[39m
+      [36m/>[39m
+
+      Name "Clear logs":
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"[39m
+        [33mtitle[39m=[32m"Clear logs"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      paragraph:
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"text-sm text-muted-foreground"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      combobox:
+
+      Name "":
+      [36m<select[39m
+        [33mclass[39m=[32m"text-sm border rounded px-2 py-1"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      option:
+
+      Name "All":
+      [36m<option[39m
+        [33mvalue[39m=[32m"all"[39m
+      [36m/>[39m
+
+      Name "Errors":
+      [36m<option[39m
+        [33mvalue[39m=[32m"error"[39m
+      [36m/>[39m
+
+      Name "Warnings":
+      [36m<option[39m
+        [33mvalue[39m=[32m"warn"[39m
+      [36m/>[39m
+
+      Name "Info":
+      [36m<option[39m
+        [33mvalue[39m=[32m"info"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"fixed bottom-4 right-4 w-96 max-h-96 z-50 undefined"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"rounded-lg bg-card text-card-foreground shadow-lg border"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-col space-y-1.5 p-6 pb-3"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center justify-between"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-center gap-2"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"lucide lucide-bug h-5 w-5 text-indigo-600"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"m8 2 1.88 1.88"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M14.12 3.88 16 2"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M12 20v-9"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M6.53 9C4.6 8.8 3 7.1 3 5"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M6 13H2"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M3 21c0-2.1 1.7-3.9 3.8-4"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M20.97 5c0 2.1-1.6 3.8-3.5 4"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M22 13h-4"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M17.2 17c2.1.1 3.8 1.9 3.8 4"[39m
+                    [36m/>[39m
+                  [36m</svg>[39m
+                  [36m<h3[39m
+                    [33mclass[39m=[32m"font-semibold tracking-tight text-lg"[39m
+                  [36m>[39m
+                    [0mError Monitor[0m
+                  [36m</h3>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-center gap-1"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 text-green-600"[39m
+                  [36m>[39m
+                    [36m<svg[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"lucide lucide-refresh-cw h-4 w-4 animate-spin"[39m
+                      [33mfill[39m=[32m"none"[39m
+                      [33mheight[39m=[32m"24"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-linecap[39m=[32m"round"[39m
+                      [33mstroke-linejoin[39m=[32m"round"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"24"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M21 3v5h-5"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M8 16H3v5"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</button>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"[39m
+                  [36m>[39m
+                    [36m<svg[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"lucide lucide-eye-off h-4 w-4"[39m
+                      [33mfill[39m=[32m"none"[39m
+                      [33mheight[39m=[32m"24"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-linecap[39m=[32m"round"[39m
+                      [33mstroke-linejoin[39m=[32m"round"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"24"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M14.084 14.158a3 3 0 0 1-4.242-4.242"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"m2 2 20 20"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</button>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"text-sm text-muted-foreground"[39m
+              [36m>[39m
+                [0mReal-time error tracking and monitoring[0m
+              [36m</p>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"p-6 pt-0 space-y-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid grid-cols-4 gap-2"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"text-center p-2 bg-red-50 rounded"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-lg font-bold text-red-600"[39m
+                  [36m>[39m
+                    [0m5[0m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-xs text-red-600"[39m
+                  [36m>[39m
+                    [0mErrors[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"text-center p-2 bg-yellow-50 rounded"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-lg font-bold text-yellow-600"[39m
+                  [36m>[39m
+                    [0m3[0m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-xs text-yellow-600"[39m
+                  [36m>[39m
+                    [0mWarnings[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"text-center p-2 bg-blue-50 rounded"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-lg font-bold text-blue-600"[39m
+                  [36m>[39m
+                    [0m2[0m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-xs text-blue-600"[39m
+                  [36m>[39m
+                    [0mInfo[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"text-center p-2 bg-gray-50 rounded"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-lg font-bold text-gray-600"[39m
+                  [36m>[39m
+                    [0m10[0m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"text-xs text-gray-600"[39m
+                  [36m>[39m
+                    [0mTotal[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex items-center justify-between"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-center gap-1"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"lucide lucide-funnel h-4 w-4 text-gray-500"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"24"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"24"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"[39m
+                    [36m/>[39m
+                  [36m</svg>[39m
+                  [36m<select[39m
+                    [33mclass[39m=[32m"text-sm border rounded px-2 py-1"[39m
+                  [36m>[39m
+                    [36m<option[39m
+                      [33mvalue[39m=[32m"all"[39m
+                    [36m>[39m
+                      [0mAll[0m
+                    [36m</option>[39m
+                    [36m<option[39m
+                      [33mvalue[39m=[32m"error"[39m
+                    [36m>[39m
+                      [0mErrors[0m
+                    [36m</option>[39m
+                    [36m<option[39m
+                      [33mvalue[39m=[32m"warn"[39m
+                    [36m>[39m
+                      [0mWarnings[0m
+                    [36m</option>[39m
+                    [36m<option[39m
+                      [33mvalue[39m=[32m"info"[39m
+                    [36m>[39m
+                      [0mInfo[0m
+                    [36m</option>[39m
+                  [36m</select>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-center gap-1"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"[39m
+                    [33mtitle[39m=[32m"Export as JSON"[39m
+                  [36m>[39m
+                    [36m<svg[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"lucide lucide-download h-4 w-4"[39m
+                      [33mfill[39m=[32m"none"[39m
+                      [33mheight[39m=[32m"24"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-linecap[39m=[32m"round"[39m
+                      [33mstroke-linejoin[39m=[32m"round"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"24"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M12 15V3"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"m7 10 5 5 5-5"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</button>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"[39m
+                    [33mtitle[39m=[32m"Export as CSV"[39m
+                  [36m>[39m
+                    [36m<svg[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"lucide lucide-chart-column h-4 w-4"[39m
+                      [33mfill[39m=[32m"none"[39m
+                      [33mheight[39m=[32m"24"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-linecap[39m=[32m"round"[39m
+                      [33mstroke-linejoin[39m=[32m"round"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"24"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M3 3v16a2 2 0 0 0 2 2h16"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M18 17V9"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M13 17V5"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M8 17v-3"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</button>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"[39m
+                    [33mtitle[39m=[32m"Clear logs"[39m
+                  [36m>[39m
+                    [36m<svg[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"lucide lucide-trash2 lucide-trash-2 h-4 w-4"[39m
+                      [33mfill[39m=[32m"none"[39m
+                      [33mheight[39m=[32m"24"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-linecap[39m=[32m"round"[39m
+                      [33mstroke-linejoin[39m=[32m"round"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"24"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M3 6h18"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"[39m
+                      [36m/>[39m
+                      [36m<line[39m
+                        [33mx1[39m=[32m"10"[39m
+                        [33mx2[39m=[32m"10"[39m
+                        [33my1[39m=[32m"11"[39m
+                        [33my2[39m=[32m"17"[39m
+                      [36m/>[39m
+                      [36m<line[39m
+                        [33mx1[39m=[32m"14"[39m
+                        [33mx2[39m=[32m"14"[39m
+                        [33my1[39m=[32m"11"[39m
+                        [33my2[39m=[32m"17"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</button>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"max-h-48 overflow-y-auto space-y-2"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"text-center text-gray-500 py-4"[39m
+                [36m>[39m
+                  [0mNo logs to display[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+    [0m [90m 60 |[39m
+     [90m 61 |[39m     [90m// Hide the monitor[39m
+    [31m[1m>[22m[39m[90m 62 |[39m     [36mconst[39m hideButton [33m=[39m screen[33m.[39mgetByRole([32m'button'[39m[33m,[39m { name[33m:[39m [35m/hide/i[39m })
+     [90m    |[39m                               [31m[1m^[22m[39m
+     [90m 63 |[39m     [36mawait[39m user[33m.[39mclick(hideButton)
+     [90m 64 |[39m
+     [90m 65 |[39m     [90m// Should show the "Show Error Monitor" button[39m[0m
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+      at Object.getByRole (src/components/__tests__/ErrorMonitor.test.tsx:62:31)
+
+  ● ErrorMonitor › exports logs as JSON
+
+    TypeError: Failed to execute 'appendChild' on 'Node': parameter 1 is not of type 'Node'.
+
+    [0m [90m 115 |[39m     jest[33m.[39mspyOn(document[33m,[39m [32m'createElement'[39m)[33m.[39mmockReturnValue(mockLink [36mas[39m any)
+     [90m 116 |[39m
+    [31m[1m>[22m[39m[90m 117 |[39m     render([33m<[39m[33mErrorMonitor[39m [33m/[39m[33m>[39m)
+     [90m     |[39m           [31m[1m^[22m[39m
+     [90m 118 |[39m
+     [90m 119 |[39m     [36mconst[39m exportButton [33m=[39m screen[33m.[39mgetByRole([32m'button'[39m[33m,[39m { name[33m:[39m [35m/Export as JSON/i[39m })
+     [90m 120 |[39m     [36mawait[39m user[33m.[39mclick(exportButton)[0m
+
+      at Object.exports.convert (node_modules/jsdom/lib/jsdom/living/generated/Node.js:25:9)
+      at HTMLBodyElement.appendChild (node_modules/jsdom/lib/jsdom/living/generated/Node.js:404:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:260:29)
+      at Object.<anonymous> (src/components/__tests__/ErrorMonitor.test.tsx:117:11)
+
+  ● ErrorMonitor › exports logs as CSV
+
+    RangeError: Maximum call stack size exceeded
+
+    [0m [90m 136 |[39m     [36mconst[39m spy [33m=[39m jest[33m.[39mspyOn(document[33m,[39m [32m'createElement'[39m)[33m.[39mmockImplementation((tagName) [33m=>[39m {
+     [90m 137 |[39m       [36mif[39m (tagName [33m===[39m [32m'a'[39m) [36mreturn[39m mockLink
+    [31m[1m>[22m[39m[90m 138 |[39m       [36mreturn[39m originalCreateElement(tagName)
+     [90m     |[39m              [31m[1m^[22m[39m
+     [90m 139 |[39m     })
+     [90m 140 |[39m
+     [90m 141 |[39m     render([33m<[39m[33mErrorMonitor[39m initialVisible[33m=[39m{[36mtrue[39m} [33m/[39m[33m>[39m)[0m
+
+      at ModuleMocker._ensureMockState (node_modules/jest-mock/build/index.js:201:19)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+
+  ● ErrorMonitor › displays error logs correctly
+
+    RangeError: Maximum call stack size exceeded
+        at WeakMap.get (<anonymous>)
+
+    [0m [90m 136 |[39m     [36mconst[39m spy [33m=[39m jest[33m.[39mspyOn(document[33m,[39m [32m'createElement'[39m)[33m.[39mmockImplementation((tagName) [33m=>[39m {
+     [90m 137 |[39m       [36mif[39m (tagName [33m===[39m [32m'a'[39m) [36mreturn[39m mockLink
+    [31m[1m>[22m[39m[90m 138 |[39m       [36mreturn[39m originalCreateElement(tagName)
+     [90m     |[39m              [31m[1m^[22m[39m
+     [90m 139 |[39m     })
+     [90m 140 |[39m
+     [90m 141 |[39m     render([33m<[39m[33mErrorMonitor[39m initialVisible[33m=[39m{[36mtrue[39m} [33m/[39m[33m>[39m)[0m
+
+      at ModuleMocker._ensureMockState (node_modules/jest-mock/build/index.js:202:33)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+
+  ● ErrorMonitor › shows error badge when hidden and errors exist
+
+    RangeError: Maximum call stack size exceeded
+        at WeakMap.get (<anonymous>)
+
+    [0m [90m 136 |[39m     [36mconst[39m spy [33m=[39m jest[33m.[39mspyOn(document[33m,[39m [32m'createElement'[39m)[33m.[39mmockImplementation((tagName) [33m=>[39m {
+     [90m 137 |[39m       [36mif[39m (tagName [33m===[39m [32m'a'[39m) [36mreturn[39m mockLink
+    [31m[1m>[22m[39m[90m 138 |[39m       [36mreturn[39m originalCreateElement(tagName)
+     [90m     |[39m              [31m[1m^[22m[39m
+     [90m 139 |[39m     })
+     [90m 140 |[39m
+     [90m 141 |[39m     render([33m<[39m[33mErrorMonitor[39m initialVisible[33m=[39m{[36mtrue[39m} [33m/[39m[33m>[39m)[0m
+
+      at ModuleMocker._ensureMockState (node_modules/jest-mock/build/index.js:202:33)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+
+  ● ErrorMonitor › toggles auto-refresh correctly
+
+    RangeError: Maximum call stack size exceeded
+        at WeakMap.get (<anonymous>)
+
+    [0m [90m 136 |[39m     [36mconst[39m spy [33m=[39m jest[33m.[39mspyOn(document[33m,[39m [32m'createElement'[39m)[33m.[39mmockImplementation((tagName) [33m=>[39m {
+     [90m 137 |[39m       [36mif[39m (tagName [33m===[39m [32m'a'[39m) [36mreturn[39m mockLink
+    [31m[1m>[22m[39m[90m 138 |[39m       [36mreturn[39m originalCreateElement(tagName)
+     [90m     |[39m              [31m[1m^[22m[39m
+     [90m 139 |[39m     })
+     [90m 140 |[39m
+     [90m 141 |[39m     render([33m<[39m[33mErrorMonitor[39m initialVisible[33m=[39m{[36mtrue[39m} [33m/[39m[33m>[39m)[0m
+
+      at ModuleMocker._ensureMockState (node_modules/jest-mock/build/index.js:202:33)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+
+  ● ErrorMonitor › displays "No logs to display" when empty
+
+    RangeError: Maximum call stack size exceeded
+        at WeakMap.get (<anonymous>)
+
+    [0m [90m 136 |[39m     [36mconst[39m spy [33m=[39m jest[33m.[39mspyOn(document[33m,[39m [32m'createElement'[39m)[33m.[39mmockImplementation((tagName) [33m=>[39m {
+     [90m 137 |[39m       [36mif[39m (tagName [33m===[39m [32m'a'[39m) [36mreturn[39m mockLink
+    [31m[1m>[22m[39m[90m 138 |[39m       [36mreturn[39m originalCreateElement(tagName)
+     [90m     |[39m              [31m[1m^[22m[39m
+     [90m 139 |[39m     })
+     [90m 140 |[39m
+     [90m 141 |[39m     render([33m<[39m[33mErrorMonitor[39m initialVisible[33m=[39m{[36mtrue[39m} [33m/[39m[33m>[39m)[0m
+
+      at ModuleMocker._ensureMockState (node_modules/jest-mock/build/index.js:202:33)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+
+  ● ErrorMonitor › subscribes to new errors on mount
+
+    RangeError: Maximum call stack size exceeded
+        at WeakMap.get (<anonymous>)
+
+    [0m [90m 136 |[39m     [36mconst[39m spy [33m=[39m jest[33m.[39mspyOn(document[33m,[39m [32m'createElement'[39m)[33m.[39mmockImplementation((tagName) [33m=>[39m {
+     [90m 137 |[39m       [36mif[39m (tagName [33m===[39m [32m'a'[39m) [36mreturn[39m mockLink
+    [31m[1m>[22m[39m[90m 138 |[39m       [36mreturn[39m originalCreateElement(tagName)
+     [90m     |[39m              [31m[1m^[22m[39m
+     [90m 139 |[39m     })
+     [90m 140 |[39m
+     [90m 141 |[39m     render([33m<[39m[33mErrorMonitor[39m initialVisible[33m=[39m{[36mtrue[39m} [33m/[39m[33m>[39m)[0m
+
+      at ModuleMocker._ensureMockState (node_modules/jest-mock/build/index.js:202:33)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+
+  ● ErrorMonitor › handles error context expansion
+
+    RangeError: Maximum call stack size exceeded
+
+    [0m [90m 136 |[39m     [36mconst[39m spy [33m=[39m jest[33m.[39mspyOn(document[33m,[39m [32m'createElement'[39m)[33m.[39mmockImplementation((tagName) [33m=>[39m {
+     [90m 137 |[39m       [36mif[39m (tagName [33m===[39m [32m'a'[39m) [36mreturn[39m mockLink
+    [31m[1m>[22m[39m[90m 138 |[39m       [36mreturn[39m originalCreateElement(tagName)
+     [90m     |[39m              [31m[1m^[22m[39m
+     [90m 139 |[39m     })
+     [90m 140 |[39m
+     [90m 141 |[39m     render([33m<[39m[33mErrorMonitor[39m initialVisible[33m=[39m{[36mtrue[39m} [33m/[39m[33m>[39m)[0m
+
+      at ModuleMocker._ensureMockState (node_modules/jest-mock/build/index.js:201:19)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+      at Document.originalCreateElement (src/components/__tests__/ErrorMonitor.test.tsx:138:14)
+
+Test Suites: 1 failed, 2 passed, 3 total
+Tests:       9 failed, 24 passed, 33 total
+Snapshots:   0 total
+Time:        4.237 s
+Ran all test suites matching src/components/__tests__.

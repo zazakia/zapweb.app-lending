@@ -15,7 +15,7 @@ export interface ErrorLogEntry {
 class ErrorLogger {
   private logs: ErrorLogEntry[] = []
   private maxLogs = 1000
-  private isDevelopment = process.env.NODE_ENV === 'development'
+  private isDevelopment = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test'
   private observers: ((error: ErrorLogEntry) => void)[] = []
 
   constructor() {
@@ -27,13 +27,13 @@ class ErrorLogger {
   private setupAutomaticLogging() {
     // Capture console errors
     this.interceptConsole()
-    
+
     // Capture unhandled errors
     this.setupUnhandledErrorCapture()
-    
+
     // Capture unhandled promise rejections
     this.setupPromiseRejectionCapture()
-    
+
     // Capture network errors
     this.setupNetworkErrorCapture()
   }
@@ -135,7 +135,7 @@ class ErrorLogger {
     }
 
     this.logs.push(entry)
-    
+
     // Maintain max logs limit
     if (this.logs.length > this.maxLogs) {
       this.logs = this.logs.slice(-this.maxLogs)
