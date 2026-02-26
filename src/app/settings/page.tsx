@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label'
 import ProtectedRoute from '@/components/ProtectedRoute'
 import LayoutSwitcher from '@/components/LayoutSwitcher'
 import { useSettings } from '@/contexts/SettingsContext'
-import { 
+import {
   Settings as SettingsIcon,
   Monitor,
   Sidebar,
@@ -148,6 +148,7 @@ function SettingsContent() {
                   variant={settings.compactMode ? 'default' : 'outline'}
                   size="sm"
                   onClick={handleCompactModeToggle}
+                  aria-label="Toggle compact mode"
                 >
                   {settings.compactMode ? <Check className="h-4 w-4" /> : 'Off'}
                 </Button>
@@ -245,7 +246,7 @@ function SettingsContent() {
           <RotateCcw className="h-4 w-4" />
           Reset to Defaults
         </Button>
-        
+
         <div className="flex items-center gap-3">
           <p className="text-sm text-gray-600">Changes are saved automatically</p>
           <div className="flex items-center gap-2 text-green-600">

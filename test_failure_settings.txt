@@ -1,0 +1,37 @@
+﻿node.exe : FAIL src/app/settings/__tests__/page.test.tsx
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (FAIL src/app/se..._/page.test.tsx:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Settings Page
+    ΓêÜ renders settings options correctly (53 ms)
+    ΓêÜ updates layout settings (25 ms)
+    ├ù toggles compact mode (21 ms)
+    ΓêÜ updates theme settings (16 ms)
+    ΓêÜ resets settings (15 ms)
+
+  ΓùÅ Settings Page ΓÇ║ toggles compact mode
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: {"compactMode": true}
+
+    Number of calls: 0
+
+    [0m [90m 80 |[39m         })
+     [90m 81 |[39m
+    [31m[1m>[22m[39m[90m 82 |[39m         expect(mockUpdateSettings)[33m.[39mtoHaveBeenCalledWith({ compactMode[33m:[39m [36mtrue[39m })
+     [90m    |[39m                                    [31m[1m^[22m[39m
+     [90m 83 |[39m     })
+     [90m 84 |[39m
+     [90m 85 |[39m     it([32m'updates theme settings'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m
+
+      at Object.toHaveBeenCalledWith (src/app/settings/__tests__/page.test.tsx:82:36)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 4 passed, 5 total
+Snapshots:   0 total
+Time:        1.114 s
+Ran all test suites matching src/app/settings/__tests__/page.test.tsx.
